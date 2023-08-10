@@ -1,0 +1,57 @@
+var studentDataTable;
+$(document).ready(function() {
+	studentTable = $('#student-list');
+	/*console.log(studentTable);
+	console.log($('#student-list'));*/
+	$('select').formSelect();
+	studentDataTable = studentTable.DataTable({
+		ajax: { url: "/medha/school/forma/datatable/" + $($('.school-list')[0]).data('id'), type: 'POST' },
+		columnDefs: [
+			{
+				targets: ['_all'],
+				className: 'mdc-data-table__cell',
+			}
+		]
+	});
+
+	$('.dataTables_length').addClass('col s4');
+
+	$('.school-list').click(function() {
+		//console.log($(this).data('id'));
+		refreshStudentDataTable('/medha/school/forma/datatable/' + $(this).data('id'));
+	});
+
+});
+
+function refreshStudentDataTable(url) {
+	studentDataTable.destroy();
+	//console.log(callApi('/medha/school/forma/datatable/1/9/2','POST',""));
+	/* studentDataTable.rows.add(callApi('/medha/school/forma/datatable/1/5/2','POST',""))
+	studentDataTable.draw(false);*/
+	studentDataTable = studentTable.DataTable({
+		autoWidth: false,
+		ajax: { url: url, type: 'POST' },
+		columnDefs: [
+			{
+				targets: ['_all'],
+				className: 'mdc-data-table__cell',
+			},
+		]
+	});
+}
+function addSchool() {
+
+	var formData = JSON.stringify(prepareFormData(document.getElementById('add-school')));
+	if (!$.isEmptyObject(fromData.name) && !$.isEmptyObject(fromData.name)) {
+		callApi('/medha/school/add', 'POST', formData);
+		if ($.isEmptyObject(response)) {
+			M.toast({ html: 'Something went wrong with server. Try later' });
+
+		} else {
+			M.toast({ html: 'School Added!', completeCallback: function() { location.reload();} });
+		}
+	} else {
+		M.toast({ html: 'Please fill all details' });
+	}
+}
+

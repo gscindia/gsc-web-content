@@ -1,0 +1,90 @@
+package org.gsc.medha.facade.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.gsc.api.dto.CandidateDto;
+import org.gsc.api.dto.FormADataTableDto;
+import org.gsc.medha.entity.Candidate;
+import org.gsc.medha.entity.Exam;
+import org.gsc.medha.facade.CandidateFacade;
+import org.gsc.medha.repository.CandidateRepository;
+import org.gsc.medha.service.CandidateService;
+import org.gsc.medha.service.ExamService;
+import org.gsc.page.form.CandidateForm;
+import org.gsc.page.form.FilterForm;
+import org.gsc.populator.Populator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+
+@Component
+public class DefaultCandidateFacade implements CandidateFacade {
+	@Autowired
+	CandidateRepository candidateRepository;
+	
+	@Resource(name = "candidatePopulator")
+	Populator<Candidate, CandidateDto> candidatePopulator;
+	
+	@Resource(name = "candidateRevPopulator")
+	Populator<CandidateForm, Candidate> candidateRevPopulator;
+	
+	@Resource(name = "filterPopulator")
+	Populator<FilterForm, Candidate> filterPopulator;
+	
+	@Resource(name = "formADataTablePopulator")
+	Populator<Candidate, String[]> formADataTablePopulator;
+
+	@Autowired
+	CandidateService candidateService;
+	
+	@Autowired
+	ExamService examService;
+
+	@Override
+	public List<CandidateDto> getAll() {
+		List<CandidateDto> list = new ArrayList<>();
+		List<Candidate> candidate = new ArrayList<>();
+		candidateRepository.findAll().forEach(c -> candidate.add(c));
+		candidatePopulator.populateAll(candidate, list);
+		return list;
+	}
+
+	@Override
+	public FormADataTableDto getDataTable(FilterForm form) {
+		List<String[]> dto = new ArrayList<>();
+		Candidate filter = new Candidate();
+		filterPopulator.populate(form, filter);
+		formADataTablePopulator.populateAll(
+				candidateService.getAllStudent(filter.getSchool(), examService.getActiveExam(), "ACTIVE"), dto);
+		FormADataTableDto result = new FormADataTableDto();
+		result.setData(dto);
+		return result;
+	}
+
+	@Override
+	public CandidateDto getCandidate(int id) {
+		CandidateDto dto = new CandidateDto();
+		Candidate candidate = candidateService.getStudent(id);
+		if (candidate != null) {
+			candidatePopulator.populate(candidate, dto);
+		}
+		return dto;
+	}
+
+	@Override
+	public void editCandidate(CandidateForm form) {
+		Candidate entity = candidateRepository.findById(form.getId()).get();
+		candidateRevPopulator.populate(form, entity);
+		candidateRepository.save(entity);
+	}
+	@Override
+	public void removeCandidate(int id) {
+		Candidate entity = candidateRepository.findById(id).get();
+		
+		candidateRepository.delete(entity);
+	}
+
+}

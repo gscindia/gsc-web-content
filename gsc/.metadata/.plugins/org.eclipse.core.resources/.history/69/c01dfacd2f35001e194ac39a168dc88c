@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package org.gsc.medha.populator;
+
+import java.util.List;
+import java.util.Map;
+
+import org.gsc.api.dto.SchoolGenderDataDto;
+import org.gsc.populator.Populator;
+
+/**
+ * @author Suman_Banerjee
+ *
+ */
+public class DefaultStudentGenderChartDataPopulator
+		implements Populator<List<Map<String, String>>, SchoolGenderDataDto> {
+
+	@Override
+	public void populate(List<Map<String, Object>> source, SchoolGenderDataDto target) {
+		for (Map<String, String> s : source) {
+			
+		}
+	}
+
+	@Override
+	public void populateAll(List<List<Map<String, String>>> source, List<SchoolGenderDataDto> target) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

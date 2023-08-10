@@ -1,0 +1,24 @@
+package org.gsc.api.dto;
+
+import java.util.List;
+
+public class FormAPageableDto {
+	int pageSize;
+	List<List<CandidateDto>> brekup;
+	FormAPageableDto(){
+		this.pageSize=5;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public List<List<CandidateDto>> getBrekup() {
+		return brekup;
+	}
+	public void setBrekup(List<List<CandidateDto>> brekup) {
+		this.brekup = brekup;
+	}
+
+}

@@ -1,0 +1,15 @@
+<table id="student-list"
+	class="mdl-data-table collection striped responsive-table">
+	<thead>
+		<tr>
+			<th>Roll</th>
+			<th>Name</th>
+			<th>Class</th>
+			<th>Exam Year</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	<tfoot>
+	</tfoot>
+</table>

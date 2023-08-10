@@ -1,0 +1,5 @@
+package org.gsc.api.dto;
+
+public class SchoolGenderDataDto {
+
+}

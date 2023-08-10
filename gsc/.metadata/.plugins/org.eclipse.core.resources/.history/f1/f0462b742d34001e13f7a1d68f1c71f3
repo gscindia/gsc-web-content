@@ -1,0 +1,26 @@
+<div class="row">
+			<%-- <div class="col s8">
+				<h5>ACADEMIC SCIENCE CULTURE AND PROMOTION SOCIETY (ASCPS)</h5>
+				<h6>MEDHA SANDHAN PARIKSHA</h6>
+				<span> Centre's Code No. ${candidate[0].school.venue.code}</span> <span>&nbsp;&nbsp; Class - ${candidate[0].cls}</span>
+				<div class="row">
+					<div class="col s10">
+					<img alt="" class="responsive-img " src="/asset/media/formb-header.png">
+					</div>
+				</div> 
+			</div>
+			<div class="col s4" >
+				<div class="col s12 center-align" style="font-weight: bold; font-size: xx-small; border: 2px solid #282626;">
+					</br></br></br></br></br></br></br></br></br>
+					<p> Invigilator's Signature</p>
+				</div>
+				<div class="col s12 center-align" style="font-weight: bold; font-size: xx-small; border: 2px solid #282626;">
+				</br></br></br></br></br></br></br></br></br>
+					<p> Convenor's Signature</p>
+				</div>
+			</div> --%>
+			
+			<img src="/asset/media/formbheader.png" class="responsive-img"/>
+			
+			<span> Centre's Code No. ${candidate[0].school.venue.code}</span> <span>&nbsp;&nbsp; Class - ${candidate[0].cls}</span>
+</div>	

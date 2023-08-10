@@ -1,0 +1,65 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="reports" tagdir="/WEB-INF/tags/reports"%>
+
+<c:url value="/asset" var="assestRoot" />
+<html>
+<head>
+<common:script />
+<link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
+<link href="${assestRoot}/font/icon.css" rel="stylesheet">
+<style type="text/css">
+table, td, th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 0px 0px;
+}
+.logo{
+    border: 2px solid #282626;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+</style>
+<title>Form B</title>
+</head>
+<body>
+	<main>
+		<div class="container">
+		<c:forEach items="${pagedata.breakup }" var="dataList" varStatus="loop">		   	
+			<div class="row">
+			<div class="col s9">
+				<h5>ACADEMIC SCIENCE CULTURE AND PROMOTION SOCIETY (ASCPS)</h5>
+				<h6>MEDHA SANDHAN PARIKSHA</h6>
+				<span> Centre's Code No. </span> <span>&nbsp;&nbsp; Class - </span>
+				<div class="row">
+					<div class="col s2 logo">
+					<p class="center-align">FROM B</p>
+					</div>
+				</div> 
+			</div>
+			<div class="col s3" >
+				<div class="col s12" style="font-weight: bold;">
+					</br></br></br>
+					<p> Invigilator's Signature</p>
+				</div>
+				<div class="col s12" style="font-weight: bold;">
+				</br></br></br>
+					<p> Convenor's Signature</p>
+				</div>
+			</div>
+			</div>			
+			<reports:forma1table dataList="${dataList }"></reports:forma1table>
+			<reports:forma1footer></reports:forma1footer>
+			<p class="right-align"> Page ${loop.index+1 } of ${fn:length(pagedata.breakup)}</p>
+        </c:forEach>
+		</div>
+
+	</main>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="reports" tagdir="/WEB-INF/tags/reports"%>
+
+<c:url value="/asset" var="assestRoot" />
+<html>
+<head>
+<common:script />
+<link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
+<link href="${assestRoot}/font/icon.css" rel="stylesheet">
+<%-- <link rel="stylesheet" href="${assestRoot}/css/style.css" /> --%>
+<style type="text/css">
+table, td, th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 0px 0px;
+}
+</style>
+<title>Form A - Part I</title>
+</head>
+<body>
+	<main>
+		<div class="container">
+			
+			<div class="row">
+				<div class="col s12">
+					<table id="forma-1-list" class="centered responsive-table">
+						<thead>
+							<tr>
+								<th colspan="2">To be filled by School</th>
+								<th style="word-wrap: break-word;">For Office Use</th>
+								<th colspan="2"></th>
+							</tr>
+							<tr>
+								<th>Name</th>
+								<th>Class</th>
+								<th>Roll No.</th>
+								<th>Marks</th>
+								<th>Grade</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${candidate}" varStatus="status" var="entry">
+								<tr>
+									<td><strong>${fn:toUpperCase(entry.name)}</strong></td>
+									<td>${entry.cls }</td>
+									<td>${entry.roll }</td>
+									<td></td>
+									<td></td>
+								</tr>
+
+							</c:forEach>
+						</tbody>
+						<tfoot>
+
+						</tfoot>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+	</main>
+
+</body>
+</html>

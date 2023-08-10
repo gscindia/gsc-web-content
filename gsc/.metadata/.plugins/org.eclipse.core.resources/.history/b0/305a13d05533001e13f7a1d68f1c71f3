@@ -1,0 +1,11 @@
+<%@ attribute name="address" type="String"%>
+<h4>
+	<strong>Academic Science Culture and Promotion Society</strong>
+</h4>
+<span><Strong>Code No. ${candidate[0].school.venue.code}</Strong></span>
+<span>
+	<strong>School : ${candidate[0].school.name}</strong>
+</span>
+<span class="${address }">
+<strong>Address :${candidate[0].school.address}</strong>
+</span>

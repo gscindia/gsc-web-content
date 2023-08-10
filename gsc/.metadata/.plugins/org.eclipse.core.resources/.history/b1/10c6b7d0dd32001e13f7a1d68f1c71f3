@@ -1,0 +1,9 @@
+package org.gsc.api.dto;
+
+import java.util.List;
+
+public class FormAPageableDto {
+	int pageSize;
+	List<List<CandidateDto>> candidate;
+
+}

@@ -1,0 +1,26 @@
+package org.gsc.page.form;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SchoolForm {
+	String name;
+	List<Integer> venue = new ArrayList<>();
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<int> getVenue() {
+		return venue;
+	}
+
+	public void setVenue(List<int> venue) {
+		this.venue = venue;
+	}
+
+}

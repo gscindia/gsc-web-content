@@ -1,0 +1,148 @@
+package org.gsc.api.dto;
+
+import java.sql.Date;
+
+import org.gsc.medha.entity.Exam;
+import org.gsc.medha.entity.School;
+
+public class CandidateDto {
+	String roll;
+	String rollId;
+	String name;
+	String cls;
+	School school;
+	Date dob;
+	String status;
+	String gender;
+	String schedule;
+	Exam exam = new Exam();
+
+	/**
+	 * @return the roll
+	 */
+	public String getRoll() {
+		return roll;
+	}
+
+	/**
+	 * @param roll the roll to set
+	 */
+	public void setRoll(String roll) {
+		this.roll = roll;
+	}
+
+	/**
+	 * @return the rollId
+	 */
+	public String getRollId() {
+		return rollId;
+	}
+
+	/**
+	 * @param rollId the rollId to set
+	 */
+	public void setRollId(String rollId) {
+		this.rollId = rollId;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the cls
+	 */
+	public String getCls() {
+		return cls;
+	}
+
+	/**
+	 * @param cls the cls to set
+	 */
+	public void setCls(String cls) {
+		this.cls = cls;
+	}
+
+	/**
+	 * @return the school
+	 */
+	public School getSchool() {
+		return school;
+	}
+
+	/**
+	 * @param school the school to set
+	 */
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
+	/**
+	 * @return the dob
+	 */
+	public Date getDob() {
+		return dob;
+	}
+
+	/**
+	 * @param dob the dob to set
+	 */
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	/**
+	 * @return the exam
+	 */
+	public Exam getExam() {
+		return exam;
+	}
+
+	/**
+	 * @param exam the exam to set
+	 */
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+
+	
+
+}

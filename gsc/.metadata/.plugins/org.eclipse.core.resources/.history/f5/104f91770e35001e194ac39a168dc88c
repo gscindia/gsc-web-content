@@ -1,0 +1,36 @@
+<%@ tag language="java" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ attribute name="schools" type="java.util.List"%>
+<div id="edit-student-modal" class="modal">
+	<div class="modal-content">
+		<h4>Edit School</h4>
+		<hr>
+		<div class="row">
+			<form class="col s12" id="edit-student" action="/" type="post">
+				<div class="row">
+					<div class="input-field col s6">
+						<input placeholder="Enter Name" name="name" id="edit-student-name" type="text"
+							class="validate"> <label for="first_name"><strong>Student Name</strong></label>
+					</div>
+
+				</div>
+				<div class="row">
+				<div class="input-field col s6">
+					<select id="student-school" name="school">
+									<option value="" disabled selected><strong>Choose your school</strong></option>
+									<c:forEach items="${schools }" var="school">
+										<option value="${school.id }">${school.name }</option>
+									</c:forEach>
+					</select> <label>Select School</label>
+					
+				</div>
+				</div>
+				<a class="btn-floating btn-large waves-effect pulse red"
+					onclick="editStrudent();"><i class="material-icons">edit</i></a>
+			</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class="modal-close waves-effect cyan btn-flat"><i class="material-icons">clear</i></a>
+	</div>
+</div>

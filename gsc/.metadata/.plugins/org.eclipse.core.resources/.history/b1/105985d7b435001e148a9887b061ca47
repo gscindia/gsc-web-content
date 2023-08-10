@@ -1,0 +1,5 @@
+package org.gsc.medha.populator;
+
+public class DefaultAdmitCardPopulator extends DefaultCandidatePopulator {
+
+}

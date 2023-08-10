@@ -1,0 +1,26 @@
+<div class="row">
+			<div class="col l12 m12 s12">
+				<img src="/asset/media/formbheader.png" class="responsive-img"/>
+				<strong><span class=""> Centre's Code No. 09001</span>
+				<span>&nbsp;&nbsp; Class - ${candidate[0].cls}</span></strong>
+			</div>
+			
+			<div class="col s12 m12 l12">
+				<img src="/asset/media/signature-pan.png" class="responsive-img"/>
+			</div>
+</div>	
+
+
+
+
+
+<%-- <div class="row">
+			<div class="col l12 m12 s12">
+				<img src="/asset/media/formbheader.png" class="responsive-img"/>
+			</div>
+			
+			<div class="col s12 m12 l12">
+				<strong><span class=""> Centre's Code No. 09001</span>
+				<span>&nbsp;&nbsp; Class - ${candidate[0].cls}</span></strong>
+			</div>
+</div>	 --%>

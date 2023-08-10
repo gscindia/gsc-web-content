@@ -1,0 +1,34 @@
+package org.gsc.api.dto;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Value;
+
+public class FormAPageableDto {
+	@Value("${gsc.medha.forma.page.size}")
+	int pageSize;
+	List<List<CandidateDto>> breakup;
+
+	public FormAPageableDto() {
+		this.pageSize = 3;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public List<List<CandidateDto>> getBreakup() {
+		return breakup;
+	}
+
+	public void setBreakup(List<List<CandidateDto>> breakup) {
+		this.breakup = breakup;
+	}
+
+	
+
+}

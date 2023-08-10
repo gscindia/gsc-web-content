@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=gsc/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.gsc.medha.repository{CandidateRepository.java[CandidateRepository" modifiers="513" timestamp="1691401758754"/>
+    <typeInfo handle="=gsc/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.gsc.populator{Populator.java[Populator" modifiers="513" timestamp="1652282859329"/>
+    <typeInfo handle="=gsc/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.gsc.medha.facade{MedhaSandhanAnalytics.java[MedhaSandhanAnalytics" modifiers="513" timestamp="1691429137422"/>
+    <typeInfo handle="=gsc/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.gsc.medha.populator{DefaultCandidatePopulator.java[DefaultCandidatePopulator" modifiers="1" timestamp="1691476464761"/>
+</typeInfoHistroy>

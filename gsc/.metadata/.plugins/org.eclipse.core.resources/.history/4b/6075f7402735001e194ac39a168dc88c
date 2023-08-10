@@ -1,0 +1,49 @@
+package org.gsc.medha.repository;
+
+import java.util.List;
+
+import org.gsc.medha.entity.Candidate;
+import org.gsc.medha.entity.Exam;
+import org.gsc.medha.entity.School;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+public interface SchoolRepository extends CrudRepository<School, Integer> {
+	@Query("SELECT s FROM School s WHERE s.name=?1 ")
+	public List<Object> findBySchoolName(String name);
+
+	@Query("Select c from Candidate c where c.school=?1 and c.exam=?2 and c.status='ACTIVE' order by c.roll")
+	public List<Candidate> filterFormA(School school, Exam exam);
+	
+	public void test() {
+
+	        EntityManagerFactory emf = Persistence.createEntityManagerFactory("yourPersistenceUnitName");
+	        EntityManager em = emf.createEntityManager();
+
+	        String jpql = "SELECT " +
+	                "s.name, " +
+	                "SUM(CASE WHEN c.gender = 'M' THEN 1 ELSE 0 END) AS male_students, " +
+	                "SUM(CASE WHEN c.gender = 'F' THEN 1 ELSE 0 END) AS female_students " +
+	                "FROM School s " +
+	                "JOIN Candidate c ON s.id = c.school " +
+	                "WHERE c.status = 'ACTIVE' " +
+	                "GROUP BY s.name";
+
+	        Query query = em.createQuery(jpql);
+	        List<Object[]> results = query.getResultList();
+
+	        for (Object[] result : results) {
+	            String schoolName = (String) result[0];
+	            Long maleStudents = (Long) result[1];
+	            Long femaleStudents = (Long) result[2];
+
+	            System.out.println("School: " + schoolName);
+	            System.out.println("Male Students: " + maleStudents);
+	            System.out.println("Female Students: " + femaleStudents);
+	        }
+
+	        em.close();
+	        emf.close();
+	    }
+
+}

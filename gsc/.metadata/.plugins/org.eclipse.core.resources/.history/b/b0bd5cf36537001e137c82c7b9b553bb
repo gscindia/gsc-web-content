@@ -1,0 +1,9 @@
+<div class="row">
+			<div col="col s4">
+			<img src="/asset/media/formbheader.png" class="responsive-img"/>
+			</div>
+			<div class="col s6 offset-s2" style=" border: 2px solid #282626;">
+			
+			</div>
+			<strong><span class="center-align"> Centre's Code No. 09001</span> <span>&nbsp;&nbsp; Class - ${candidate[0].cls}</span></strong>
+</div>	

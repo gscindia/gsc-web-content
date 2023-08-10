@@ -1,0 +1,78 @@
+$(document).ready(function() {
+
+	$('#student-school,#student-class').formSelect();
+
+	/*$('#example').DataTable({
+		autoWidth: false,
+		columnDefs: [
+			{
+				targets: ['_all'],
+				className: 'mdc-data-table__cell',
+			},
+		],
+	});*/
+});
+
+function enroll() {
+	if (validateEnrollData()) {
+		var formData = JSON.stringify(prepareFormData(document.getElementById('enroll-form')));
+		var form = $('#enroll-form');
+		var response = callApi(form.attr('action'), form.attr('method'), formData);
+		if ($.isEmptyObject(response)) {
+			M.toast({ html: 'Something went wrong with server. Try later' });
+
+		} else {
+			M.toast({ html: 'Roll Number as realised ' + response.roll, completeCallback: function() { } });
+		}
+	} else {
+		M.toast({ html: 'Please fill all details' });
+	}
+
+}
+function validateEnrollData() {
+	var isValid = true;
+
+	var json = prepareFormData(document.getElementById('enroll-form'));
+	try {
+		if ($.isEmptyObject(json.name) || $.isEmptyObject(json.school) || $.isEmptyObject(json.cls) || $.isEmptyObject(json.gender)) {
+			isValid = false;
+		}
+	} catch (ex) {
+		isValid = false;
+	}
+	return isValid;
+}
+
+function popModal(studentId) {
+	$('#edit-student-modal').modal('open');
+	$('#roll-id').val(studentId);
+
+}
+
+function editStrudent(event) {
+
+	const obj = prepareFormData(document.getElementById('edit-student'));
+	var formData = JSON.stringify(obj);
+
+	if ($.isEmptyObject(obj.name) || $.isEmptyObject(obj.school)) {
+		M.toast({ html: 'Please fill all details' });
+	} else {
+		var response = callApi('/medha/student/edit', 'POST', formData);
+		if ($.isEmptyObject(response)) {
+			M.toast({ html: 'Something went wrong with server. Try later' });
+
+		} else {
+			M.toast({ html: 'Task Complete ', completeCallback: function() { location.reload() } });
+		}
+	}
+}
+function removeStudent(id) {
+	if (confirm('Are you sure? It can not be undone')) { }
+	$.post("/medha/remove" / id,
+		function(data, status) {
+			if (status == 200) {
+				M.toast({ html: 'Student Removed ', completeCallback: function() { location.reload() } });
+			}
+		});
+}
+}

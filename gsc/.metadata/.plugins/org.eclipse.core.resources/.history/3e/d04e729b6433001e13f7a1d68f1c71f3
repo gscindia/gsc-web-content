@@ -1,0 +1,84 @@
+package org.gsc.medha.facade.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.gsc.api.dto.CandidateDto;
+import org.gsc.api.dto.ExamDto;
+import org.gsc.medha.entity.Candidate;
+import org.gsc.medha.entity.Exam;
+import org.gsc.medha.facade.ExamFacade;
+import org.gsc.medha.service.ExamService;
+import org.gsc.page.form.CandidateForm;
+import org.gsc.page.form.ExamForm;
+import org.gsc.page.form.FilterForm;
+import org.gsc.populator.Populator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DefaultExamFacade implements ExamFacade {
+
+	@Resource(name = "examRevPopulator")
+	Populator<ExamForm, Exam> examRevpopulator;
+	@Resource(name = "examPopulator")
+	Populator<Exam, ExamDto> examPopulator;
+	@Resource(name = "candidateRevPopulator")
+	Populator<CandidateForm, Candidate> candiRevPopulator;
+	@Resource(name = "candidatePopulator")
+	Populator<Candidate, CandidateDto> cPopulator;
+	@Resource(name = "filterPopulator")
+	Populator<FilterForm, Candidate> filterPopulator;
+	@Autowired
+	ExamService examService;
+
+	@Override
+	public ExamDto createExam(ExamForm form) {
+		Exam exam = new Exam();
+		ExamDto dto = new ExamDto();
+		examRevpopulator.populate(form, exam);
+		examService.save(exam);
+		examPopulator.populate(exam, dto);
+		return dto;
+	}
+
+	@Override
+	public List<ExamDto> getAllExam() {
+		List<ExamDto> target = new ArrayList<>();
+		examPopulator.populateAll(examService.getAll(), target);
+		return target;
+	}
+
+	@Override
+	public CandidateDto addCandidate(CandidateForm source) {
+		CandidateDto target = new CandidateDto();
+		Candidate candidate = new Candidate();
+		candiRevPopulator.populate(source, candidate);
+		candidate = examService.registerCandidate(candidate);
+		cPopulator.populate(candidate, target);
+
+		return target;
+	}
+
+	@Override
+	public List<CandidateDto> filterFormB(FilterForm form) {
+		List<CandidateDto> candidates = new ArrayList<>();
+		Candidate candidate = new Candidate();
+		filterPopulator.populate(form, candidate);
+		cPopulator.populateAll(examService.getFormB(candidate), candidates);
+		return candidates;
+
+	}
+
+	@Override
+	public String IntegerToRoman(int class) {
+		switch(i) {
+		case 1: return "I";
+		break
+		}
+		
+	}
+
+}

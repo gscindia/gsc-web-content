@@ -1,0 +1,20 @@
+package org.gsc.web.page.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+ 
+
+@Controller
+public class PageController {
+	@GetMapping("/page/static/login")
+	public String getPageById(String id) {
+		return "auth";
+	}
+	@PostMapping("/gen-qr/{text}")
+	public String genCode(@PathVariable StringBuffer text,Model model) {
+		return "/qaCodeGen;
+	}
+}
