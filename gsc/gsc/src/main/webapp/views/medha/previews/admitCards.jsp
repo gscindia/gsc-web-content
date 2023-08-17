@@ -8,7 +8,6 @@
 <c:url value="/asset" var="assestRoot" />
 <html>
 <head>
-<common:script />
 <link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
 <link href="${assestRoot}/font/icon.css" rel="stylesheet">
 <%-- <link rel="stylesheet" href="${assestRoot}/css/style.css" /> --%>
@@ -16,6 +15,11 @@
 .bold{
 	font-weight: bold;
     font-family: sans-serif;
+}
+@media print {
+.print-small-admit {
+    font-size: 10px;
+}
 }
 </style>
 <title>Admit Cards</title>

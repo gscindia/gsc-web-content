@@ -100,7 +100,7 @@
 								the programs.</p>
 						</div>
 						<div class="card-action">
-							<a href="#">View insights</a>
+							<a href="<c:url value = "/medhasandhan/analytics"/>">View insights</a>
 						</div>
 					</div>
 				</div>
