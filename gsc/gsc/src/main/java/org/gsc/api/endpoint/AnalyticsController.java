@@ -1,10 +1,12 @@
 package org.gsc.api.endpoint;
 
 import org.gsc.api.dto.SchoolGenderDataDto;
-import org.gsc.medha.facade.MedhaSandhanAnalytics;
+import org.gsc.medha.facade.MedhaSandhanAnalyticsFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,13 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class AnalyticsController {
 
 	@Autowired
-	MedhaSandhanAnalytics analytics;
+	MedhaSandhanAnalyticsFacade analytics;
 
 	@ResponseBody
 	@PostMapping("/sgc")
-	public SchoolGenderDataDto getSchoolGenderChartData() {
+	public SchoolGenderDataDto getSchoolGenderChartData(@RequestParam int year) {
 
-		return analytics.getSchoolGenderChartData();
+		return analytics.getSchoolGenderChartData(year);
+
+	}
+
+	@ResponseBody
+	@PostMapping("/cgs")
+	public SchoolGenderDataDto getClassGenderStatistics(@RequestParam int year) {
+
+		return analytics.getClassGenderStatistics(year);
 
 	}
 

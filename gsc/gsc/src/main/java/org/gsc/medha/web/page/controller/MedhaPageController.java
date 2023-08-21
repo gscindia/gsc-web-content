@@ -37,9 +37,8 @@ public class MedhaPageController {
 	ExamFacade examFacade;
 	@Autowired
 	CandidateFacade candidateFacade;
-	@Resource(name="admitCardPopulator")
+	@Resource(name = "admitCardPopulator")
 	Populator<Candidate, CandidateDto> populator;
-	
 
 	@GetMapping
 	public String showDashborad() {
@@ -123,8 +122,10 @@ public class MedhaPageController {
 		return "/medha/previews/admitCards";
 
 	}
+
 	@GetMapping("/analytics")
-	public String showAnalytics() {
+	public String showAnalytics(Model model) {
+		model.addAttribute("examList", examFacade.getAllExam());
 		return "/medha/analytics";
 	}
 }

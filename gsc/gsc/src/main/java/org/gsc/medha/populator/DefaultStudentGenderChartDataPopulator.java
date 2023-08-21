@@ -25,9 +25,9 @@ public class DefaultStudentGenderChartDataPopulator
 		List<Integer> male = new ArrayList<Integer>();
 		List<Integer> female = new ArrayList<Integer>();
 		for (Map<String, String> s : source) {
-			school.add(s.get("schoolName"));
-			male.add(Integer.valueOf(s.get("male")));
-			female.add(Integer.valueOf(s.get("female")));
+			school.add(s.get("series1"));
+			male.add(Integer.valueOf(s.get("series2")));
+			female.add(Integer.valueOf(s.get("series3")));
 		}
 		target.setSchool(school);
 		target.setMale(male);

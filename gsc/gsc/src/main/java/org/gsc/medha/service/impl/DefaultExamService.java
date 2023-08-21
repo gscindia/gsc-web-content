@@ -39,8 +39,7 @@ public class DefaultExamService implements ExamService {
 
 	@Override
 	public Exam getActiveExam() {
-		List<Object> obj = examRepository.getActiveExam();
-		return CollectionUtils.isEmpty(obj) ? null : (Exam) obj.get(0);
+		return examRepository.getActiveExam();
 
 	}
 

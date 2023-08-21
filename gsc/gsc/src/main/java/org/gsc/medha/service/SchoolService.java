@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.gsc.medha.entity.Candidate;
+import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.School;
 
 public interface SchoolService {
@@ -19,7 +20,8 @@ public interface SchoolService {
 
 	School add(School school);
 
-	List<Map<String, String>> getStudentStatistics();
+	List<Map<String, String>> getStudentStatistics(Exam exam);
 
-	List<Map<String, String>> getClassGenderStatistics();
+	List<Map<String, String>> getClassGenderStatistics(Exam exam);
+
 }

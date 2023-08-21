@@ -51,7 +51,7 @@
 			</div>
 			<div class="row">
 				<div class="col s12">
-					<form id="loginform" action="/auth" method="post">
+					<form id="loginform">
 						<div class="row">
 							<div class="input-field col s12">
 								<i class="material-icons prefix">face</i> <input id="email"
@@ -67,7 +67,7 @@
 								<label for="password">Password</label>
 							</div>
 						</div>
-						<button class="btn waves-effect waves-light" id="auth-id" 
+						<button class="btn waves-effect waves-light" id="auth-id"  type="button"
 							name="action">
 							Sign in <i class="material-icons right">fingerprint</i>
 						</button>

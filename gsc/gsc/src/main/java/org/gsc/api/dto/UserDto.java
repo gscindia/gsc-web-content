@@ -3,6 +3,7 @@ package org.gsc.api.dto;
 public class UserDto {
 private String id;
 private String name;
+private String authStatus;
 public String getId() {
 	return id;
 }
@@ -14,6 +15,12 @@ public String getName() {
 }
 public void setName(String name) {
 	this.name = name;
+}
+public String getAuthStatus() {
+	return authStatus;
+}
+public void setAuthStatus(String authStatus) {
+	this.authStatus = authStatus;
 }
 
 }

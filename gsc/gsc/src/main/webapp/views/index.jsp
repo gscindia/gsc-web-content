@@ -1,20 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="common" tagdir="/WEB-INF/tags/"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script src="../asset/js/jquery-3.6.0-min.js"></script>
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<!-- Compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<script src="../asset/js/gsc-web.js"></script>
-<link rel="stylesheet" href="../asset/css/style.css" />
+<common:script />
+<common:style />
 
 <meta charset="ISO-8859-1">
 <title>Garalgacha Science Club</title>
@@ -44,30 +36,8 @@
 
 	<main>
 		<div class="container">
-			<h1>Science club home page</h1>
-			<div class="carousel carousel-slider center">
-				<div class="carousel-fixed-item center">
-					<a class="btn waves-effect red white-text darken-text-2">button</a>
-				</div>
-				<div class="carousel-item white-text" href="#one!" style="background-image: url('../asset/media/banner1.jpg');">
-				
-					<h2>First Panel</h2>
-					<p class="white-text">This is your first panel</p>
-				</div>
-				<div class="carousel-item amber white-text" href="#two!">
-					<h2>Second Panel</h2>
-					<p class="white-text">This is your second panel</p>
-				</div>
-				<div class="carousel-item green white-text" href="#three!">
-					<h2>Third Panel</h2>
-					<p class="white-text">This is your third panel</p>
-				</div>
-				<div class="carousel-item blue white-text" href="#four!">
-					<h2>Fourth Panel</h2>
-					<p class="white-text">This is your fourth panel</p>
-				</div>
-			</div>
-		</div>
+			
+			
 	</main>
 	<footer class="page-footer">
 		<div class="container">

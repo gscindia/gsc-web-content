@@ -23,7 +23,7 @@
 		<reports:Copyright></reports:Copyright>
 		
 </div>
-<div class="col s3" >
+<div class="col s3">
 		<img class='responsive-img' src="/qrcode/${entry.maskedRollid}"/>
 </div>
 </div>

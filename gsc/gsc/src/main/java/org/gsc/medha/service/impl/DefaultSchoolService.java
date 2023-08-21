@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.gsc.medha.entity.Candidate;
+import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.School;
 import org.gsc.medha.repository.SchoolRepository;
 import org.gsc.medha.service.ExamService;
@@ -68,20 +69,25 @@ public class DefaultSchoolService implements SchoolService {
 	}
 
 	@Override
-	public List<Map<String, String>> getStudentStatistics() {
+	public List<Map<String, String>> getStudentStatistics(Exam exam) {
+		String examClause = null == exam ? "" : " and c.exam=:exam ";
 		String jpql = "SELECT " + "s.name, " + "SUM(CASE WHEN c.gender = 'M' THEN 1 ELSE 0 END) AS male_students, "
-				+ "SUM(CASE WHEN c.gender = 'F' THEN 1 ELSE 0 END) AS female_students " + "FROM School s "
-				+ "JOIN Candidate c ON s.id = c.school.id " + "WHERE c.status = 'ACTIVE' " + "GROUP BY s.name";
+				+ "SUM(CASE WHEN c.gender = 'F' THEN 1 ELSE 0 END) AS female_students FROM School s "
+				+ "JOIN Candidate c ON s.id = c.school.id WHERE c.status = 'ACTIVE' " + examClause
+				+ "  GROUP BY s.name";
 
 		Query query = entityManager.createQuery(jpql);
+		if (!examClause.equalsIgnoreCase(""))
+			query.setParameter("exam", exam);
+		
 		List<Object[]> results = query.getResultList();
 
 		List<Map<String, String>> studentStatisticsList = new ArrayList<>();
 		for (Object[] result : results) {
 			Map<String, String> studentStatistics = new TreeMap<>();
-			studentStatistics.put("schoolName", (String) result[0]);
-			studentStatistics.put("male", String.valueOf(result[1]));
-			studentStatistics.put("female", String.valueOf(result[2]));
+			studentStatistics.put("series1", (String) result[0]);
+			studentStatistics.put("series2", String.valueOf(result[1]));
+			studentStatistics.put("series3", String.valueOf(result[2]));
 			studentStatisticsList.add(studentStatistics);
 		}
 
@@ -90,25 +96,28 @@ public class DefaultSchoolService implements SchoolService {
 	}
 
 	@Override
-	public List<Map<String, String>> getClassGenderStatistics() {
-		String queryString = "SELECT s.classId, " + "SUM(CASE WHEN s.gender = 'M' THEN 1 ELSE 0 END) AS maleCount, "
-				+ "SUM(CASE WHEN s.gender = 'F' THEN 1 ELSE 0 END) AS femaleCount " + "FROM Candidate s "
-				+ "WHERE s.status='ACTIVE' GROUP BY s.class";
+	public List<Map<String, String>> getClassGenderStatistics(Exam exam) {
+		String examClause = null == exam ? "" : "and s.exam=:exam";
+		String queryString = "SELECT s.section, " + "SUM(CASE WHEN s.gender = 'M' THEN 1 ELSE 0 END) AS maleCount, "
+				+ "SUM(CASE WHEN s.gender = 'F' THEN 1 ELSE 0 END) AS femaleCount FROM Candidate s "
+				+ "WHERE s.status='ACTIVE' " + examClause + " GROUP BY s.section";
 
 		Query query = entityManager.createQuery(queryString);
-
+		if (!examClause.equalsIgnoreCase(""))
+			query.setParameter("exam", exam);
+		
 		List<Object[]> results = query.getResultList();
-		List<Map<String, String>> statistics = new ArrayList<>();
 
+		List<Map<String, String>> statistics = new ArrayList<>();
 		for (Object[] result : results) {
 			String classId = String.valueOf(result[0]);
 			String maleCount = String.valueOf(result[1]);
 			String femaleCount = String.valueOf(result[2]);
 
 			Map<String, String> classStats = new HashMap<>();
-			classStats.put("section", classId);
-			classStats.put("male", maleCount);
-			classStats.put("female", femaleCount);
+			classStats.put("series1", classId);
+			classStats.put("series2", maleCount);
+			classStats.put("series3", femaleCount);
 
 			statistics.add(classStats);
 		}

@@ -2,8 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/"%>
-<%@ taglib prefix="school" tagdir="/WEB-INF/tags/school"%>
-<%@ taglib prefix="student" tagdir="/WEB-INF/tags/student"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +10,8 @@
 <common:style />
 <script type="text/javascript" src="../../asset/js/highcharts.js"></script>
 <script type="text/javascript" src="../../asset/js/analytics.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 <style>
 select.form-control.input-sm {
 	display: block;
@@ -25,8 +25,19 @@ select.form-control.input-sm {
 	<main>
 		<div class="container">
 			<div class="row">
+					<div class="col s4 left-align">
+					<select id="analytics-year" name="cls">
+						<option value="" disabled selected>Choose Year</option>
+							<c:forEach items="${examList}" varStatus="status" var="exam">
+								<option value="${exam.id }">${exam.name }</option>
+							</c:forEach>
+				</select> <label>Examination</label>
+				</div>			
 
-				<div class="col s12" id="sgc">
+				<div class="col s12" id="school-gender-chart">
+					
+				</div>
+				<div class="col s6" id="class-gender-chart">
 					
 				</div>
 			</div>

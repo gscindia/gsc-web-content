@@ -1,17 +1,25 @@
 $(document).ready(function() {
 	$('.modal').modal();
+	 $('.carousel').carousel();
 	$('.collection-item').click(function(event) {
 		$('.collection-item').removeClass('active');
 		$(event.currentTarget).addClass("active");
 	});
-});
-
-$('#auth-id').click(function() {
+	$('#auth-id').click(function() {
 	var data = {};
 	data['id'] = $('#loginform').find('#email').val();
 	data['password'] = $('#loginform').find('#password').val();
-	console.log(JSON.parse(callApi("/auth", 'POST', JSON.stringify(data))));
+	var resp = callApi("/auth", 'POST', JSON.stringify(data));
+	//console.log(resp)
+	if(resp.authStatus === 'true'){
+		window.location.href='/medhasandhan';
+	}else{
+		M.toast({ html: 'Incorrect Credential', completeCallback: function() {  } });
+	}
 });
+});
+
+
 
 
 
