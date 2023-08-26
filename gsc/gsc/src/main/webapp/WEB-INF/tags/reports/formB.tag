@@ -2,9 +2,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="row">
-	<div class="col s8">
-		<div class="row">
+	<div class="col s12">
+	<div class="row">
 			<div class="col s12">
+				<select id="formb-exam-year" name="cls">
+					<option value="" disabled selected>Choose Examination</option>
+					<c:forEach items="${examList}" varStatus="status" var="exam">
+						<option value="${exam.id }">${exam.name }</option>
+					</c:forEach>
+				</select> <label>Examination</label>
+			</div>
+
+
+			
+		</div>
+		<div class="row">
+			<div class="col s6">
 				<select id="formb-student-class" name="cls">
 					<option value="" disabled selected>Choose your class</option>
 					<option value="1">I</option>
@@ -21,24 +34,12 @@
 					<option value="12">XII</option>
 				</select> <label>Select class</label>
 			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s8">
-				<select id="formb-exam-year" name="cls">
-					<option value="" disabled selected>Choose Examination</option>
-					<c:forEach items="${examList}" varStatus="status" var="exam">
-						<option value="${exam.id }">${exam.name }</option>
-					</c:forEach>
-				</select> <label>Examination</label>
-			</div>
-
-
 			<button class="btn waves-effect waves-light btn-large red right"
 				type="button" name="action" onclick="previewB();">
 				<i class="material-icons right ">print</i>Form 'B'
 			</button>
 		</div>
+
+		
 	</div>
-	<div class="col s4"></div>
 </div>

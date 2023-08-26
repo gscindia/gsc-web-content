@@ -30,7 +30,7 @@
 			<div class="row ">
 				<div class="col s12">				
 					<div class="col s12">
-						<ul class="tabs">
+						<ul class="tabs bold">
 							<li class="tab col s3"><a href="#exam">EXAMS</a></li>
 							<li class="tab col s3"><a  href="#add-exam">ADD EXAM</a></li>
 							<li class="tab col s3"><a class="" href="#forms">FORM 'A' & 'B'</a></li>
@@ -41,7 +41,7 @@
 					<div id="exam" class="col s8">
 						<exam:listExam examList="${examList}" />
 					</div>
-					<div id="add-exam" class="col s12"><exam:addExam /></div>
+					<div id="add-exam" class="col s7"><exam:addExam /></div>
 					<div id="forms" class="col s12">
 						<div class="col s6"><reports:formA></reports:formA></div>
 						<div class="col s6"><reports:formB></reports:formB></div>

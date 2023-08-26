@@ -20,7 +20,7 @@ body {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
   }
-  .mdl-data-table th,.collection-item.school-list{
+  .mdl-data-table th,.collection-item.school-list,.bold{
   font-weight: bold;
   }
  

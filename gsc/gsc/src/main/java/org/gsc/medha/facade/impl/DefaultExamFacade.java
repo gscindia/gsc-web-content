@@ -87,7 +87,9 @@ public class DefaultExamFacade implements ExamFacade {
 	@Override
 	public ExamDto getActiveExam() {
 		ExamDto dto = new ExamDto();
-		examPopulator.populate(examService.getActiveExam(), dto);
+		Exam exam = examService.getActiveExam();
+		if (exam != null)
+			examPopulator.populate(exam, dto);
 		return dto;
 	}
 
