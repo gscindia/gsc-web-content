@@ -22,6 +22,8 @@ function enroll() {
 			M.toast({ html: 'Something went wrong with server. Try later' });
 
 		} else {
+			$('#student-name').focus();
+			$('#student-name').val('');
 			M.toast({ html: 'Roll Number as realised ' + response.roll, completeCallback: function() { } });
 		}
 	} else {
