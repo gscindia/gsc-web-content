@@ -16,7 +16,7 @@
 	font-weight: bold;
     font-family: sans-serif;
 }
-@media print {
+@media print {  
 .print-small-admit {
     font-size: 10px;
 }
@@ -32,7 +32,7 @@
 				<reports:admitCard entry="${entry}"></reports:admitCard>		
 		</div>
 		<c:if test="${loop.index %2 == 0}">
-			<div class="row"></div><div class="row"><hr></div><div class="row"></div>
+			<div class="row"></div><div class="row"></div><div class="row"></div><div class="row"><hr></div><div class="row"></div><div class="row"></div><div class="row"></div>
 		</c:if>
         </c:forEach>
 </div>
