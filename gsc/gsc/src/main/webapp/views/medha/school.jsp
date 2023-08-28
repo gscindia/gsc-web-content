@@ -34,7 +34,7 @@ select.form-control.input-sm {
 						<c:forEach items="${schoolList }" var="school" varStatus="status">
 							<li class="collection-item school-list" data-id="${school.id }"><div>${school.name }<a
 										href="#!" class="secondary-content"><span
-										class="collection-icon"><i class="material-icons">navigate_next</i><span></span></a>
+										class="collection-icon"><i class="material-icons">navigate_next</i></span></a>
 								</div></li>
 						</c:forEach>
 

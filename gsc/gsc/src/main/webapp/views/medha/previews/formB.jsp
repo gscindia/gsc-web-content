@@ -18,7 +18,7 @@ table, td, th {
 	white-space: nowrap;
 }
 tr{
-line-height: 35px;
+line-height: 30px;
 white-space: nowrap;
 }
 

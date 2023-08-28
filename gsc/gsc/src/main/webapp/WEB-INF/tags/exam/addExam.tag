@@ -15,9 +15,7 @@
 										<i class="material-icons prefix tiny">calendar_month</i> <input
 											type="text" name="date" class="datepicker"> <label>Date</label>
 									</div>
-																		<!-- </div> 
-								<div class="row"> -->
-									<!-- Customizable input  -->
+																		
 									<div class=" col s12">
 										<div class="chips chips-placeholder chips-autocomplete">
 											<input class="custom-class">
