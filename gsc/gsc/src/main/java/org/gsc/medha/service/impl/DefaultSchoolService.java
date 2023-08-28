@@ -73,8 +73,8 @@ public class DefaultSchoolService implements SchoolService {
 		String examClause = null == exam ? "" : " and c.exam=:exam ";
 		String jpql = "SELECT " + "s.name, " + "SUM(CASE WHEN c.gender = 'M' THEN 1 ELSE 0 END) AS male_students, "
 				+ "SUM(CASE WHEN c.gender = 'F' THEN 1 ELSE 0 END) AS female_students FROM School s "
-				+ "JOIN Candidate c ON s.id = c.school.id WHERE c.status = 'ACTIVE' " + examClause
-				+ "  GROUP BY s.name";
+				+ "JOIN Candidate c ON s.id = c.school.id WHERE c.status = 'ACTIVE'" + examClause
+				+ "  GROUP BY s.name ORDER BY s.name";
 
 		Query query = entityManager.createQuery(jpql);
 		if (!examClause.equalsIgnoreCase(""))
@@ -100,7 +100,7 @@ public class DefaultSchoolService implements SchoolService {
 		String examClause = null == exam ? "" : "and s.exam=:exam";
 		String queryString = "SELECT s.section, " + "SUM(CASE WHEN s.gender = 'M' THEN 1 ELSE 0 END) AS maleCount, "
 				+ "SUM(CASE WHEN s.gender = 'F' THEN 1 ELSE 0 END) AS femaleCount FROM Candidate s "
-				+ "WHERE s.status='ACTIVE' " + examClause + " GROUP BY s.section";
+				+ "WHERE s.status='ACTIVE' " + examClause + " GROUP BY s.section ORDER BY s.section";
 
 		Query query = entityManager.createQuery(queryString);
 		if (!examClause.equalsIgnoreCase(""))
