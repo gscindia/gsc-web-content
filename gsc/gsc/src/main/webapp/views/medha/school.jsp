@@ -32,7 +32,7 @@ select.form-control.input-sm {
 					<ul class="collection with-header">
 						<li class="collection-header"><h4>Schools</h4></li>
 						<c:forEach items="${schoolList }" var="school" varStatus="status">
-							<li class="collection-item school-list" data-id="${school.id }"><div>${school.name }<a
+							<li class="collection-item school-list" data-id="${school.id }"><div class='valign-wrapper'>${school.name }<a
 										href="#!" class="secondary-content"><span
 										class="collection-icon"><i class="material-icons">navigate_next</i></span></a>
 								</div></li>
