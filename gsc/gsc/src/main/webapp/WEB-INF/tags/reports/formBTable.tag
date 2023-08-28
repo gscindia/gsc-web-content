@@ -3,13 +3,13 @@
 <%@ attribute name="dataList" type="java.util.List"%>
 <div class="row">
 				<div class="col s12">
-					<table id="forma-1-list" class="centered responsive-table">
+					<table  class="centered responsive-table">
 						<thead>							
 							<tr>
 							    <th>Roll No.</th>
 								<th>Name</th>
 								<th>Signature of the Examinee</th>
-								<th>Marks Obtained</th>
+								<th style="white-space: normal">Marks Obtained</th>
 								<th>GRADE</th>
 							</tr>
 						</thead>
