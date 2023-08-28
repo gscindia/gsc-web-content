@@ -3,3 +3,4 @@
 <link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
 <link href="${assestRoot}/font/icon.css" rel="stylesheet">
 <link rel="stylesheet" href="${assestRoot}/css/style.css" />
+<link rel="icon" type="image/x-icon" href="${assestRoot}/media/gsc-logo.ico">

@@ -8,11 +8,11 @@ body {
     flex: 1 0 auto;
   }
  .collection .collection-item.active {
-    background-color: skyblue;
+    background-color: rgb(64, 0, 0);
     color: blanchedalmond;
 }
 .collection-icon{
-  color: #0d47a1;
+  color: rgb(255, 0, 0);
   }
   
  .dataTables_wrapper {
