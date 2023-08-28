@@ -21,7 +21,7 @@ public class DefaultFormADatatablePopulator implements Populator<Candidate, Stri
 		source.forEach(s -> {
 			String[] str = new String[5];
 			str[0] = String.valueOf(s.getRoll());
-			str[1] = "<a target='_blank' title='Print Admit Card' href='admit-card/" + s.getId() + "'>" + s.getName()
+			str[1] = "<a target='_blank' title='Print Admit Card' href='admit-card/" + s.getId() + "'>" + s.getName().toUpperCase()
 					+ "</a>&nbsp;" + "<i onClick='popModal("+s.getId()+");' class='material-icons tiny' title='Edit Details'>edit</i>"
 					+ "&nbsp;<i class='material-icons tiny ' title='Remove' data-id='" + s.getId()
 					+ "' onClick='removeStudent(" + s.getId() + ");'>remove_circle</i>";

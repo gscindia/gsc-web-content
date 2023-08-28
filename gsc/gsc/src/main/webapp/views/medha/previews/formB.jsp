@@ -8,25 +8,20 @@
 <c:url value="/asset" var="assestRoot" />
 <html>
 <head>
-<common:script />
 <link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
-<link href="${assestRoot}/font/icon.css" rel="stylesheet">
+
 <style type="text/css">
 table, td, th {
 	border: 1px solid black;
 	border-collapse: collapse;
 	padding: 0px 0px;
+	white-space: nowrap;
 }
 tr{
 line-height: 35px;
+white-space: nowrap;
 }
-.logo{
-    border: 2px solid #282626;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    font-weight: bold;
-}
+
 </style>
 <title>Form B - Class - ${candidate[0].cls}</title>
 </head>
