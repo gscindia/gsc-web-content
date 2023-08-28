@@ -2,6 +2,7 @@ package org.gsc.medha.populator;
 
 import java.util.List;
 
+import org.apache.commons.text.WordUtils;
 import org.gsc.medha.entity.School;
 import org.gsc.medha.page.form.SchoolForm;
 import org.gsc.medha.repository.VenueRepository;
@@ -17,6 +18,7 @@ public class DefaultSchoolRevPopulator implements Populator<SchoolForm, School> 
 	@Override
 	public void populate(SchoolForm source, School target) {
 		target.setName(source.getName());
+		target.setAddress(WordUtils.capitalizeFully(source.getAddress()));
 		target.setVenue(venueRepository.findById(source.getVenue()).get());
 
 	}
