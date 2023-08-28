@@ -9,6 +9,7 @@
 		<div class="row">
 			<form class="col s12" id="edit-student" action="/" type="post">
 			<input type="hidden" name="id" id ="roll-id" value="" />
+			
 				<div class="row">
 					<div class="input-field col s6">
 						<input placeholder="Enter Name" name="name" id="edit-student-name" type="text"
@@ -16,6 +17,20 @@
 					</div>
 
 				</div>
+				<div class="row">
+								
+								<span>
+									<label> <input name="gender" value="M" type="radio"
+										class="with-gap" /> <span><strong>Male</strong> </span>
+									</label>
+								</span>
+								<span>
+									<label> <input name="gender" value="F" type="radio"
+										class="with-gap" /> <span><strong>Female</strong></span>
+									</label>
+								</span>
+								
+							</div>
 				<div class="row">
 				<div class="input-field col s5">
 					<select id="student-school" name="school">

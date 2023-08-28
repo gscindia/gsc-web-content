@@ -1,7 +1,6 @@
 package org.gsc.api.endpoint;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gsc.api.dto.CandidateDto;

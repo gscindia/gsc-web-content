@@ -6,7 +6,7 @@
 		<h4>Register School</h4>
 		<hr>
 		<div class="row">
-			<form class="col s12" id="add-school" action="/" type="post">
+			<form class="col s12" id="add-school" action="/" method="post">
 				<div class="row">
 					<div class="input-field col s6">
 						<input placeholder="Enter School Name" name="name" id="school-name" type="text"
@@ -15,13 +15,20 @@
 
 				</div>
 				<div class="row">
+					<div class="input-field col s6">
+						<input placeholder="School Address" name="address" id="school-address" type="text"
+							class="validate"> <label for="first_name"><strong>Address</strong></label>
+					</div>
+
+				</div>
+				<div class="row">
 				<div class="input-field col s6">
 					<select id="school-venue" name="venue">
-									<option value="" disabled selected><strong>Examination Centre</strong></option>
+									<option value="" disabled selected><strong>Allot Venue</strong></option>
 									<c:forEach items="${venues }" var="venue">
 										<option value="${venue.id }">${venue.name }</option>
 									</c:forEach>
-								</select> <label>Examination Centre</label>
+								</select> <label>Venue</label>
 					
 				</div>
 				</div>

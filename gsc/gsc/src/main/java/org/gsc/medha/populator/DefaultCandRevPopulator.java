@@ -25,6 +25,7 @@ public class DefaultCandRevPopulator implements Populator<CandidateForm, Candida
 	public void populate(CandidateForm source, Candidate target) {
 		if (source.getAction()!=null && source.getAction().equalsIgnoreCase("edit")) {
 			target.setName(source.getName());
+			target.setGender(source.getGender());
 			School school = schoolService.getSchoolById(Integer.parseInt(source.getSchool()));
 			target.setSchool(school);
 		} else {

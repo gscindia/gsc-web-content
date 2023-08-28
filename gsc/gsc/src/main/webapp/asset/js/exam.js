@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 	$('.chips').chips();
 	$('.chips-placeholder').chips({
-		placeholder: 'Enter a Venue',
+		placeholder: 'Select a Venue',
 		secondaryPlaceholder: 'add another'
 	});
 
