@@ -1,19 +1,0 @@
-
-w Web:TableHeaderHasIdOrScopeCheckÿ";Add either an 'id' or a 'scope' attribute to this <th> tag.(ÿúáğH RMAJORZBUG
-i	Web:S5254"@Add "lang" and/or "xml:lang" attributes to this "<html>" element(œ÷ÃûÿÿÿÿHRMAJORZBUG
-w Web:TableHeaderHasIdOrScopeCheck€";Add either an 'id' or a 'scope' attribute to this <th> tag.(­ºÃH›RMAJORZBUG
-Œ	Web:S4645"hA </script> was found without a relating opening <script> tag. This may be caused by nested script tags.(Ë†Ë³H™RMAJORZBUG
-{ Web:TableHeaderHasIdOrScopeCheck)";Add either an 'id' or a 'scope' attribute to this <th> tag.(ğËŒ¶ûÿÿÿÿHRMAJORZBUG
-v Web:TableHeaderHasIdOrScopeCheck";Add either an 'id' or a 'scope' attribute to this <th> tag.(æó‡iH”RMAJORZBUG
-| Web:TableHeaderHasIdOrScopeCheckü";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ûéú»ÿÿÿÿÿH“RMAJORZBUG
-| Web:TableHeaderHasIdOrScopeCheckı";Add either an 'id' or a 'scope' attribute to this <th> tag.(ğËŒ¶ûÿÿÿÿH—RMAJORZBUG
-dWeb:AvoidCommentedOutCodeCheck
-"Remove this commented out code.(·ÚîšşÿÿÿÿH˜RMAJORZ
-CODE_SMELL
-v Web:TableHeaderHasIdOrScopeCheck+";Add either an 'id' or a 'scope' attribute to this <th> tag.(ÿúáğHœRMAJORZBUG
-| Web:TableHeaderHasIdOrScopeCheckş";Add either an 'id' or a 'scope' attribute to this <th> tag.(ã×‰–ùÿÿÿÿHšRMAJORZBUG
-{ Web:TableHeaderHasIdOrScopeCheck*";Add either an 'id' or a 'scope' attribute to this <th> tag.(ã×‰–ùÿÿÿÿHŸRMAJORZBUG
-VWeb:TableWithoutCaptionCheck%" Add a description to this table.(·ÆçPH¡RMINORZBUG
-{ Web:TableHeaderHasIdOrScopeCheck(";Add either an 'id' or a 'scope' attribute to this <th> tag.(Ûéú»ÿÿÿÿÿH–RMAJORZBUG
-v Web:TableHeaderHasIdOrScopeCheck,";Add either an 'id' or a 'scope' attribute to this <th> tag.(­ºÃH•RMAJORZBUG
-u Web:TableHeaderHasIdOrScopeCheck-";Add either an 'id' or a 'scope' attribute to this <th> tag.(æó‡iH’RMAJORZBUG

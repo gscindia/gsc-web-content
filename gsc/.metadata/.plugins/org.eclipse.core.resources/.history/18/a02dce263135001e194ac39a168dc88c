@@ -1,7 +1,0 @@
-package org.gsc.medha.facade.impl;
-
-import org.gsc.medha.facade.MedhaSandhanAnalytics;
-
-public class DefaultMedhaSandhanAnalytics implements MedhaSandhanAnalytics {
-
-}

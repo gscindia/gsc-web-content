@@ -1,8 +1,0 @@
-package org.gsc.api.dto;
-
-public class SchoolGenderDataDto {
-	String[] schoolNames;
-	String[] male;
-	String[] female;
-
-}

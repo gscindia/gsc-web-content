@@ -1,8 +1,0 @@
-1691307656623	Rename resource 'formbHeader.tag'
-1691404462020	Move 'editStudent.tag' to 'student'
-1691411960351	Extract local variable 'emptyList'
-1691411978383	Convert local variable 'emptyList' to field
-1691420155690	Rename compilation unit 'Analytics.java'
-1691468024875	Rename resource 'qrCodeGen.tag'
-1691468031363	Move 'qrCodeGen.jsp' to 'views'
-1691468235459	Rename package 'org.gsc.page.form'

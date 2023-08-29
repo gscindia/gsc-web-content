@@ -1,8 +1,0 @@
-
-c
-java:S3655Z"7Call "Optional#isPresent()" before accessing the value.(“Êüô8İÀ˜şœ1Hà4RMAJORZBUG
-l
-java:S16123";Replace this lambda with method reference 'candidate::add'.(»Ó½øÿÿÿÿHá4RMINORZ
-CODE_SMELL
-h
-java:S3655a"7Call "Optional#isPresent()" before accessing the value.(ü³’áûÿÿÿÿ8è½Üûœ1Hã4RMAJORZBUG

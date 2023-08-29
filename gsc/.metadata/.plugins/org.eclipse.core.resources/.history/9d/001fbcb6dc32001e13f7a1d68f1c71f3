@@ -1,7 +1,0 @@
-package org.gsc.api.dto;
-
-public class FormAPageableDto {
-	int pageSize;
-	List<CadidateDto> candidate;
-
-}
