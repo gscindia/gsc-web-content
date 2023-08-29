@@ -3,13 +3,11 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib prefix="reports" tagdir="/WEB-INF/tags/reports"%>
-
-<c:url value="/asset" var="assestRoot" />
+<%@ taglib prefix="reports" tagdir="/WEB-INF/tags/medha/reports"%>
+<c:url value="/asset" var="assetRoot" />
 <html>
 <head>
-<link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
-
+<link rel="stylesheet" href="${assetRoot}/css/materialize.min.css">
 <style type="text/css">
 table, td, th {
 	border: 1px solid black;

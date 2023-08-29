@@ -2,10 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="exam" tagdir="/WEB-INF/tags/exam"%>
-<%@ taglib prefix="venue" tagdir="/WEB-INF/tags/venue"%>
-<%@ taglib prefix="reports" tagdir="/WEB-INF/tags/reports"%>
-<%@ taglib prefix="common" tagdir="/WEB-INF/tags/"%>
+<%@ taglib prefix="exam" tagdir="/WEB-INF/tags/medha/exam"%>
+<%@ taglib prefix="venue" tagdir="/WEB-INF/tags/medha/venue"%>
+<%@ taglib prefix="reports" tagdir="/WEB-INF/tags/medha/reports"%>
+<%@ taglib prefix="common" tagdir="/WEB-INF/tags/medha"%>
 <html>
 <head>
 <common:script />
