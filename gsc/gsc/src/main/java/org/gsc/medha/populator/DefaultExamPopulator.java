@@ -3,7 +3,7 @@ package org.gsc.medha.populator;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import org.gsc.api.dto.ExamDto;
+import org.gsc.medha.dto.ExamDto;
 import org.gsc.medha.entity.Exam;
 import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;

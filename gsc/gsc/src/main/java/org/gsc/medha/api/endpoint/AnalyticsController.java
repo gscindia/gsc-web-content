@@ -1,9 +1,8 @@
-package org.gsc.api.endpoint;
+package org.gsc.medha.api.endpoint;
 
-import org.gsc.api.dto.SchoolGenderDataDto;
+import org.gsc.medha.dto.SchoolGenderDataDto;
 import org.gsc.medha.facade.MedhaSandhanAnalyticsFacade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,8 +1,8 @@
-package org.gsc.api.endpoint;
+package org.gsc.medha.api.endpoint;
 
 import java.util.List;
 
-import org.gsc.api.dto.VenueDto;
+import org.gsc.medha.dto.VenueDto;
 import org.gsc.medha.facade.VenueFacade;
 import org.gsc.medha.page.form.VenueForm;
 import org.springframework.beans.factory.annotation.Autowired;

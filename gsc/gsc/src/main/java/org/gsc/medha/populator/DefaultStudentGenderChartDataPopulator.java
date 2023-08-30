@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.gsc.api.dto.SchoolGenderDataDto;
+import org.gsc.medha.dto.SchoolGenderDataDto;
 import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;
 

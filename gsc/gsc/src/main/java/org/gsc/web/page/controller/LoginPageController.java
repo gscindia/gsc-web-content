@@ -1,6 +1,6 @@
 package org.gsc.web.page.controller;
 
-import org.gsc.api.dto.UserDto;
+import org.gsc.medha.dto.UserDto;
 import org.gsc.medha.page.form.LoginForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

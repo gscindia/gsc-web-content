@@ -1,11 +1,11 @@
-package org.gsc.api.endpoint;
+package org.gsc.medha.api.endpoint;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gsc.api.dto.CandidateDto;
-import org.gsc.api.dto.FormADataTableDto;
-import org.gsc.api.dto.SchoolDto;
+import org.gsc.medha.dto.CandidateDto;
+import org.gsc.medha.dto.FormADataTableDto;
+import org.gsc.medha.dto.SchoolDto;
 import org.gsc.medha.facade.CandidateFacade;
 import org.gsc.medha.facade.SchoolFacade;
 import org.gsc.medha.page.form.FilterForm;

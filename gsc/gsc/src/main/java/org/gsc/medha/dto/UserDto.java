@@ -1,4 +1,4 @@
-package org.gsc.api.dto;
+package org.gsc.medha.dto;
 
 public class UserDto {
 private String id;

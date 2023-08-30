@@ -1,6 +1,6 @@
-package org.gsc.api.endpoint;
+package org.gsc.medha.api.endpoint;
 
-import org.gsc.api.dto.UserDto;
+import org.gsc.medha.dto.UserDto;
 import org.gsc.medha.entity.User;
 import org.gsc.medha.page.form.LoginForm;
 import org.gsc.medha.repository.UserRepository;

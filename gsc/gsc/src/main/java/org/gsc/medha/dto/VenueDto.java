@@ -1,4 +1,4 @@
-package org.gsc.api.dto;
+package org.gsc.medha.dto;
 
 import java.util.Set;
 

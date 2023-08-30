@@ -1,9 +1,9 @@
-package org.gsc.api.endpoint;
+package org.gsc.medha.api.endpoint;
 
 import java.util.List;
 
-import org.gsc.api.dto.CandidateDto;
-import org.gsc.api.dto.ExamDto;
+import org.gsc.medha.dto.CandidateDto;
+import org.gsc.medha.dto.ExamDto;
 import org.gsc.medha.facade.ExamFacade;
 import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;

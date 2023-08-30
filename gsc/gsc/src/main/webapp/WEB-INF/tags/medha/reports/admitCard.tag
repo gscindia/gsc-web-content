@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="reports" tagdir="/WEB-INF/tags/medha/reports"%>
-<%@ attribute name="entry" type="org.gsc.api.dto.CandidateDto"%>
+<%@ attribute name="entry" type="org.gsc.medha.dto.CandidateDto"%>
 <script src="/asset/js/jquery-3.6.0-min.js"></script>
 <script src="/asset/js/qrcode.min.js"></script>
 

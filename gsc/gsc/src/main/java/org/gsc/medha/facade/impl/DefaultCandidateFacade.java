@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.gsc.api.dto.CandidateDto;
-import org.gsc.api.dto.FormADataTableDto;
+import org.gsc.medha.dto.CandidateDto;
+import org.gsc.medha.dto.FormADataTableDto;
+import org.gsc.medha.dto.notification.TemplateMessage;
 import org.gsc.medha.entity.Candidate;
+import org.gsc.medha.entity.Exam;
 import org.gsc.medha.facade.CandidateFacade;
 import org.gsc.medha.page.form.CandidateForm;
 import org.gsc.medha.page.form.FilterForm;
@@ -15,6 +17,7 @@ import org.gsc.medha.repository.CandidateRepository;
 import org.gsc.medha.service.CandidateService;
 import org.gsc.medha.service.ExamService;
 import org.gsc.populator.Populator;
+import org.gsc.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +28,7 @@ public class DefaultCandidateFacade implements CandidateFacade {
 
 	@Resource(name = "candidatePopulator")
 	Populator<Candidate, CandidateDto> candidatePopulator;
-	
+
 	@Resource(name = "admitCardPopulator")
 	Populator<Candidate, CandidateDto> admitCardPopulator;
 
@@ -43,6 +46,12 @@ public class DefaultCandidateFacade implements CandidateFacade {
 
 	@Autowired
 	ExamService examService;
+
+	@Resource(name = "medhaRegistrationConfirmationWhatsAppMsgPopulator")
+	Populator<Candidate, TemplateMessage> whatsappPopulator;
+	
+	@Autowired
+	NotificationService notificationService;
 
 	@Override
 	public List<CandidateDto> getAll() {
@@ -99,4 +108,13 @@ public class DefaultCandidateFacade implements CandidateFacade {
 		candidateRepository.save(entity);
 	}
 
+	@Override
+	public List<TemplateMessage> getPendingNotification(Exam exam) {
+		List<Candidate> pending = candidateService.getPendingNotifications(exam);
+		List<TemplateMessage> notifications = new ArrayList<TemplateMessage>();
+		whatsappPopulator.populateAll(pending, notifications);
+		
+
+		return notifications;
+	}
 }
