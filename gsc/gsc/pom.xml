@@ -88,4 +88,7 @@
 		<finalName>${artifactId}</finalName>
 	</build>
 
+	<organization>
+		<name>Garalgacha Science Club</name>
+	</organization>
 </project>
