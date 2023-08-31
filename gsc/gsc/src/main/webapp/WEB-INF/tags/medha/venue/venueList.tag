@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="exam" tagdir="/WEB-INF/tags/venue"%>
+<%@ taglib prefix="venue" tagdir="/WEB-INF/tags/medha/venue"%>
 <%@ attribute name="mediaUrl"%>
 <c:set var="venueList" value="${venues}"></c:set>
 <div class="col s12 m12 l12">
@@ -19,7 +19,7 @@
 						</div>
 						<div class="col s5 m5 l5">
 						<c:forEach items="${venueList}" varStatus="pos" var="venue">
-							<exam:venueDetails venueItem="${venues[pos.index]}" index="${pos.index}" mediaUrl="${mediaUrl}"/>
+							<venue:venueDetails venueItem="${venues[pos.index]}" index="${pos.index}" mediaUrl="${mediaUrl}"/>
 						</c:forEach>
 						
 							

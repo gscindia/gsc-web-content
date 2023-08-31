@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="common" tagdir="/WEB-INF/tags/"%>
-<%@ taglib prefix="school" tagdir="/WEB-INF/tags/school"%>
-<%@ taglib prefix="student" tagdir="/WEB-INF/tags/student"%>
+<%@ taglib prefix="common" tagdir="/WEB-INF/tags/medha"%>
+<%@ taglib prefix="school" tagdir="/WEB-INF/tags/medha/school"%>
+<%@ taglib prefix="student" tagdir="/WEB-INF/tags/medha/student"%>
 <!DOCTYPE html>
 <html>
 <head>
