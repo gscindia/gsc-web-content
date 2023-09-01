@@ -1,6 +1,7 @@
 package org.gsc.medha.api.endpoint;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/notify")
 public class NotificationController {
-	@Resource(name="medhaNotificationService")
+	@Resource(name="medhaRegNotificationService")
 	MedhaNotificationService medhaNotificationService;
 	@Autowired
 	CandidateFacade candidateFacade;
@@ -27,8 +28,8 @@ public class NotificationController {
 	@PostMapping("/whatsapp/reg-notification")
 	@ResponseBody
 	private String sendRegistrationNotification() {
-		List<TemplateMessage> notifications = candidateFacade.getPendingNotification(examService.getActiveExam());
-		medhaNotificationService.sendWhatsAppNotification(notifications);
+		List<Map<Integer,TemplateMessage>> notifications = candidateFacade.getPendingRegistrationNotification(examService.getActiveExam());
+		medhaNotificationService.sendRegistrationWhatsAppNotification(notifications);
 		return "Done";
 	}
 }

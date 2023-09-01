@@ -1,7 +1,9 @@
 package org.gsc.medha.populator;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.gsc.medha.dto.notification.Language;
 import org.gsc.medha.dto.notification.Parameter;
@@ -12,13 +14,13 @@ import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;
 
 @Component("medhaRegistrationConfirmationWhatsAppMsgPopulator")
-public class WhatsAppTemplateNotificationPopulator implements Populator<Candidate, TemplateMessage> {
+public class WhatsAppTemplateNotificationPopulator implements Populator<Candidate, Map<Integer,TemplateMessage>> {
 	private String NAMESPACE = "1615b18d_9095_4e62_b644_370a0e00e92e";
 	private String TEMPLATE = "registration_medha";
 
 	@Override
-	public void populate(Candidate source, TemplateMessage target) {
-
+	public void populate(Candidate source, Map<Integer,TemplateMessage> targetMap) {
+		TemplateMessage target = new TemplateMessage();
 		target.setTo(source.getContact());
 		target.setType("template");
 		Template template = new Template();
@@ -58,14 +60,15 @@ public class WhatsAppTemplateNotificationPopulator implements Populator<Candidat
 
 		template.setComponents(comps);
 		target.setTemplate(template);
+		targetMap.put(source.getId(), target);
 
 	}
 
 	@Override
-	public void populateAll(List<Candidate> source, List<TemplateMessage> target) {
+	public void populateAll(List<Candidate> source, List<Map<Integer,TemplateMessage>> target) {
 		source.forEach(s -> {
 			if (s.getContact() != null) {
-				TemplateMessage msg = new TemplateMessage();
+				Map<Integer,TemplateMessage> msg = new LinkedHashMap<Integer, TemplateMessage>();
 				this.populate(s, msg);
 				target.add(msg);
 			}

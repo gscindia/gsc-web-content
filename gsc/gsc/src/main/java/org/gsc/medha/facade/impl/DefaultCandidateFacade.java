@@ -2,6 +2,8 @@ package org.gsc.medha.facade.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -18,6 +20,7 @@ import org.gsc.medha.service.CandidateService;
 import org.gsc.medha.service.ExamService;
 import org.gsc.populator.Populator;
 import org.gsc.service.NotificationService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -48,8 +51,8 @@ public class DefaultCandidateFacade implements CandidateFacade {
 	ExamService examService;
 
 	@Resource(name = "medhaRegistrationConfirmationWhatsAppMsgPopulator")
-	Populator<Candidate, TemplateMessage> whatsappPopulator;
-	
+	Populator<Candidate, Map<Integer, TemplateMessage>> whatsappPopulator;
+
 	@Autowired
 	NotificationService notificationService;
 
@@ -109,12 +112,25 @@ public class DefaultCandidateFacade implements CandidateFacade {
 	}
 
 	@Override
-	public List<TemplateMessage> getPendingNotification(Exam exam) {
+	public List<Map<Integer, TemplateMessage>> getPendingRegistrationNotification(Exam exam) {
 		List<Candidate> pending = candidateService.getPendingNotifications(exam);
-		List<TemplateMessage> notifications = new ArrayList<TemplateMessage>();
+		List<Map<Integer, TemplateMessage>> notifications = new ArrayList<Map<Integer, TemplateMessage>>();
 		whatsappPopulator.populateAll(pending, notifications);
-		
-
 		return notifications;
+	}
+
+	@Override
+	public void updateRegistrationNotificationStatus(List<Map<Integer, JSONObject>> source) {
+		List<Candidate> listOfUpdate =new ArrayList<Candidate>();
+		source.forEach(map -> {
+			map.keySet().forEach(key -> {
+				if (map.get(key).has("messages")) {
+					Candidate candidate = candidateRepository.findById(key).get();
+					candidate.setNotification("SENT");
+					listOfUpdate.add(candidate);
+				}
+			});
+		});
+		candidateRepository.saveAll(listOfUpdate);
 	}
 }
