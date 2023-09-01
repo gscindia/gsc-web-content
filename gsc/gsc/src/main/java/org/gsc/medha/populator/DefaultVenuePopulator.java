@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
-import org.gsc.api.dto.ExamDto;
-import org.gsc.api.dto.VenueDto;
+import org.gsc.medha.dto.ExamDto;
+import org.gsc.medha.dto.VenueDto;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.Venue;
 import org.gsc.populator.Populator;

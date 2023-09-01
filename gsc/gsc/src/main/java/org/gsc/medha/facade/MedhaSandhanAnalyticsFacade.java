@@ -1,6 +1,6 @@
 package org.gsc.medha.facade;
 
-import org.gsc.api.dto.SchoolGenderDataDto;
+import org.gsc.medha.dto.SchoolGenderDataDto;
 
 public interface MedhaSandhanAnalyticsFacade {
 

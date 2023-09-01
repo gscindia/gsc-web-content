@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ attribute name="mediaUrl"%>
 <%@ attribute name="index"%>
-<%@ attribute name="venueItem" type="org.gsc.api.dto.VenueDto"%>
+<%@ attribute name="venueItem" type="org.gsc.medha.dto.VenueDto"%>
 <style>
 .done {
 	color: green

@@ -31,6 +31,8 @@ public class Candidate {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "exam", referencedColumnName = "id")
 	Exam exam = new Exam();
+	String contact;
+	String notification;
 
 	/**
 	 * @return the id
@@ -157,6 +159,22 @@ public class Candidate {
 	 */
 	public void setRoll(int roll) {
 		this.roll = roll;
+	}
+
+	public String getNotification() {
+		return notification;
+	}
+
+	public void setNotification(String notification) {
+		this.notification = notification;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	

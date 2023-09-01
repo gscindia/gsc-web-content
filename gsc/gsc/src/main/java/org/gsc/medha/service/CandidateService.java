@@ -28,4 +28,6 @@ public interface CandidateService {
 
 	Candidate getStudent(int id);
 
+	List<Candidate> getPendingNotifications(Exam exam);
+
 }

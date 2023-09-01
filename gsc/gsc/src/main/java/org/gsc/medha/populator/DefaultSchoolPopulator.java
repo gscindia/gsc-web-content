@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.gsc.api.dto.SchoolDto;
-import org.gsc.api.dto.VenueDto;
+import org.gsc.medha.dto.SchoolDto;
+import org.gsc.medha.dto.VenueDto;
 import org.gsc.medha.entity.School;
 import org.gsc.medha.entity.Venue;
 import org.gsc.populator.Populator;

@@ -2,7 +2,7 @@ package org.gsc.medha.populator;
 
 import java.util.List;
 
-import org.gsc.api.dto.CandidateDto;
+import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.populator.Populator;
 import org.gsc.utility.GscSecurity;
