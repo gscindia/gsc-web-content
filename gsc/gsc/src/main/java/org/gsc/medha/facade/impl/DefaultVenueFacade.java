@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.gsc.medha.dto.VenueDto;
+import org.gsc.api.dto.VenueDto;
 import org.gsc.medha.entity.Venue;
 import org.gsc.medha.facade.VenueFacade;
 import org.gsc.medha.page.form.VenueForm;

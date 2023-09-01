@@ -2,16 +2,12 @@ package org.gsc.medha.facade.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import javax.annotation.Resource;
 
-import org.gsc.medha.dto.CandidateDto;
-import org.gsc.medha.dto.FormADataTableDto;
-import org.gsc.medha.dto.notification.TemplateMessage;
+import org.gsc.api.dto.CandidateDto;
+import org.gsc.api.dto.FormADataTableDto;
 import org.gsc.medha.entity.Candidate;
-import org.gsc.medha.entity.Exam;
 import org.gsc.medha.facade.CandidateFacade;
 import org.gsc.medha.page.form.CandidateForm;
 import org.gsc.medha.page.form.FilterForm;
@@ -19,8 +15,6 @@ import org.gsc.medha.repository.CandidateRepository;
 import org.gsc.medha.service.CandidateService;
 import org.gsc.medha.service.ExamService;
 import org.gsc.populator.Populator;
-import org.gsc.service.NotificationService;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +25,7 @@ public class DefaultCandidateFacade implements CandidateFacade {
 
 	@Resource(name = "candidatePopulator")
 	Populator<Candidate, CandidateDto> candidatePopulator;
-
+	
 	@Resource(name = "admitCardPopulator")
 	Populator<Candidate, CandidateDto> admitCardPopulator;
 
@@ -49,12 +43,6 @@ public class DefaultCandidateFacade implements CandidateFacade {
 
 	@Autowired
 	ExamService examService;
-
-	@Resource(name = "medhaRegistrationConfirmationWhatsAppMsgPopulator")
-	Populator<Candidate, Map<Integer, TemplateMessage>> whatsappPopulator;
-
-	@Autowired
-	NotificationService notificationService;
 
 	@Override
 	public List<CandidateDto> getAll() {
@@ -111,26 +99,4 @@ public class DefaultCandidateFacade implements CandidateFacade {
 		candidateRepository.save(entity);
 	}
 
-	@Override
-	public List<Map<Integer, TemplateMessage>> getPendingRegistrationNotification(Exam exam) {
-		List<Candidate> pending = candidateService.getPendingNotifications(exam);
-		List<Map<Integer, TemplateMessage>> notifications = new ArrayList<Map<Integer, TemplateMessage>>();
-		whatsappPopulator.populateAll(pending, notifications);
-		return notifications;
-	}
-
-	@Override
-	public void updateRegistrationNotificationStatus(List<Map<Integer, JSONObject>> source) {
-		List<Candidate> listOfUpdate =new ArrayList<Candidate>();
-		source.forEach(map -> {
-			map.keySet().forEach(key -> {
-				if (map.get(key).has("messages")) {
-					Candidate candidate = candidateRepository.findById(key).get();
-					candidate.setNotification("SENT");
-					listOfUpdate.add(candidate);
-				}
-			});
-		});
-		candidateRepository.saveAll(listOfUpdate);
-	}
 }

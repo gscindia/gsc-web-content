@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
-import org.gsc.medha.dto.CandidateDto;
-import org.gsc.medha.dto.ExamDto;
-import org.gsc.medha.dto.FormAPageableDto;
+import org.gsc.api.dto.CandidateDto;
+import org.gsc.api.dto.ExamDto;
+import org.gsc.api.dto.FormAPageableDto;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.facade.CandidateFacade;
 import org.gsc.medha.facade.ExamFacade;

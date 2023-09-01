@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.gsc.medha.dto.SchoolGenderDataDto;
+import org.gsc.api.dto.SchoolGenderDataDto;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.facade.MedhaSandhanAnalyticsFacade;
 import org.gsc.medha.service.ExamService;

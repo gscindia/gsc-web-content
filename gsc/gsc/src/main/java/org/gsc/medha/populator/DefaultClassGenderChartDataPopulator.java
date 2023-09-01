@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.gsc.medha.dto.SchoolGenderDataDto;
+import org.gsc.api.dto.SchoolGenderDataDto;
 import org.gsc.utility.GscUtils;
 import org.springframework.stereotype.Component;
 

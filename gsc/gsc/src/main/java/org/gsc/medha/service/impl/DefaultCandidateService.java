@@ -74,11 +74,5 @@ public class DefaultCandidateService implements CandidateService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	@Override
-	public List<Candidate> getPendingNotifications(Exam exam){
-		
-		return repository.getPendingNotification(exam);
-	}
 
 }

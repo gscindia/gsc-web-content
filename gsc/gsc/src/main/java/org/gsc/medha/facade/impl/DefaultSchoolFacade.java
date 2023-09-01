@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.gsc.medha.dto.CandidateDto;
-import org.gsc.medha.dto.FormAPageableDto;
-import org.gsc.medha.dto.SchoolDto;
+import org.gsc.api.dto.CandidateDto;
+import org.gsc.api.dto.FormAPageableDto;
+import org.gsc.api.dto.SchoolDto;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.School;
 import org.gsc.medha.facade.SchoolFacade;

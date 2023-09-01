@@ -2,8 +2,8 @@ package org.gsc.medha.facade;
 
 import java.util.List;
 
-import org.gsc.medha.dto.CandidateDto;
-import org.gsc.medha.dto.ExamDto;
+import org.gsc.api.dto.CandidateDto;
+import org.gsc.api.dto.ExamDto;
 import org.gsc.medha.page.form.CandidateForm;
 import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;
