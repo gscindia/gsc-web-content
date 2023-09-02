@@ -20,14 +20,9 @@ import com.google.zxing.qrcode.QRCodeWriter;
 @Controller
 public class PageController {
 	@GetMapping("/page/static/login")
-	public String getPageById(String id) {
+	public String login() {		
 		return "auth";
 	}
-	/*
-	 * @GetMapping("/gen-qr/{text}") public String genCode(@PathVariable
-	 * StringBuffer text,Model model) {
-	 * model.addAttribute("content",text.toString()); return "qrCodeGen"; }
-	 */
 	
 	@GetMapping(value = "/qrcode/{data}", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<byte[]> generateQRCode(@PathVariable String data) {
