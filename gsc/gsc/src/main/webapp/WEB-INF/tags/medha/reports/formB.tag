@@ -4,20 +4,20 @@
 <div class="row">
 	<div class="col s12">
 	<div class="row">
-			<div class="col s12">
+			<div class="col s12 input-field">
 				<select id="formb-exam-year" name="cls">
 					<option value="" disabled selected>Choose Examination</option>
 					<c:forEach items="${examList}" varStatus="status" var="exam">
 						<option value="${exam.id }">${exam.name }</option>
 					</c:forEach>
-				</select> <label>Examination</label>
+				</select> <label>Examination<span class="red-text">*</span></label>
 			</div>
 
 
 			
 		</div>
 		<div class="row">
-			<div class="col s6">
+			<div class="col s6 input-field">
 				<select id="formb-student-class" name="cls">
 					<option value="" disabled selected>Choose your class</option>
 					<option value="1">I</option>
@@ -32,7 +32,7 @@
 					<option value="10">X</option>
 					<option value="11">XI</option>
 					<option value="12">XII</option>
-				</select> <label>Select class</label>
+				</select> <label>Select class<span class="red-text">*</span></label>
 			</div>
 			<button class="btn waves-effect waves-light btn-large red right"
 				type="button" name="action" onclick="previewB();">

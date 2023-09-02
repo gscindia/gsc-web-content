@@ -25,7 +25,7 @@ select.form-control.input-sm {
 	<main>
 		<div class="container">
 			<div class="row">
-					<div class="col s4 left-align">
+					<div class="col s4 left-align input-field">
 					<select id="analytics-year" name="cls">
 						<option value="" disabled selected>Choose Year</option>
 							<c:forEach items="${examList}" varStatus="status" var="exam">

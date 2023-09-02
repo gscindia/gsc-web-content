@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	$("#slider").slider({
 		values: [2, 12]
 	});
@@ -17,7 +17,7 @@ $(document).ready(function() {
 		indicators: true
 	});
 	$('.sidenav').sidenav();
-	
+
 
 
 
@@ -35,9 +35,9 @@ $(document).ready(function() {
 			minLength: 1
 		}
 	});
-	
-    
- 
+
+
+
 	$('.venue-list').click(function() {
 		var row = $(this).data('row');
 		$('.venue-details').removeClass('show');
@@ -93,15 +93,32 @@ function addExam() {
 
 
 }
-function previewA(){
-	
-	window.open("forma/2/"+$('#forma-school').val()+"/"+$('#forma-exam-year').val()+"?page=20");
-	window.open("forma/1/"+$('#forma-school').val()+"/"+$('#forma-exam-year').val()+"?page=20");
-	
+function previewA() {
+	if ($.isEmptyObject($('#forma-school').val()) || $.isEmptyObject($('#forma-exam-year').val())) {
+		M.toast({ html: 'Please select mandatory fields' });
+	} else {
+		window.open("forma/2/" + $('#forma-school').val() + "/" + $('#forma-exam-year').val() + "?page=20");
+		window.open("forma/1/" + $('#forma-school').val() + "/" + $('#forma-exam-year').val() + "?page=20");
+	}
 }
-function previewB(){
-	window.open("formb/"+$('#formb-student-class').val()+"/"+$('#formb-exam-year').val()+"?page=20");
+function previewB() {
+	if ($.isEmptyObject($('#formb-student-class').val()) || $.isEmptyObject($('#formb-exam-year').val())) {
+		M.toast({ html: 'Please select mandatory fields' });
+	} else {
+		window.open("formb/" + $('#formb-student-class').val() + "/" + $('#formb-exam-year').val() + "?page=20");
+	}
 }
-function previewAdmitCards(){
-	window.open("admit-cards/"+$('#admit-student-class').val()+"/"+$('#admit-exam-year').val());
+function previewAdmitCards() {
+	if ($.isEmptyObject($('#admit-student-class').val()) || $.isEmptyObject($('#admit-exam-year').val())) {
+		M.toast({ html: 'Please select mandatory fields' });
+	} else {
+		window.open("admit-cards/" + $('#admit-student-class').val() + "/" + $('#admit-exam-year').val());
+	}
+}
+function previewSchoolAdmit() {
+	if ($.isEmptyObject($('#forma-school').val()) || $.isEmptyObject($('#forma-exam-year').val())) {
+		M.toast({ html: 'Please select mandatory fields' });
+	} else {
+		window.open("school-admit-cards/" + $('#forma-school').val() + "/" + $('#forma-exam-year').val());
+	}
 }

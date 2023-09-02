@@ -44,10 +44,11 @@ select.form-control.input-sm {
 									<label> <input name="gender" value="F" type="radio"
 										class="with-gap" /> <span><strong>Female</strong></span>
 									</label>
-								</span>
+									
+								</span><span class="red-text">*</span>
 								
 							</div>
-							<div class="row">
+							<div class="row input-field">
 								<select id="student-class" name="cls">
 									<option value="" disabled selected><strong>Choose your class</strong></option>
 									<option value="1">I</option>
@@ -62,19 +63,19 @@ select.form-control.input-sm {
 									<option value="10">X</option>
 									<option value="11">XI</option>
 									<option value="12">XII</option>
-								</select> <label>Select class</label>
+								</select> <label>Select class<span class="red-text">*</span></label>
 							</div>
-							<div class="row">
+							<div class="row input-field">
 								<select id="student-school" name="school">
 									<option value="" disabled selected><strong>Choose your school</strong></option>
 									<c:forEach items="${schools }" var="school">
 										<option value="${school.id }">${school.name }</option>
 									</c:forEach>
-								</select> <label>Select School</label>
+								</select> <label>Select School<span class="red-text">*</span></label>
 							</div>					
 							<div class="row">
 								<input value="" id="student-name" type="text" name="name" class="validate">
-								<label class="active" for="student-name"><strong>Full Name</strong></label>
+								<label class="active" for="student-name"><strong>Full Name<span class="red-text">*</span></strong></label>
 							</div>
 							<div class="row">
 								<button class="btn waves-effect waves-light btn-large red right"
