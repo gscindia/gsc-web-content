@@ -23,7 +23,7 @@ public class DefaultCandRevPopulator implements Populator<CandidateForm, Candida
 
 	@Override
 	public void populate(CandidateForm source, Candidate target) {
-		if (source.getAction()!=null && source.getAction().equalsIgnoreCase("edit")) {
+		if (source.getAction() != null && source.getAction().equalsIgnoreCase("edit")) {
 			target.setName(source.getName());
 			target.setGender(source.getGender());
 			School school = schoolService.getSchoolById(Integer.parseInt(source.getSchool()));
@@ -36,6 +36,7 @@ public class DefaultCandRevPopulator implements Populator<CandidateForm, Candida
 			target.setSchool(school);
 			target.setExam(examService.getActiveExam());
 			target.setGender(source.getGender());
+			target.setNotification("NOT_SENT");
 		}
 	}
 
