@@ -116,9 +116,9 @@ function previewAdmitCards() {
 	}
 }
 function previewSchoolAdmit() {
-	if ($.isEmptyObject($('#forma-school').val()) || $.isEmptyObject($('#forma-exam-year').val())) {
+	if ($.isEmptyObject($('#admit-school').val()) || $.isEmptyObject($('#admit-exam-year').val())) {
 		M.toast({ html: 'Please select mandatory fields' });
 	} else {
-		window.open("school-admit-cards/" + $('#forma-school').val() + "/" + $('#forma-exam-year').val());
+		window.open("school-admit-cards/" + $('#admit-school').val() + "/" + $('#admit-exam-year').val());
 	}
 }

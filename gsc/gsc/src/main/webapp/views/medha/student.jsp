@@ -31,7 +31,7 @@ select.form-control.input-sm {
 				<div class="col s12 m12 l5 offset-l2 ">
 					<div class="row">
 						<form id="enroll-form" class="col s10 m10 l10" method="POST" action="/medha/student/add">						
-							<h4 class="header center">Enroll Student </h4>
+							<h4 class="header center">Apply for</h4>
 							<h6 class="center"><c:if test="${not empty examName}">for ${examName}</c:if></h6>
 							<div class="row">
 								</br>
@@ -80,7 +80,7 @@ select.form-control.input-sm {
 							<div class="row">
 								<button class="btn waves-effect waves-light btn-large red right"
 									type="button" name="action" onclick="enroll();">
-									Enroll <i class="material-icons right">send</i>
+									Apply <i class="material-icons right">send</i>
 								</button>
 							</div>
 						</form>

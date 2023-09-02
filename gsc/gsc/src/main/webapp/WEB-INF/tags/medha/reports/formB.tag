@@ -17,7 +17,7 @@
 			
 		</div>
 		<div class="row">
-			<div class="col s6 input-field">
+			<div class="col s7 input-field">
 				<select id="formb-student-class" name="cls">
 					<option value="" disabled selected>Choose your class</option>
 					<option value="1">I</option>
@@ -32,7 +32,7 @@
 					<option value="10">X</option>
 					<option value="11">XI</option>
 					<option value="12">XII</option>
-				</select> <label>Select class<span class="red-text">*</span></label>
+				</select> <label>Select Class<span class="red-text">*</span></label>
 			</div>
 			<button class="btn waves-effect waves-light btn-large red right"
 				type="button" name="action" onclick="previewB();">

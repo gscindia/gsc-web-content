@@ -17,7 +17,7 @@
 
 			
 		</div>
-		<div class="row">
+		 <div class="row">
 			<div class="col s7 input-field">
 				<select id="forma-school" name="school">
 					<option value="" disabled selected>Choose your school</option>
@@ -26,20 +26,13 @@
 					</c:forEach>
 				</select> <label>Select School<span class="red-text">*</span></label>
 			</div>
-		</div>
-			<div class='row'>
+		
+			
 				<button class="btn waves-effect waves-light btn-large red" target="_blank"
 				type="button" name="action" onclick="previewA();">
 				<i class="material-icons right ">print</i>Form 'A' 
-			</button>
-			<button class="btn waves-effect waves-light btn-large green right" target="_blank"
-				type="button" name="action" onclick="previewSchoolAdmit();">
-				<i class="material-icons right ">print</i>Admit for School 
-			</button>
-			</div>
-			
-		
-
+			</button>		
+		</div>
 
 
 	</div>
