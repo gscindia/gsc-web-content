@@ -12,7 +12,7 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
 	@Query("SELECT s FROM School s WHERE s.name=?1 ")
 	public List<Object> findBySchoolName(String name);
 
-	@Query("Select c from Candidate c where c.school=?1 and c.exam=?2 and c.status='ACTIVE' order by c.roll")
+	@Query("Select c from Candidate c where c.school=?1 and c.exam=?2 and c.status='ACTIVE' order by c.section, c.roll")
 	public List<Candidate> filterFormA(School school, Exam exam);
 
 }
