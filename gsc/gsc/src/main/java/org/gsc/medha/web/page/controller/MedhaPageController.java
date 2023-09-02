@@ -129,10 +129,8 @@ public class MedhaPageController {
 		FilterForm form = new FilterForm();
 		form.setSchool(schoolId);
 		form.setExam(examId);
-		List<CandidateDto> candidateList = schoolFacade.filteFormA(form);
-		//FormAPageableDto pageData = schoolFacade.pageableForm(candidateList, page);
+		List<CandidateDto> candidateList = schoolFacade.getAdmitCards(form);
 		model.addAttribute("candidate", candidateList);
-		//model.addAttribute("pagedata", pageData);
 
 		return "/medha/previews/admitCards";
 	}
