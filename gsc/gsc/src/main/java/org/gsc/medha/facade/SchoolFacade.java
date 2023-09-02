@@ -20,4 +20,6 @@ public interface SchoolFacade {
 	FormAPageableDto pageableForm(List<CandidateDto> list, int page);
 
 	SchoolDto add(SchoolForm form);
+
+	List<CandidateDto> getAdmitCards(FilterForm filter);
 }

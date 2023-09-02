@@ -122,6 +122,18 @@ public class MedhaPageController {
 		return "/medha/previews/admitCards";
 
 	}
+	
+	@GetMapping("/school-admit-cards/{schoolId}/{examId}")
+	public String getAdmitCardsForSchool(Model model, @PathVariable int schoolId, @PathVariable int examId,
+			@RequestParam(defaultValue = "1") int page) {
+		FilterForm form = new FilterForm();
+		form.setSchool(schoolId);
+		form.setExam(examId);
+		List<CandidateDto> candidateList = schoolFacade.getAdmitCards(form);
+		model.addAttribute("candidate", candidateList);
+
+		return "/medha/previews/admitCards";
+	}
 
 	@GetMapping("/analytics")
 	public String showAnalytics(Model model) {
