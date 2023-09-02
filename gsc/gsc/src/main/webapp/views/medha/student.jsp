@@ -22,15 +22,15 @@ select.form-control.input-sm {
 	<common:header />
 	<main>
 		<div class="container">
-			<div class="row">
+			<div class="row valign-wrapper">
 				<div class="row"></div>
-				<div class="col s12 m12 l5">
+				<div class="col l5 hide-on-med-and-down">
 					<img class="responsive-img" src="../../asset/media/student-2.jpg">
 				</div>
 
-				<div class="col s12 m12 l5 offset-l2 ">
+				<div class="col s8 m10 l5 offset-l2">
 					<div class="row">
-						<form id="enroll-form" class="col s10 m10 l10" method="POST" action="/medha/student/add">						
+						<form id="enroll-form" class="col s6 m10 l10" method="POST" action="/medha/student/add">						
 							<h4 class="header center">Apply for</h4>
 							<h6 class="center"><c:if test="${not empty examName}">for ${examName}</c:if></h6>
 							<div class="row">
@@ -51,18 +51,15 @@ select.form-control.input-sm {
 							<div class="row input-field">
 								<select id="student-class" name="cls">
 									<option value="" disabled selected><strong>Choose your class</strong></option>
-									<option value="1">I</option>
-									<option value="2">II</option>
-									<option value="3">III</option>
-									<option value="4">IV</option>
-									<option value="5">V</option>
-									<option value="6">VI</option>
-									<option value="7">VII</option>
-									<option value="8">VIII</option>
-									<option value="9">IX</option>
-									<option value="10">X</option>
-									<option value="11">XI</option>
-									<option value="12">XII</option>
+									<option value="2">Class - II</option>
+									<option value="3">Class - III</option>
+									<option value="4">Class - IV</option>
+									<option value="5">Class - V</option>
+									<option value="6">Class - VI</option>
+									<option value="7">Class - VII</option>
+									<option value="8">Class - VIII</option>
+									<option value="9">Class - IX</option>
+									<option value="10">Class - X</option>
 								</select> <label>Select class<span class="red-text">*</span></label>
 							</div>
 							<div class="row input-field">
@@ -78,7 +75,7 @@ select.form-control.input-sm {
 								<label class="active" for="student-name"><strong>Full Name<span class="red-text">*</span></strong></label>
 							</div>
 							<div class="row">
-								<button class="btn waves-effect waves-light btn-large red right"
+								<button class="btn waves-effect waves-light btn-large red"
 									type="button" name="action" onclick="enroll();">
 									Apply <i class="material-icons right">send</i>
 								</button>
