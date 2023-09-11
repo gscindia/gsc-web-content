@@ -1,5 +1,6 @@
 package org.gsc.medha.populator;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.gsc.medha.entity.Candidate;
@@ -19,14 +20,16 @@ public class DefaultFormADatatablePopulator implements Populator<Candidate, Stri
 	@Override
 	public void populateAll(List<Candidate> source, List<String[]> target) {
 		source.forEach(s -> {
-			String[] str = new String[5];
-			str[0] = (s.getGender().equalsIgnoreCase("F")?"F":"").concat(s.getRoll()+"");
-			str[1] = "<a target='_blank' title='Print Admit Card' href='admit-card/" + s.getId() + "'>" + s.getName().toUpperCase()
-					+ "</a>&nbsp;" + "<i onClick='popModal("+s.getId()+");' class='material-icons tiny' title='Edit Details'>edit</i>"
-					+ "&nbsp;<i class='material-icons tiny ' title='Remove' data-id='" + s.getId()
+			String[] str = new String[6];
+			str[0] = (s.getGender().equalsIgnoreCase("F") ? "F" : "").concat(s.getRoll() + "");
+			str[1] = "<a target='_blank' title='Print Admit Card' href='admit-card/" + s.getId() + "'>"
+					+ s.getName().toUpperCase() + "</a>&nbsp;" + "<i onClick='popModal(" + s.getId()
+					+ ");' class='material-icons tiny right' title='Edit Details'>edit</i>"
+					+ "&nbsp;<i class='material-icons tiny right' title='Remove' data-id='" + s.getId()
 					+ "' onClick='removeStudent(" + s.getId() + ");'>remove_circle</i>";
 			str[2] = GscUtils.integerToRoman(s.getSection());
-			str[3] = s.getExam().getName();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+			str[3] = formatter.format(s.getExam().getDate());
 			str[4] = s.getStatus();
 			target.add(str);
 

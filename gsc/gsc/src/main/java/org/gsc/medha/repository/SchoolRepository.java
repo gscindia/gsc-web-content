@@ -5,6 +5,7 @@ import java.util.List;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.School;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -15,4 +16,6 @@ public interface SchoolRepository extends CrudRepository<School, Integer> {
 	@Query("Select c from Candidate c where c.school=?1 and c.exam=?2 and c.status='ACTIVE' order by c.section, c.roll")
 	public List<Candidate> filterFormA(School school, Exam exam);
 
+	// Find all orders and sort them by time in ascending order
+	List<School> findAll(Sort sort);
 }

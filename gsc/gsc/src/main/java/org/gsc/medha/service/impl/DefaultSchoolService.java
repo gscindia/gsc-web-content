@@ -18,6 +18,7 @@ import org.gsc.medha.repository.SchoolRepository;
 import org.gsc.medha.service.ExamService;
 import org.gsc.medha.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -39,9 +40,8 @@ public class DefaultSchoolService implements SchoolService {
 	@Override
 	public List<School> getAllSchool() {
 
-		List<School> schools = new ArrayList<>();
-		schoolRepo.findAll().forEach(schools::add);
-		return schools;
+		return schoolRepo.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class DefaultSchoolService implements SchoolService {
 		Query query = entityManager.createQuery(jpql);
 		if (!examClause.equalsIgnoreCase(""))
 			query.setParameter("exam", exam);
-		
+
 		List<Object[]> results = query.getResultList();
 
 		List<Map<String, String>> studentStatisticsList = new ArrayList<>();
@@ -105,7 +105,7 @@ public class DefaultSchoolService implements SchoolService {
 		Query query = entityManager.createQuery(queryString);
 		if (!examClause.equalsIgnoreCase(""))
 			query.setParameter("exam", exam);
-		
+
 		List<Object[]> results = query.getResultList();
 
 		List<Map<String, String>> statistics = new ArrayList<>();
