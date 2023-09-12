@@ -40,10 +40,10 @@
 		<div class="row">
 			<p>Recent examinations at this venue:</p>
 			<c:forEach items="${venueItem.exam }" var="exam">
-				<span class="blue-text">${exam.name}</span>
+				<span class="red-text">${exam.name}</span>
 				<span class="${exam.status eq
-						'OFF' ?'done':'pending'}"> <i class="material-icons tiny">${exam.status eq
-						'OFF' ?'done_all':'pending_actions'}</i>
+						'DONE' ?'done':'pending'}"> <i class="material-icons tiny">${exam.status eq
+						'DONE' ?'done_all':'pending_actions'}</i>
 				</span>
 				</br>
 
