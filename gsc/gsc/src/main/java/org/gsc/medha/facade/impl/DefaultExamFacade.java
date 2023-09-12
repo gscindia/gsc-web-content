@@ -79,7 +79,7 @@ public class DefaultExamFacade implements ExamFacade {
 		List<CandidateDto> candidates = new ArrayList<>();
 		Candidate candidate = new Candidate();
 		filterPopulator.populate(form, candidate);
-		admitCardPopulator.populateAll(examService.getFormB(candidate), candidates);
+		admitCardPopulator.populateAll(examService.getAdmitCards(candidate), candidates);
 		return candidates;
 
 	}
