@@ -68,5 +68,11 @@ public class DefaultExamService implements ExamService {
 
 		return examRepository.filterFormB( candidate.getExam(),candidate.getSection());
 	}
+	
+	@Override
+	public List<Candidate> getAdmitCards(Candidate candidate) {
+
+		return examRepository.filterFormB( candidate.getExam(),candidate.getSection());
+	}
 
 }

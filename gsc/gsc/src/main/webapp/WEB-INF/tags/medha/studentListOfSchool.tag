@@ -5,7 +5,7 @@
 			<th>Roll</th>
 			<th>Name</th>
 			<th>Class</th>
-			<th>Exam Year</th>
+			<th>Year</th>
 		</tr>
 	</thead>
 	<tbody>
