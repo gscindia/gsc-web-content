@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
+import org.json.JSONObject;
 
 public interface ExamService {
 
@@ -22,5 +23,9 @@ public interface ExamService {
 	List<Candidate> getFormB(Candidate candidate);
 
 	List<Candidate> getAdmitCards(Candidate candidate);
+
+	JSONObject updateAttendance(JSONObject json);
+
+	Exam getPostExam();
 
 }

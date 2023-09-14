@@ -31,7 +31,7 @@ public interface CandidateRepository extends CrudRepository<Candidate, Integer> 
 	@Query("Select c from Candidate c where  c.exam=?1")
 	public List<Candidate> getAllStudent(Exam exam);
 
-	@Query("Select c from Candidate c where  c.exam=?1 and c.status=?2")
+	@Query("Select c from Candidate c where  c.exam=?1 and c.status=?2 order by c.id")
 	public List<Candidate> getAllStudent(Exam exam, String status);
 
 	@Query("Select c from Candidate c where  c.school=?1")

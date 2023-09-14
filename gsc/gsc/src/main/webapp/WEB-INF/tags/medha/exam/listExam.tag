@@ -11,10 +11,29 @@
 				<i class="material-icons">filter_drama</i>${exam.name}
 			</div>
 			<div class="collapsible-body">
-				
-				<p>${exam.status }</p>
-				<p>${exam.date }</p>
+
+				<p>Status: ${exam.status }</p>
+				<p>Date of Examination: ${exam.date }</p>
+				<c:if test="${exam.status eq 'POST'}">
+				<form action="/medha/exam/upload-attendence" method="post" id='upload-attendance-form' enctype="multipart/form-data">
+					<!-- <div class=" file-field input-field">
+						<div class="btn right">
+							<span>Select File</span> <input type="file">
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text">
+						</div>
+						
+  
+					</div> -->
+					<!-- <label>Select a .json file</label> -->
+					<input type="file" name="file"/>
+					<a class="waves-effect waves-light btn" onclick="uploadAtt();"><i class="material-icons right">file_upload</i>Upload Attendance</a>
+					
+				</form>
+				</c:if>
 			</div>
+
 		</li>
 
 	</c:forEach>
