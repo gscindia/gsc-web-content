@@ -22,10 +22,10 @@ public class DefaultFormADatatablePopulator implements Populator<Candidate, Stri
 		source.forEach(s -> {
 			String[] str = new String[6];
 			str[0] = (s.getGender().equalsIgnoreCase("F") ? "F" : "").concat(s.getRoll() + "");
-			str[1] = "<a target='_blank' title='Print Admit Card' href='admit-card/" + s.getId() + "'>"
+			str[1] = "<a target='_blank' class='tooltipped' data-tooltip='Print Admit Card' data-position='top' href='admit-card/" + s.getId() + "'>"
 					+ s.getName().toUpperCase() + "</a>&nbsp;" + "<i onClick='popModal(" + s.getId()
-					+ ");' class='material-icons tiny right' title='Edit Details'>edit</i>"
-					+ "&nbsp;<i class='material-icons tiny right' title='Remove' data-id='" + s.getId()
+					+ ");' class='tooltipped material-icons tiny right' data-tooltip='Edit Student Details' data-position='left'>edit</i>"
+					+ "&nbsp;<i class='tooltipped material-icons tiny right' data-tooltip='Delete Student Record' data-position='right' data-id='" + s.getId()
 					+ "' onClick='removeStudent(" + s.getId() + ");'>remove_circle</i>";
 			str[2] = GscUtils.integerToRoman(s.getSection());
 			if (s.getExam().getDate() != null) {

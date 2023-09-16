@@ -36,7 +36,7 @@
 							</div>
 						</div>
 						<a href="../../resources/templates/MarksUploadTemplate.xlsx"
-								title='Donwnload Sample' class='red-text'><i
+								data-position="bottom" data-tooltip='Sample Template' class='tooltipped red-text'><i
 								class="material-icons green-text left">file_download</i>Download Sample</a> 
 						<a class="waves-effect amber btn right" id="btn-preview-marks"><i
 							class="material-icons left">preview</i>Preview</a>

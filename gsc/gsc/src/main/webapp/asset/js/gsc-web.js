@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$('.modal').modal();
+	$('.tooltipped').tooltip();
 	$('.carousel').carousel();
 	$('.collection-item').click(function(event) {
 		$('.collection-item').removeClass('active');

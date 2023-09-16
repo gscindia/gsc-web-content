@@ -10,13 +10,13 @@ $(document).ready(function() {
 				targets: ['_all'],
 				className: 'mdc-data-table__cell'
 			}
-		]
+		],
+		initComplete: function(settings, json) { $('.tooltipped').tooltip(); }
 	});
 
 	$('.dataTables_length').addClass('col s4');
 
 	$('.school-list').click(function() {
-		//console.log($(this).data('id'));
 		refreshStudentDataTable('/medha/school/forma/datatable/' + $(this).data('id'));
 	});
 
@@ -33,7 +33,8 @@ function refreshStudentDataTable(url) {
 				targets: ['_all'],
 				className: 'mdc-data-table__cell'
 			}
-		]
+		],
+		initComplete: function(settings, json) { $('.tooltipped').tooltip(); }
 	});
 	$('.dataTables_length').addClass('col s4');
 }

@@ -2,7 +2,6 @@ package org.gsc.medha.api.endpoint;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -80,11 +79,13 @@ public class ExamController {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@GetMapping("/save-marks")
 	@ResponseBody
 	public Map<Integer, Integer> saveMarksheet(HttpSession session) {
+		List<Candidate> attribute = (List<Candidate>) session.getAttribute("candidateList");
 		Map<Integer, Integer> saveMarksheet = examFacade
-				.saveMarksheet((List<Candidate>) session.getAttribute("candidateList"));
+				.saveMarksheet(attribute);
 		session.removeAttribute("candidateList");
 		return saveMarksheet;
 	}
