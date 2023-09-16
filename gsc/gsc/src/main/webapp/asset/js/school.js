@@ -8,7 +8,7 @@ $(document).ready(function() {
 		columnDefs: [
 			{
 				targets: ['_all'],
-				className: 'mdc-data-table__cell',
+				className: 'mdc-data-table__cell'
 			}
 		]
 	});
@@ -31,8 +31,8 @@ function refreshStudentDataTable(url) {
 		columnDefs: [
 			{
 				targets: ['_all'],
-				className: 'mdc-data-table__cell',
-			},
+				className: 'mdc-data-table__cell'
+			}
 		]
 	});
 	$('.dataTables_length').addClass('col s4');

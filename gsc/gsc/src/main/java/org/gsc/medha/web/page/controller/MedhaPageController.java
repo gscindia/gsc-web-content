@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.dto.ExamDto;
@@ -122,7 +123,7 @@ public class MedhaPageController {
 		return "/medha/previews/admitCards";
 
 	}
-	
+
 	@GetMapping("/school-admit-cards/{schoolId}/{examId}")
 	public String getAdmitCardsForSchool(Model model, @PathVariable int schoolId, @PathVariable int examId,
 			@RequestParam(defaultValue = "1") int page) {
@@ -139,5 +140,12 @@ public class MedhaPageController {
 	public String showAnalytics(Model model) {
 		model.addAttribute("examList", examFacade.getAllExam());
 		return "/medha/analytics";
+	}
+
+	@GetMapping("/mark-sheet")
+	public String showMarksheet(Model model, HttpSession session) {
+		session.removeAttribute("candidateList");
+		model.addAttribute("candidates");
+		return "/medha/marksheet";
 	}
 }

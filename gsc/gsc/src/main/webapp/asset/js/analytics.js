@@ -13,13 +13,13 @@ function redoCharts(y) {
 	drawCgb(y);
 }
 function drawSgb(y) {
-	var response = callApi('/reports/sgc?year='+y, 'POST', '{}');
+	var response = callApi('/reports/sgc?year=' + y, 'POST', '{}');
 	drawBar('school-gender-chart', response, 'Male vs Female participation',
 		'Source: Medha Sandhan Examination - Garalgacha Science Club - Official Website',
 		'Schools', 'Head Count', 'MALE', 'FEMALE');
 }
 function drawCgb(y) {
-	var response = callApi('/reports/cgs?year='+y, 'POST', '{}');
+	var response = callApi('/reports/cgs?year=' + y, 'POST', '{}');
 	drawBar('class-gender-chart', response, 'Male vs Female participation',
 		'Source: Medha Sandhan Examination - Garalgacha Science Club - Official Website',
 		'Class', 'Head Count', 'MALE', 'FEMALE');
@@ -58,8 +58,15 @@ function drawBar(selector, data, titleText, subtitle, xDesc, yTitle, bar1, bar2)
 			column: {
 				pointPadding: 0.2,
 				borderWidth: 0
+			},
+			series: {
+				dataLabels: {
+					enabled: true,
+					allowOverlap: true
+				}
 			}
 		},
+
 		series: [
 			{
 				name: bar1,

@@ -15,7 +15,7 @@ public interface CandidateRepository extends CrudRepository<Candidate, Integer> 
 
 	@Query("Select c from Candidate c where c.school=?1 and c.section=?2 and c.exam=?3")
 	public List<Candidate> getAllStudent(School school, int section, Exam exam);
-	
+
 	@Query("Select c from Candidate c where c.school=?1 and c.exam=?2 and c.status=?3")
 	public List<Candidate> getAllStudent(School school, Exam exam, String status);
 
@@ -28,6 +28,9 @@ public interface CandidateRepository extends CrudRepository<Candidate, Integer> 
 	@Query("Select c from Candidate c where c.section=?1 and c.exam=?2 and c.status=?3")
 	public List<Candidate> getAllStudent(int section, Exam exam, String status);
 
+	@Query("Select c from Candidate c where c.roll=?1 and c.section=?2 and c.exam=?3 and c.status=?4")
+	public Candidate getStudent(int roll, int section, Exam exam, String status);
+
 	@Query("Select c from Candidate c where  c.exam=?1")
 	public List<Candidate> getAllStudent(Exam exam);
 
@@ -38,8 +41,8 @@ public interface CandidateRepository extends CrudRepository<Candidate, Integer> 
 	public List<Candidate> getAllStudent(School school);
 
 	@Query("Select c from Candidate c where  c.school=?1 and c.status=?2")
-	public List<Candidate> getAllStudent(School school, String status);	
-	
+	public List<Candidate> getAllStudent(School school, String status);
+
 	@Query("Select c from Candidate c where  c.exam=?1 and c.status='ACTIVE' and c.notification='NOT_SENT'")
 	public List<Candidate> getPendingNotification(Exam exam);
 

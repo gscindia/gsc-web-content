@@ -33,6 +33,15 @@ public class Candidate {
 	Exam exam = new Exam();
 	String contact;
 	String notification;
+	Integer marks;
+
+	public Integer getMarks() {
+		return marks;
+	}
+
+	public void setMarks(Integer marks) {
+		this.marks = marks;
+	}
 
 	/**
 	 * @return the id

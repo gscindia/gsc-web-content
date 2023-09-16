@@ -30,4 +30,8 @@ public interface CandidateService {
 
 	List<Candidate> getPendingNotifications(Exam exam);
 
+	Candidate getStudent(int roll, int cls, Exam exam, String status);
+
+	List<Candidate> getAllStudent(List<Integer> id);
+
 }

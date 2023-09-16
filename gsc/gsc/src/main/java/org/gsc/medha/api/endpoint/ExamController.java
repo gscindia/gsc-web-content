@@ -1,18 +1,31 @@
 package org.gsc.medha.api.endpoint;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.dto.ExamDto;
+import org.gsc.medha.dto.FormADataTableDto;
+import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.facade.ExamFacade;
 import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;
+import org.gsc.populator.Populator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/medha/exam")
@@ -20,6 +33,8 @@ public class ExamController {
 
 	@Autowired
 	ExamFacade examFacade;
+	@Resource(name = "marksPreviewDataTablePopulator")
+	Populator<Candidate, String[]> marksPreviewTableDataPopulator;
 
 	@PostMapping("/add")
 	@ResponseBody
@@ -35,4 +50,42 @@ public class ExamController {
 		return examFacade.filterFormB(filterForm);
 	}
 
+	@PostMapping("/upload-file")
+	public String uploadAttendance(@RequestParam("file") MultipartFile file, HttpSession session) throws Exception {
+		String status = "Failed";
+		FormADataTableDto dto = new FormADataTableDto();
+		try {
+			if (file.isEmpty()) {
+				throw new IllegalArgumentException("File is empty");
+			}
+			List<Candidate> candidate = examFacade.readMarksFromFile(file.getInputStream());
+			List<String[]> preview = new ArrayList<String[]>();
+			marksPreviewTableDataPopulator.populateAll(candidate, preview);
+			dto.setData(preview);
+			session.setAttribute("previewData", dto);
+			session.setAttribute("candidateList", candidate);
+			status = "Uploaded";
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Error reading file");
+		} catch (Exception e) {
+			throw new Exception("Error Processing Data");
+
+		}
+		return status;
+	}
+
+	@PostMapping("/preview-marks")
+	public FormADataTableDto showMarksTablePreview(HttpSession session) {
+		return (FormADataTableDto) session.getAttribute("previewData");
+
+	}
+
+	@GetMapping("/save-marks")
+	@ResponseBody
+	public Map<Integer, Integer> saveMarksheet(HttpSession session) {
+		Map<Integer, Integer> saveMarksheet = examFacade
+				.saveMarksheet((List<Candidate>) session.getAttribute("candidateList"));
+		session.removeAttribute("candidateList");
+		return saveMarksheet;
+	}
 }

@@ -28,8 +28,13 @@ public class DefaultFormADatatablePopulator implements Populator<Candidate, Stri
 					+ "&nbsp;<i class='material-icons tiny right' title='Remove' data-id='" + s.getId()
 					+ "' onClick='removeStudent(" + s.getId() + ");'>remove_circle</i>";
 			str[2] = GscUtils.integerToRoman(s.getSection());
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-			str[3] = formatter.format(s.getExam().getDate());
+			if (s.getExam().getDate() != null) {
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+				str[3] = formatter.format(s.getExam().getDate());
+			}
+			else {
+				str[3]="";
+			}
 			str[4] = s.getStatus();
 			target.add(str);
 
