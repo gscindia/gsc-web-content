@@ -23,4 +23,6 @@ public interface ExamService {
 
 	List<Candidate> getAdmitCards(Candidate candidate);
 
+	List<Candidate> getAllEnrolledCandidates(Exam exam);
+
 }

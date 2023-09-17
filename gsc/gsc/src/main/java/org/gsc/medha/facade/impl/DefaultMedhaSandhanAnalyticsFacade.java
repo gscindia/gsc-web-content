@@ -41,5 +41,10 @@ public class DefaultMedhaSandhanAnalyticsFacade implements MedhaSandhanAnalytics
 		return dto;
 		
 	}
+	@Override
+	public int enrollmentCount(int examId) {
+		Exam exam = examService.getExamById(examId);
+		return examService.getAllEnrolledCandidates(exam).size();
+	}
 
 }
