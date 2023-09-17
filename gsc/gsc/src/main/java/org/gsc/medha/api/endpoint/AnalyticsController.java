@@ -1,6 +1,7 @@
 package org.gsc.medha.api.endpoint;
 
 import org.gsc.medha.dto.SchoolGenderDataDto;
+import org.gsc.medha.facade.ExamFacade;
 import org.gsc.medha.facade.MedhaSandhanAnalyticsFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,8 @@ public class AnalyticsController {
 
 	@Autowired
 	MedhaSandhanAnalyticsFacade analytics;
+	@Autowired
+	ExamFacade examFacade;
 
 	@ResponseBody
 	@PostMapping("/sgc")
@@ -29,6 +32,13 @@ public class AnalyticsController {
 	public SchoolGenderDataDto getClassGenderStatistics(@RequestParam int year) {
 
 		return analytics.getClassGenderStatistics(year);
+
+	}
+
+	@ResponseBody
+	@PostMapping("/enrollment")
+	public Integer getEnrollmentCountChart(@RequestParam int year) {
+		return analytics.enrollmentCount(year);
 
 	}
 

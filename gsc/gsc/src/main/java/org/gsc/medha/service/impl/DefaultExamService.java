@@ -63,16 +63,24 @@ public class DefaultExamService implements ExamService {
 		List<Exam> exams = examRepository.findById(id).stream().collect(Collectors.toList());
 		return CollectionUtils.isEmpty(exams) ? null : exams.get(0);
 	}
+
 	@Override
 	public List<Candidate> getFormB(Candidate candidate) {
 
-		return examRepository.filterFormB( candidate.getExam(),candidate.getSection());
+		return examRepository.filterFormB(candidate.getExam(), candidate.getSection());
 	}
-	
+
 	@Override
 	public List<Candidate> getAdmitCards(Candidate candidate) {
 
-		return examRepository.filterFormB( candidate.getExam(),candidate.getSection());
+		return examRepository.filterFormB(candidate.getExam(), candidate.getSection());
+	}
+
+	@Override
+	public List<Candidate> getAllEnrolledCandidates(Exam exam) {
+
+		return null == exam ? candidateRepository.getAllStudent() : candidateRepository.getAllStudent(exam, "ACTIVE");
+
 	}
 
 }

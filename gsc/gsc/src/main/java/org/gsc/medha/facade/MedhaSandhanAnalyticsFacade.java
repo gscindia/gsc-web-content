@@ -8,4 +8,6 @@ public interface MedhaSandhanAnalyticsFacade {
 
 	SchoolGenderDataDto getClassGenderStatistics(int examId);
 
+	int enrollmentCount(int examId);
+
 }
