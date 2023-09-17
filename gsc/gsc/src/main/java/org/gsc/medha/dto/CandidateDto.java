@@ -16,6 +16,15 @@ public class CandidateDto {
 	String schedule;
 	ExamDto exam = new ExamDto();
 	String maskedRollid;
+	String marks;
+
+	public String getMarks() {
+		return marks;
+	}
+
+	public void setMarks(String marks) {
+		this.marks = marks;
+	}
 
 	/**
 	 * @return the roll

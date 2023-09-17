@@ -59,8 +59,15 @@ function drawBar(selector, data, titleText, subtitle, xDesc, yTitle, bar1, bar2)
 			column: {
 				pointPadding: 0.2,
 				borderWidth: 0
+			},
+			series: {
+				dataLabels: {
+					enabled: true,
+					allowOverlap: true
+				}
 			}
 		},
+
 		series: [
 			{
 				name: bar1,

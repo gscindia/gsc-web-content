@@ -5,4 +5,8 @@
 	src="${assetRoot}/materialize.min.js"></script>
 
 <script src="${assetRoot}/gsc-web.js"></script>
+<script src="${assetRoot}/jquery.blockUI.js"></script>
+<script src="${assetRoot}/select_patch.js"></script>
+
+
 
