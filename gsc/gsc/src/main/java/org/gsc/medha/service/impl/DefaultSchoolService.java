@@ -41,7 +41,7 @@ public class DefaultSchoolService implements SchoolService {
 	public List<School> getAllSchool() {
 
 		return schoolRepo.findAll(Sort.by(Sort.Direction.ASC, "name"));
-		
+
 	}
 
 	@Override
@@ -69,17 +69,21 @@ public class DefaultSchoolService implements SchoolService {
 	}
 
 	@Override
-	public List<Map<String, String>> getStudentStatistics(Exam exam) {
+	public List<Map<String, String>> getStudentStatistics(Exam exam, School school) {
 		String examClause = null == exam ? "" : " and c.exam=:exam ";
+		String schoolClause = null == school ? "" : " and c.school=:school ";
 		String jpql = "SELECT " + "s.name, " + "SUM(CASE WHEN c.gender = 'M' THEN 1 ELSE 0 END) AS male_students, "
 				+ "SUM(CASE WHEN c.gender = 'F' THEN 1 ELSE 0 END) AS female_students FROM School s "
-				+ "JOIN Candidate c ON s.id = c.school.id WHERE c.status = 'ACTIVE'" + examClause
+				+ "JOIN Candidate c ON s.id = c.school.id WHERE c.status = 'ACTIVE'" + examClause + schoolClause
 				+ "  GROUP BY s.name ORDER BY s.name";
 
 		Query query = entityManager.createQuery(jpql);
 		if (!examClause.equalsIgnoreCase(""))
 			query.setParameter("exam", exam);
 
+		if (!schoolClause.equalsIgnoreCase(""))
+			query.setParameter("school", school);
+		
 		List<Object[]> results = query.getResultList();
 
 		List<Map<String, String>> studentStatisticsList = new ArrayList<>();

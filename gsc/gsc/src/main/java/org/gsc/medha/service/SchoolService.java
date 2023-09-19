@@ -20,8 +20,8 @@ public interface SchoolService {
 
 	School add(School school);
 
-	List<Map<String, String>> getStudentStatistics(Exam exam);
-
 	List<Map<String, String>> getClassGenderStatistics(Exam exam);
+
+	List<Map<String, String>> getStudentStatistics(Exam exam, School school);
 
 }

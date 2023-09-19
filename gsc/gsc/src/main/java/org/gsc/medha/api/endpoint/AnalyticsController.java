@@ -19,9 +19,9 @@ public class AnalyticsController {
 
 	@ResponseBody
 	@PostMapping("/sgc")
-	public SchoolGenderDataDto getSchoolGenderChartData(@RequestParam int year) {
+	public SchoolGenderDataDto getSchoolGenderChartData(@RequestParam(defaultValue = "-1") int year,@RequestParam(defaultValue = "-1") int schoolId) {
 
-		return analytics.getSchoolGenderChartData(year);
+		return analytics.getSchoolGenderChartData(year,schoolId);
 
 	}
 

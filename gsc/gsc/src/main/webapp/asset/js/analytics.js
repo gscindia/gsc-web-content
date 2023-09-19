@@ -1,21 +1,25 @@
 $(document).ready(function() {
 	$('select').formSelect();
-	drawSgb(0);
+	drawSgb(0, -1);
 	drawCgb(0);
 	drawTotalEnrollmentChart(callApi('/reports/enrollment?year=0', 'POST', '{}'));
 
 	$('#analytics-year').on('change', function() {
 		redoCharts($('#analytics-year').val());
 	});
+
+	$('#analytics-school-sgc').on('change', function() {
+		drawSgb($.isEmptyObject($('#analytics-year').val()) ? -1 : $('#analytics-year').val(), $('#analytics-school-sgc').val());
+	});
 });
 
 function redoCharts(y) {
-	drawSgb(y);
+	drawSgb(y, -1);
 	drawCgb(y);
 	drawTotalEnrollmentChart(callApi('/reports/enrollment?year=' + y, 'POST', '{}'));
 }
-function drawSgb(y) {
-	var response = callApi('/reports/sgc?year=' + y, 'POST', '{}');
+function drawSgb(y, z) {
+	var response = callApi('/reports/sgc?year=' + y + '&schoolId=' + z, 'POST', '{}');
 	drawBar('school-gender-chart', response, 'Male vs Female participation',
 		'Source: Medha Sandhan Examination - Garalgacha Science Club - Official Website',
 		'Schools', 'Head Count', 'MALE', 'FEMALE');
