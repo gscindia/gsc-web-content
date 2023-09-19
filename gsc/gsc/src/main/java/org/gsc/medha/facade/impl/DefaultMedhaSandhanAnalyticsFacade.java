@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.gsc.medha.dto.SchoolGenderDataDto;
 import org.gsc.medha.entity.Exam;
+import org.gsc.medha.entity.School;
 import org.gsc.medha.facade.MedhaSandhanAnalyticsFacade;
 import org.gsc.medha.service.ExamService;
 import org.gsc.medha.service.SchoolService;
@@ -26,10 +27,11 @@ public class DefaultMedhaSandhanAnalyticsFacade implements MedhaSandhanAnalytics
 	ExamService examService;
 
 	@Override
-	public SchoolGenderDataDto getSchoolGenderChartData(int examId) {
+	public SchoolGenderDataDto getSchoolGenderChartData(int examId, int schoolId) {
 		SchoolGenderDataDto dto = new SchoolGenderDataDto();
 		Exam exam = examService.getExamById(examId);
-		populator.populate(schoolService.getStudentStatistics(exam), dto);
+		School school = schoolService.getSchoolById(schoolId);
+		populator.populate(schoolService.getStudentStatistics(exam,school), dto);
 		return dto;
 
 	}
