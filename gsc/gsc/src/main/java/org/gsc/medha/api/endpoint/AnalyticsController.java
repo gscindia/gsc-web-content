@@ -16,8 +16,6 @@ public class AnalyticsController {
 
 	@Autowired
 	MedhaSandhanAnalyticsFacade analytics;
-	@Autowired
-	ExamFacade examFacade;
 
 	@ResponseBody
 	@PostMapping("/sgc")

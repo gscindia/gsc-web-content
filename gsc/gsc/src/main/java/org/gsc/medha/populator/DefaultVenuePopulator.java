@@ -13,7 +13,7 @@ import org.gsc.medha.entity.Venue;
 import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;
 
-@Component("venueWebPopulator")
+@Component("venuePopulator")
 public class DefaultVenuePopulator implements Populator<Venue,VenueDto> {
 
 	@Resource(name="examPopulator")

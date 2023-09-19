@@ -25,7 +25,7 @@ public class DefaultVenueFacade implements VenueFacade {
 
 	@Autowired
 	VenueService venueService;
-	@Resource(name = "venueWebPopulator")
+	@Resource(name = "venuePopulator")
 	Populator<Venue, VenueDto> populator;
 	@Resource(name = "venueAutoCompletePopulator")
 	Populator<List<Venue>, Map<String,String>> autoCompletePopulator;

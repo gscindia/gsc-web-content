@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component("schoolWebPopulator")
 public class DefaultSchoolPopulator implements Populator<School, SchoolDto> {
 
-	@Resource(name = "venueWebPopulator")
+	@Resource(name = "venuePopulator")
 	Populator<Venue, VenueDto> populator;
 
 	@Override
