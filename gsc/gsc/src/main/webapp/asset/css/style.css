@@ -26,4 +26,7 @@ body {
   a.valign-btn{
 	  margin: 1.52rem 0 0.912rem 0;
   }
- 
+ .dropdown-content li>a, .dropdown-content li>span
+ {
+	 color:#f44336
+ }
