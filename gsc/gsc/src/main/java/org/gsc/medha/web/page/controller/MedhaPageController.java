@@ -138,6 +138,7 @@ public class MedhaPageController {
 
 	@GetMapping("/analytics")
 	public String showAnalytics(Model model) {
+		model.addAttribute("schools", schoolFacade.getAllSchool());
 		model.addAttribute("examList", examFacade.getAllExam());
 		return "/medha/analytics";
 	}
