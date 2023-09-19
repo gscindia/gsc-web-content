@@ -4,7 +4,7 @@ import org.gsc.medha.dto.SchoolGenderDataDto;
 
 public interface MedhaSandhanAnalyticsFacade {
 
-	SchoolGenderDataDto getSchoolGenderChartData(int examId);
+	SchoolGenderDataDto getSchoolGenderChartData(int examId, int schoolId);
 
 	SchoolGenderDataDto getClassGenderStatistics(int examId);
 
