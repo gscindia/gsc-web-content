@@ -70,3 +70,8 @@ function prepareFormData(form) {
 
 	return jsonData;
 }
+
+function beforeAjaxBlockUI(message) {
+	$.blockUI({ message: message });
+
+}

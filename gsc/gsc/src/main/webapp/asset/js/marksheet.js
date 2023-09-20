@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$('.dataTables_length').addClass('col s4');
 	$('select').formSelect();
 	$('#btn-preview-marks').on('click', function() {
-		beforeAjaxBlockUI();
+		beforeAjaxBlockUI('<h4 class="red-text">Upload in progress...</h4>');
 		$('#btn-save-marks').removeAttr('disabled');
 		var form = new FormData($('#form-preview-marks')[0]);
 
@@ -34,7 +34,7 @@ $(document).ready(function() {
 			marksDataTable = $('#preview-marks-table').DataTable();
 			marksDataTable.clear()
 				.draw();
-			ajaxCallBackUnblockUI();
+			$.unblockUI();
 		}
 		M.toast({ html: response });
 
@@ -55,12 +55,5 @@ function validateTable() {
 			$('#btn-save-marks').attr('disabled', 'disabled');
 		}
 	});
-	ajaxCallBackUnblockUI();
-}
-function ajaxCallBackUnblockUI() {
 	$.unblockUI();
-}
-function beforeAjaxBlockUI(message) {
-	$.blockUI({ message: "<h3>Processing your request...</h3>" });
-
 }

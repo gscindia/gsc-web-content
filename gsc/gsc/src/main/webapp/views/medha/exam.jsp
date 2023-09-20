@@ -26,35 +26,49 @@
 	<common:header />
 	<main>
 		<div class="container">
-		<div class="row"></div>
+			<div class="row"></div>
 			<div class="row ">
-				<div class="col s12">				
+				<div class="col s12">
 					<div class="col s12">
 						<ul class="tabs bold">
 							<li class="tab col s3"><a href="#exam">EXAMS</a></li>
-							<li class="tab col s3"><a  href="#add-exam">ADD EXAM</a></li>
-							<li class="tab col s3"><a class="" href="#forms">FORM 'A' & 'B'</a></li>
+							<li class="tab col s3"><a href="#add-exam">ADD EXAM</a></li>
+							<li class="tab col s3"><a class="" href="#forms">FORM
+									'A' & 'B'</a></li>
 							<li class="tab col s3"><a href="#admit-card">Admit Cards</a></li>
-							 
+
 						</ul>
 					</div>
-					<div id="exam" class="col s8">
-						<exam:listExam examList="${examList}" />
+					<div id="exam" class="row">
+						<div class="col s8">
+							<exam:listExam examList="${examList}" />
+						</div>
+						<div class="col s12">
+							<hr>
+						</div>
+						<div class="col s12" id="left-pan">
+							<venue:venueList mediaUrl="${imageUrl }" />
+						</div>
 					</div>
-					<div id="add-exam" class="col s7"><exam:addExam /></div>
+					<div id="add-exam" class="col s7">
+						<exam:addExam />
+					</div>
 					<div id="forms" class="col s12">
-						<div class="col s6"><reports:formA></reports:formA></div>
-						<div class="col s6"><reports:formB></reports:formB></div>
+						<div class="col s6">
+							<reports:formA></reports:formA>
+						</div>
+						<div class="col s6">
+							<reports:formB></reports:formB>
+						</div>
 					</div>
-					<div id="admit-card" class="col s12"><reports:admit></reports:admit></div>
-				</div>
-				<div class="col s12"><hr></div>
-				<div class="col s12" id="left-pan">
-					<venue:venueList mediaUrl="${imageUrl }" />
+					<div id="admit-card" class="col s12">
+						<reports:admit></reports:admit>
+					</div>
 				</div>
 
+
 			</div>
-			
+
 		</div>
 	</main>
 	<common:footer />
