@@ -25,14 +25,15 @@ select.form-control.input-sm {
 	<common:header />
 	<main>
 		<div class="container">
+		<h3 class="center-align red-text ">Manage Schools Details</h3>
 			<div class="row">
 
 				<div class="col s4" id="left-pan">
 					<!-- Grey navigation panel -->
 					<ul class="collection with-header">
-						<li class="collection-header"><h4>Schools</h4></li>
+						<li class="collection-header"><h3>Schools</h3></li>
 						<c:forEach items="${schoolList }" var="school" varStatus="status">
-							<li class="collection-item school-list" data-id="${school.id }"><div class='valign-wrapper'>${school.name }<a
+							<li class="collection-item school-list" data-id="${school.id }" data-name="${school.name }"><div class='valign-wrapper'>${school.name }<a
 										href="#!" class="secondary-content"><span
 										class="collection-icon"><i class="material-icons">navigate_next</i></span></a>
 								</div></li>

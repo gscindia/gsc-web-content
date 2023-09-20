@@ -69,8 +69,13 @@ public class DefaultCandidateFacade implements CandidateFacade {
 		List<String[]> dto = new ArrayList<>();
 		Candidate filter = new Candidate();
 		filterPopulator.populate(form, filter);
-		formADataTablePopulator.populateAll(
-				candidateService.getAllStudent(filter.getSchool(), examService.getActiveExam(), "ACTIVE"), dto);
+		if (filter.getSchool() != null) {
+			formADataTablePopulator.populateAll(
+					candidateService.getAllStudent(filter.getSchool(), "ACTIVE"), dto);
+		} else {
+			formADataTablePopulator.populateAll(candidateService.getAllStudent(),
+					dto);
+		}
 		FormADataTableDto result = new FormADataTableDto();
 		result.setData(dto);
 		return result;
@@ -120,7 +125,7 @@ public class DefaultCandidateFacade implements CandidateFacade {
 
 	@Override
 	public void updateRegistrationNotificationStatus(List<Map<Integer, JSONObject>> source) {
-		List<Candidate> listOfUpdate =new ArrayList<Candidate>();
+		List<Candidate> listOfUpdate = new ArrayList<Candidate>();
 		source.forEach(map -> {
 			map.keySet().forEach(key -> {
 				if (map.get(key).has("messages")) {

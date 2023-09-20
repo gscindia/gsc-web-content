@@ -1,5 +1,6 @@
 <table id="student-list"
-	class="mdl-data-table collection striped responsive-table">
+	class="mdl-data-table collection striped">
+	<caption class="bold deep-purple-text accent-4" id='selected-school'></caption>
 	<thead>
 		<tr>
 			<th>Roll</th>

@@ -8,18 +8,10 @@
 <meta charset="ISO-8859-1">
 <common:script />
 <common:style />
+<common:highchartsScripts></common:highchartsScripts>
 <script type="text/javascript"
-	src="../../asset/js/highcharts/highcharts.js"></script>
-<script type="text/javascript"
-	src="../../asset/js/highcharts/highcharts-more.js"></script>
-<script type="text/javascript"
-	src="../../asset/js/highcharts/exporting.js"></script>
-<script type="text/javascript"
-	src="../../asset/js/highcharts/export-data.js"></script>
-<script type="text/javascript"
-	src="../../asset/js/highcharts/accessibility.js"></script>
+	src="../../asset/js/charts/enrollmentGuage.js"></script>
 <script type="text/javascript" src="../../asset/js/analytics.js"></script>
-
 
 <style>
 select.form-control.input-sm {
@@ -43,7 +35,7 @@ select.form-control.input-sm {
 					</select> <label>Examination</label>
 				</div>
 
-				<div class="col s12" >
+				<div class="col s12">
 					<div class="row">
 						<div class="col s4 right input-field ">
 							<select id="analytics-school-sgc" name="school">
@@ -54,10 +46,8 @@ select.form-control.input-sm {
 							</select> <label>School</label>
 						</div>
 					</div>
-					<div class="row" id="school-gender-chart">
-					
-					</div>
-					
+					<div class="row" id="school-gender-chart"></div>
+
 				</div>
 				<div class="col s6" id="class-gender-chart"></div>
 				<div class="col s6" id="enrollment-chart"></div>

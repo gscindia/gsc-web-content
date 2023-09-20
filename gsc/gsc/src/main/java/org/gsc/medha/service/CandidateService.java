@@ -34,4 +34,6 @@ public interface CandidateService {
 
 	List<Candidate> getAllStudent(List<Integer> id);
 
+	List<Candidate> getAllStudent();
+
 }

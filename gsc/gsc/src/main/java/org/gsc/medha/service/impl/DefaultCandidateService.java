@@ -66,11 +66,17 @@ public class DefaultCandidateService implements CandidateService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<Candidate> getAllStudent() {
+		// TODO Auto-generated method stub
+		return repository.getAllStudent();
+	}
 
 	@Override
 	public List<Candidate> getAllStudent(Exam exam, String status) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return repository.getAllStudent(exam, status);
 	}
 
 	@Override
@@ -82,7 +88,7 @@ public class DefaultCandidateService implements CandidateService {
 	@Override
 	public List<Candidate> getAllStudent(School school, String status) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.getAllStudent(school, status);
 	}
 
 	@Override

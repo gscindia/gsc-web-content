@@ -10,7 +10,7 @@
 <common:style />
 <common:dataTableScripts />
 <script type="text/javascript" src="../../asset/js/marksheet.js"></script>
-<title>Insert title here</title>
+<title>Upload Marks</title>
 </head>
 <body>
 	<common:header />
