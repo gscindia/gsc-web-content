@@ -19,12 +19,14 @@ function enroll() {
 		var form = $('#enroll-form');
 		var response = callApi(form.attr('action'), form.attr('method'), formData);
 		if ($.isEmptyObject(response)) {
-			M.toast({ html: 'Something went wrong with server. Try later' });
+			M.toast({ html: "<span class='material-icons red-text'>bug_report</span>&nbsp;Something went wrong. &nbsp; <span class='material-icons blue-text'>call</span> &nbsp;Contact administrator" });
 
-		} else {
+		} else if(response.roll > 0) {
 			$('#student-name').focus();
 			$('#student-name').val('');
-			M.toast({ html: 'Roll Number as realised ' + response.roll, completeCallback: function() { } });
+			M.toast({ html: "<span class='material-icons green-text'>verified</span>&nbsp; Roll Number as realised " + response.roll, completeCallback: function() { } });
+		}else{
+			M.toast({ html: "<span class='material-icons red-text'>error</span>&nbsp;Enrollment is yet to start"});
 		}
 	} else {
 		M.toast({ html: 'Please fill all details' });

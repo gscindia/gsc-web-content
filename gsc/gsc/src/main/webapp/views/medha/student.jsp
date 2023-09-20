@@ -23,34 +23,39 @@ select.form-control.input-sm {
 	<main>
 		<div class="container">
 			<div class="row valign-wrapper">
-				<div class="row"></div>
 				<div class="col l5 hide-on-med-and-down">
 					<img class="responsive-img" src="../../asset/media/student-2.jpg">
 				</div>
 
-				<div class="col s8 m10 l5 offset-l2">
+				<div class="col s12 m12 l5 offset-l2">
 					<div class="row">
-						<form id="enroll-form" class="col s6 m10 l10" method="POST" action="/medha/student/add">						
-							<h4 class="header center">Apply for</h4>
-							<h6 class="center"><c:if test="${not empty examName}">for ${examName}</c:if></h6>
+						<c:choose>
+							<c:when test="${not empty examName}">
+								<h4 class="header center">Application Form</h4>
+								<h6 class="center red-text bold">${examName}</h6>
+							</c:when>
+							<c:otherwise>
+								<blockquote>Enrollment is yet to start for upcoming	session. 
+									Please check back few days later.
+								</blockquote>
+							</c:otherwise>
+						</c:choose>
+						<form id="enroll-form" class="col s12 m12 l12" method="POST"
+							action="/medha/student/add">
 							<div class="row">
-								</br>
-								<span>
-									<label> <input name="gender" value="M" type="radio"
-										class="with-gap" /> <span><strong>Male</strong> </span>
-									</label>
-								</span>
-								<span>
-									<label> <input name="gender" value="F" type="radio"
-										class="with-gap" /> <span><strong>Female</strong></span>
-									</label>
-									
+								</br> <span> <label> <input name="gender" value="M"
+										type="radio" class="with-gap" /> <span><strong>Male</strong>
+									</span>
+								</label>
+								</span> <span> <label> <input name="gender" value="F"
+										type="radio" class="with-gap" /> <span><strong>Female</strong></span>
+								</label>
+
 								</span><span class="red-text">*</span>
-								
 							</div>
 							<div class="row input-field">
 								<select id="student-class" name="cls">
-									<option value="" disabled selected><strong>Choose your class</strong></option>
+									<option value="" disabled selected>Choose your class</option>
 									<option value="2">Class - II</option>
 									<option value="3">Class - III</option>
 									<option value="4">Class - IV</option>
@@ -64,15 +69,17 @@ select.form-control.input-sm {
 							</div>
 							<div class="row input-field">
 								<select id="student-school" name="school">
-									<option value="" disabled selected><strong>Choose your school</strong></option>
+									<option value="" disabled selected>Choose your school</option>
 									<c:forEach items="${schools }" var="school">
 										<option value="${school.id }">${school.name }</option>
 									</c:forEach>
 								</select> <label>Select School<span class="red-text">*</span></label>
-							</div>					
+							</div>
 							<div class="row">
-								<input value="" id="student-name" type="text" name="name" class="validate">
-								<label class="active" for="student-name"><strong>Full Name<span class="red-text">*</span></strong></label>
+								<input value="" id="student-name" type="text" name="name"
+									class="validate"> <label class="active"
+									for="student-name"><strong>Full Name<span
+										class="red-text">*</span></strong></label>
 							</div>
 							<div class="row">
 								<button class="btn waves-effect waves-light btn-large red"
@@ -86,7 +93,7 @@ select.form-control.input-sm {
 			</div>
 		</div>
 	</main>
-	<common:footer/>
+	<common:footer />
 </body>
 
 </html>

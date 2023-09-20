@@ -84,7 +84,7 @@ public class ExamController {
 		}
 	}
 
-	@PostMapping("/upload-file")
+	@PostMapping("/upload-marks-file")
 	public String uploadMarks(@RequestParam("file") MultipartFile file, HttpSession session) throws Exception {
 		String status = "Failed";
 		FormADataTableDto dto = new FormADataTableDto();

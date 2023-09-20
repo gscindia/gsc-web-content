@@ -28,5 +28,8 @@ body {
   }
  .dropdown-content li>a, .dropdown-content li>span
  {
-	 color:#f44336
+	 color:#f44336;
+ }
+ .navbar-footer-theme{
+	 background-color: #000000;
  }
