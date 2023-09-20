@@ -128,3 +128,6 @@ function previewSchoolAdmit() {
 		window.open("school-admit-cards/" + $('#admit-school').val() + "/" + $('#admit-exam-year').val());
 	}
 }
+function uploadAtt(){
+	$('#upload-attendance-form').submit();
+}

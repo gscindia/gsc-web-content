@@ -73,11 +73,14 @@ public class DefaultExamFacade implements ExamFacade {
 	@Override
 	public CandidateDto addCandidate(CandidateForm source) {
 		CandidateDto target = new CandidateDto();
-		Candidate candidate = new Candidate();
-		candiRevPopulator.populate(source, candidate);
-		candidate = examService.registerCandidate(candidate);
-		candidatePopulator.populate(candidate, target);
-
+		if(examService.getActiveExam() !=null) {
+			Candidate candidate = new Candidate();
+			candiRevPopulator.populate(source, candidate);
+			candidate = examService.registerCandidate(candidate);
+			candidatePopulator.populate(candidate, target);
+		}else {
+			target.setRoll("-1");
+		}
 		return target;
 	}
 
@@ -137,7 +140,7 @@ public class DefaultExamFacade implements ExamFacade {
 						int roll = Integer.parseInt(formatNumbers(row.getCell(0).toString()));
 						int cls = Integer.parseInt(formatNumbers(row.getCell(1).toString()));
 						int marks = Integer.parseInt(formatNumbers(row.getCell(2).toString()));
-						Candidate studentDetails = candidateService.getStudent(roll, cls, examService.getActiveExam(),
+						Candidate studentDetails = candidateService.getStudent(roll, cls, examService.getPostExam(),
 								"ACTIVE");
 						if (studentDetails == null) {
 							rowData.setName("STUDENT NOT FOUND");

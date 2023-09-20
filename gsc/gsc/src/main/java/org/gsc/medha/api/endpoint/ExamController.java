@@ -17,6 +17,7 @@ import org.gsc.medha.facade.ExamFacade;
 import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;
 import org.gsc.medha.service.ExamService;
+import org.json.JSONObject;
 import org.gsc.populator.Populator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,11 @@ public class ExamController {
 
 	@Autowired
 	ExamFacade examFacade;
+	@Autowired
+	ExamService examService;
 	@Resource(name = "marksPreviewDataTablePopulator")
 	Populator<Candidate, String[]> marksPreviewTableDataPopulator;
-	
+
 	@ResponseBody
 	@GetMapping
 	public List<ExamDto> getExams() {
@@ -57,7 +60,31 @@ public class ExamController {
 		return examFacade.filterFormB(filterForm);
 	}
 
-	@PostMapping("/upload-file")
+	@PostMapping("/upload-attendence")
+
+	public JSONObject uploadAttendance(@RequestParam("file") MultipartFile file) {
+
+		try {
+			if (file.isEmpty()) {
+				throw new IllegalArgumentException("File is empty");
+			}
+
+			// Read the content of the MultipartFile as a JSON string
+			String jsonText = new String(file.getBytes());
+
+			// Parse the JSON string to a JSONObject
+			JSONObject jsonObject = new JSONObject(jsonText);
+			examService.updateAttendance(jsonObject);
+
+			return jsonObject;
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Error reading file");
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Invalid JSON input");
+		}
+	}
+
+	@PostMapping("/upload-marks-file")
 	public String uploadMarks(@RequestParam("file") MultipartFile file, HttpSession session) throws Exception {
 		String status = "Failed";
 		FormADataTableDto dto = new FormADataTableDto();
@@ -92,8 +119,7 @@ public class ExamController {
 	@ResponseBody
 	public Map<Integer, Integer> saveMarksheet(HttpSession session) {
 		List<Candidate> attribute = (List<Candidate>) session.getAttribute("candidateList");
-		Map<Integer, Integer> saveMarksheet = examFacade
-				.saveMarksheet(attribute);
+		Map<Integer, Integer> saveMarksheet = examFacade.saveMarksheet(attribute);
 		session.removeAttribute("candidateList");
 		return saveMarksheet;
 	}

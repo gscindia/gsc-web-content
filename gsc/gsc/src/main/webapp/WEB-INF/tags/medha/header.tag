@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<nav class="blue darken-4">
+<nav class="navbar-footer-theme">
 	<div class="nav-wrapper">
 		<a href="/medhasandhan" class="brand-logo">Medha Sandhan Pariksha</a>
 		<a href="#!" data-target="mobile-nav"

@@ -24,7 +24,7 @@
 							<h4 class="">Select a file</h4>
 						</div>
 					</div>
-					<form action="/medha/exam/upload-file" method="post"
+					<form action="/medha/exam/upload-marks-file" method="post"
 						enctype="multipart/form-data" id="form-preview-marks"
 						class="col s12">
 						<div class="file-field input-field">
