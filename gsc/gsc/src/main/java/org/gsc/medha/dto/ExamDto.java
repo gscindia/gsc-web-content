@@ -8,7 +8,7 @@ public class ExamDto {
 	String name;
 	String date;
 	String status;
-	List<String> venue = new ArrayList<>();
+	List<VenueDto> venue = new ArrayList<>();
 	/**
 	 * @return the id
 	 */
@@ -60,14 +60,16 @@ public class ExamDto {
 	/**
 	 * @return the venue
 	 */
-	public List<String> getVenue() {
+	public List<VenueDto> getVenue() {
 		return venue;
 	}
 	/**
 	 * @param venue the venue to set
 	 */
-	public void setVenue(List<String> venue) {
+	public void setVenue(List<VenueDto> venue) {
 		this.venue = venue;
 	}
+	
+	
 	
 }

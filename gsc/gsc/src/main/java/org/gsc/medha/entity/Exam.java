@@ -14,8 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Exam {
 
@@ -28,13 +26,14 @@ public class Exam {
 	String status;
 	@Column(name = "result_date")
 	Date resultDate;
-	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "exam2venuerel", joinColumns = @JoinColumn(name = "source"), inverseJoinColumns = @JoinColumn(name = "target"))
 	Set<Venue> venue = new HashSet<>();
-	@JsonIgnore
 	@OneToMany(mappedBy = "exam")
 	Set<Candidate> candidates = new HashSet<>();
+	@ManyToMany
+	@JoinTable(name = "exam2pricerel", joinColumns = @JoinColumn(name = "source"), inverseJoinColumns = @JoinColumn(name = "target"))
+	private Set<PriceRow> priceRows = new HashSet<>();
 
 	public Exam() {
 
@@ -154,6 +153,20 @@ public class Exam {
 	 */
 	public void setCandidates(Set<Candidate> candidates) {
 		this.candidates = candidates;
+	}
+
+	/**
+	 * @return the priceRows
+	 */
+	public Set<PriceRow> getPriceRows() {
+		return priceRows;
+	}
+
+	/**
+	 * @param priceRows the priceRows to set
+	 */
+	public void setPriceRows(Set<PriceRow> priceRows) {
+		this.priceRows = priceRows;
 	}
 
 }

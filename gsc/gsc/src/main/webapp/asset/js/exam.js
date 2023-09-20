@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	$("#slider").slider({
 		values: [2, 12]
 	});
@@ -28,13 +27,18 @@ $(document).ready(function() {
 		secondaryPlaceholder: 'add another'
 	});
 
-	$('.chips-autocomplete').chips({
-		autocompleteOptions: {
-			data: autocomplete,
-			limit: Infinity,
-			minLength: 1
-		}
-	});
+	try {
+
+		$('.chips-autocomplete').chips({
+			autocompleteOptions: {
+				data: autocomplete,
+				limit: Infinity,
+				minLength: 1
+			}
+		});
+	} catch (ex) {
+
+	}
 
 
 
@@ -56,6 +60,8 @@ $(document).ready(function() {
 	});
 	$('.tabs').tabs();
 	$('select').formSelect();
+
+	
 });
 
 function addExam() {

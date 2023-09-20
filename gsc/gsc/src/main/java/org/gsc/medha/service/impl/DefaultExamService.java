@@ -97,15 +97,16 @@ public class DefaultExamService implements ExamService {
 			try {
 
 				String hash = GscSecurity.wrap(String.valueOf(can.getId()));
-				if("82a93b152b275d4c8de67c3d05c9b00e92477eeb024f117c7632cdb26fd874aa".equals(hash)) {
-				System.out.println(can.getId()); 
+				if ("82a93b152b275d4c8de67c3d05c9b00e92477eeb024f117c7632cdb26fd874aa".equals(hash)) {
+					System.out.println(can.getId());
 				}
-				
+
 				if (listOfHash.contains(hash)) {
-					
-					//System.out.println(can.getId());
-				}else {
-					//System.out.println("ID:" + can.getId()+" Roll: "+can.getRoll()+" "+can.getSection()+" S Hash: "+hash);
+
+					// System.out.println(can.getId());
+				} else {
+					// System.out.println("ID:" + can.getId()+" Roll: "+can.getRoll()+"
+					// "+can.getSection()+" S Hash: "+hash);
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -114,6 +115,12 @@ public class DefaultExamService implements ExamService {
 		});
 
 		return null;
+	}
+
+	public List<Candidate> getAllEnrolledCandidates(Exam exam) {
+
+		return null == exam ? candidateRepository.getAllStudent() : candidateRepository.getAllStudent(exam, "ACTIVE");
+
 	}
 
 }

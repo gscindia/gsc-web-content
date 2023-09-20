@@ -22,6 +22,16 @@ public class DefaultCandidateService implements CandidateService {
 	}
 
 	@Override
+	public List<Candidate> getAllStudent(List<Integer> id) {
+		return (List<Candidate>) repository.findAllById(id);
+	}
+
+	@Override
+	public Candidate getStudent(int roll, int cls, Exam exam, String status) {
+		return repository.getStudent(roll, cls, exam, status);
+	}
+
+	@Override
 	public List<Candidate> getAllStudent(School school, int section, Exam exam) {
 
 		return repository.getAllStudent(school, section, exam);
@@ -56,11 +66,17 @@ public class DefaultCandidateService implements CandidateService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<Candidate> getAllStudent() {
+		// TODO Auto-generated method stub
+		return repository.getAllStudent();
+	}
 
 	@Override
 	public List<Candidate> getAllStudent(Exam exam, String status) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return repository.getAllStudent(exam, status);
 	}
 
 	@Override
@@ -72,12 +88,12 @@ public class DefaultCandidateService implements CandidateService {
 	@Override
 	public List<Candidate> getAllStudent(School school, String status) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.getAllStudent(school, status);
 	}
-	
+
 	@Override
-	public List<Candidate> getPendingNotifications(Exam exam){
-		
+	public List<Candidate> getPendingNotifications(Exam exam) {
+
 		return repository.getPendingNotification(exam);
 	}
 

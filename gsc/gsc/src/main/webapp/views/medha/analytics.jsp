@@ -8,9 +8,10 @@
 <meta charset="ISO-8859-1">
 <common:script />
 <common:style />
-<script type="text/javascript" src="../../asset/js/highcharts.js"></script>
+<common:highchartsScripts></common:highchartsScripts>
+<script type="text/javascript"
+	src="../../asset/js/charts/enrollmentGuage.js"></script>
 <script type="text/javascript" src="../../asset/js/analytics.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <style>
 select.form-control.input-sm {
@@ -25,21 +26,31 @@ select.form-control.input-sm {
 	<main>
 		<div class="container">
 			<div class="row">
-					<div class="col s4 left-align input-field">
+				<div class="col s4 left-align input-field">
 					<select id="analytics-year" name="cls">
-						<option value="" disabled selected>Choose Year</option>
-							<c:forEach items="${examList}" varStatus="status" var="exam">
-								<option value="${exam.id }">${exam.name }</option>
-							</c:forEach>
-				</select> <label>Examination</label>
-				</div>			
+						<option value="-1" disabled selected>Choose Year</option>
+						<c:forEach items="${examList}" varStatus="status" var="exam">
+							<option value="${exam.id }">${exam.name }</option>
+						</c:forEach>
+					</select> <label>Examination</label>
+				</div>
 
-				<div class="col s12" id="school-gender-chart">
-					
+				<div class="col s12">
+					<div class="row">
+						<div class="col s4 right input-field ">
+							<select id="analytics-school-sgc" name="school">
+								<option value="-1" disabled selected>Select School</option>
+								<c:forEach items="${schools}" varStatus="status" var="school">
+									<option value="${school.id }">${school.name }</option>
+								</c:forEach>
+							</select> <label>School</label>
+						</div>
+					</div>
+					<div class="row" id="school-gender-chart"></div>
+
 				</div>
-				<div class="col s6" id="class-gender-chart">
-					
-				</div>
+				<div class="col s6" id="class-gender-chart"></div>
+				<div class="col s6" id="enrollment-chart"></div>
 			</div>
 		</div>
 	</main>

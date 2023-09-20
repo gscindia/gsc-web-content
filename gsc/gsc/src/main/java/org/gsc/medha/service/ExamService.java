@@ -28,4 +28,6 @@ public interface ExamService {
 
 	Exam getPostExam();
 
+	List<Candidate> getAllEnrolledCandidates(Exam exam);
+
 }

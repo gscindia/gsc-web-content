@@ -81,7 +81,7 @@
 								them online as well.</p>
 						</div>
 						<div class="card-action">
-							<a href="#">click here</a>
+							<a href="<c:url value = "/medhasandhan/mark-sheet"/>">click here</a>
 						</div>
 					</div>
 				</div>

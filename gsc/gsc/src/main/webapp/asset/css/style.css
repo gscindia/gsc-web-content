@@ -23,4 +23,10 @@ body {
   .mdl-data-table th,.collection-item.school-list,.bold{
   font-weight: bold;
   }
- 
+  a.valign-btn{
+	  margin: 1.52rem 0 0.912rem 0;
+  }
+ .dropdown-content li>a, .dropdown-content li>span
+ {
+	 color:#f44336
+ }
