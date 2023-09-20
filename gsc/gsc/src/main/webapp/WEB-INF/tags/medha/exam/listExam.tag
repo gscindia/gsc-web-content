@@ -12,6 +12,12 @@
 			<div class="collapsible-body">
 				<span class="bold">Date of Examination </span><span class=" bold blue-text">${exam.date }</span>&nbsp;&nbsp;
 				<span class="bold">Status is </span><span class="green-text bold">${exam.status}</span>
+				<c:if test="${exam.status eq 'POST'}">
+				<form action="/medha/exam/upload-attendence" method="post" id='upload-attendance-form' enctype="multipart/form-data">
+					<input type="file" name="file"/>
+					<a class="waves-effect waves-light btn" onclick="uploadAtt();"><i class="material-icons right">file_upload</i>Upload Attendance</a>
+				</form>
+				</c:if>
 				<hr>
 					<analytics:countGuage year="${exam.id }" size="50%"></analytics:countGuage>
 			</div>
