@@ -14,6 +14,7 @@ import org.gsc.medha.entity.Exam;
 import org.gsc.medha.facade.CandidateFacade;
 import org.gsc.medha.page.form.CandidateForm;
 import org.gsc.medha.page.form.FilterForm;
+import org.gsc.medha.prop.Status;
 import org.gsc.medha.repository.CandidateRepository;
 import org.gsc.medha.service.CandidateService;
 import org.gsc.medha.service.ExamService;
@@ -70,11 +71,9 @@ public class DefaultCandidateFacade implements CandidateFacade {
 		Candidate filter = new Candidate();
 		filterPopulator.populate(form, filter);
 		if (filter.getSchool() != null) {
-			formADataTablePopulator.populateAll(
-					candidateService.getAllStudent(filter.getSchool(), "ACTIVE"), dto);
+			formADataTablePopulator.populateAll(candidateService.getAllStudent(filter.getSchool(), "ACTIVE"), dto);
 		} else {
-			formADataTablePopulator.populateAll(candidateService.getAllStudent(),
-					dto);
+			formADataTablePopulator.populateAll(candidateService.getAllStudent(), dto);
 		}
 		FormADataTableDto result = new FormADataTableDto();
 		result.setData(dto);
@@ -102,10 +101,22 @@ public class DefaultCandidateFacade implements CandidateFacade {
 	}
 
 	@Override
-	public void editCandidate(CandidateForm form) {
+	public CandidateDto editCandidate(CandidateForm form) {
+		CandidateDto dto = new CandidateDto();
 		Candidate entity = candidateRepository.findById(form.getId()).get();
-		candidateRevPopulator.populate(form, entity);
-		candidateRepository.save(entity);
+		
+		if (entity.getExam().getStatus().equalsIgnoreCase(Status.ACTIVE.name())
+				|| entity.getExam().getStatus().equalsIgnoreCase(Status.POST.name())) {
+			candidateRevPopulator.populate(form, entity);
+			candidateRepository.save(entity);
+			candidatePopulator.populate(entity, dto);
+			dto.setEditStatus("Done");
+		}else {
+			dto.setEditStatus("Failed");
+		}
+
+		
+		return dto;
 	}
 
 	@Override

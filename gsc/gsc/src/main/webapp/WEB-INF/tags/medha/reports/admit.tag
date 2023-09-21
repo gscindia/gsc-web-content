@@ -41,7 +41,7 @@
 				<select id="admit-exam-year" name="cls">
 					<option value="" disabled selected>Choose Examination</option>
 					<c:forEach items="${examList}" varStatus="status" var="exam">
-						<option value="${exam.id }">${exam.name }</option>
+						<option value="${exam.id }">${exam.formattedName }</option>
 					</c:forEach>
 				</select> <label>Examination<span class="red-text">*</span></label>
 			</div>

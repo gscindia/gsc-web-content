@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.gsc.medha.entity.Exam;
+import org.gsc.medha.entity.Pricerow;
 import org.gsc.medha.entity.Venue;
 import org.gsc.medha.page.form.ExamForm;
+import org.gsc.medha.repository.PriceRowRepository;
 import org.gsc.medha.service.VenueService;
 import org.gsc.populator.Populator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class DefaultExamRevPopulator implements Populator<ExamForm, Exam> {
 	VenueService venueService;
 	@Value("${gsc.medha.exam.class}")
 	private String classes;
+	
+	@Autowired
+	PriceRowRepository priceRowRepository;
 	@Override
 	public void populate(ExamForm source, Exam target) {
 
@@ -37,6 +42,10 @@ public class DefaultExamRevPopulator implements Populator<ExamForm, Exam> {
 		target.setName(source.getName());
 		target.setStatus(source.getStatus());
 		target.setClasses(classes);
+		Set<Pricerow> pr = new HashSet<Pricerow>();
+		pr.add(priceRowRepository.findById(1).get());
+		target.setPriceRows(pr);
+		
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public class Exam {
 	Set<Candidate> candidates = new HashSet<>();
 	@ManyToMany
 	@JoinTable(name = "exam2pricerel", joinColumns = @JoinColumn(name = "source"), inverseJoinColumns = @JoinColumn(name = "target"))
-	private Set<PriceRow> priceRows = new HashSet<>();
+	Set<Pricerow> priceRows = new HashSet<>();
 
 	public Exam() {
 
@@ -158,14 +158,14 @@ public class Exam {
 	/**
 	 * @return the priceRows
 	 */
-	public Set<PriceRow> getPriceRows() {
+	public Set<Pricerow> getPriceRows() {
 		return priceRows;
 	}
 
 	/**
 	 * @param priceRows the priceRows to set
 	 */
-	public void setPriceRows(Set<PriceRow> priceRows) {
+	public void setPriceRows(Set<Pricerow> priceRows) {
 		this.priceRows = priceRows;
 	}
 

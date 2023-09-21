@@ -12,13 +12,12 @@ import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.dto.ExamDto;
 import org.gsc.medha.dto.FormADataTableDto;
 import org.gsc.medha.entity.Candidate;
-import org.gsc.medha.entity.Exam;
 import org.gsc.medha.facade.ExamFacade;
 import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;
 import org.gsc.medha.service.ExamService;
-import org.json.JSONObject;
 import org.gsc.populator.Populator;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,7 +40,7 @@ public class ExamController {
 	Populator<Candidate, String[]> marksPreviewTableDataPopulator;
 
 	@ResponseBody
-	@GetMapping
+	@PostMapping
 	public List<ExamDto> getExams() {
 		return examFacade.getAllExam();
 	}

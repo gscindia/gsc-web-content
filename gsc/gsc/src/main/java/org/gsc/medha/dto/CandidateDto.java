@@ -17,6 +17,16 @@ public class CandidateDto {
 	ExamDto exam = new ExamDto();
 	String maskedRollid;
 	String marks;
+	String editStatus;
+	
+
+	public String getEditStatus() {
+		return editStatus;
+	}
+
+	public void setEditStatus(String editStatus) {
+		this.editStatus = editStatus;
+	}
 
 	public String getMarks() {
 		return marks;

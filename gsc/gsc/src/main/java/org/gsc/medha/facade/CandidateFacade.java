@@ -17,7 +17,7 @@ public interface CandidateFacade {
 
 	FormADataTableDto getDataTable(FilterForm form);
 
-	void editCandidate(CandidateForm form);
+	CandidateDto editCandidate(CandidateForm form);
 
 	CandidateDto getCandidate(int id);
 

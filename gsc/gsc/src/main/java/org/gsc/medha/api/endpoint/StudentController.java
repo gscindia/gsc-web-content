@@ -40,9 +40,9 @@ public class StudentController {
 
 	@PostMapping("/edit")
 	@ResponseBody
-	public void editCandidate(@RequestBody CandidateForm form) {
+	public CandidateDto editCandidate(@RequestBody CandidateForm form) {
 		form.setAction("edit");
-		candidateFacade.editCandidate(form);
+		return candidateFacade.editCandidate(form);
 	}
 
 	@PostMapping("/remove/{id}")

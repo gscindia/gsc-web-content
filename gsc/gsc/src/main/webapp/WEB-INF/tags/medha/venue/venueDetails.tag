@@ -40,11 +40,17 @@
 		<div class="row">
 			<p>Recent examinations at this venue:</p>
 			<c:forEach items="${venueItem.exam }" var="exam">
-				<span class="red-text">${exam.name}</span>
-				<span class="${exam.status eq
-						'DONE' ?'done':'pending'}"> <i class="material-icons tiny">${exam.status eq
-						'DONE' ?'done_all':'pending_actions'}</i>
-				</span>
+				<c:choose>
+					<c:when test="${exam.status eq 'DONE' || exam.status eq 'POST'  || exam.status eq 'ACTIVE'}">
+						<span class="green-text">${exam.name}</span>
+						<span class="done"> <i class="material-icons tiny">done_all</i>
+						</span>
+					</c:when>
+					<c:otherwise>
+						<span class="purple-text">${exam.name}</span>
+						<span class="done"> <i class="material-icons tiny">pending_actions</i></span>
+					</c:otherwise>
+				</c:choose>
 				</br>
 
 			</c:forEach>
