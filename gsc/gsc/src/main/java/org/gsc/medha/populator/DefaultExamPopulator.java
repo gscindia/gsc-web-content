@@ -24,6 +24,9 @@ public class DefaultExamPopulator implements Populator<Exam, ExamDto> {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
 		String strDate = formatter.format(source.getDate());
 		target.setDate(strDate);
+		formatter = new SimpleDateFormat("yyyy");
+		strDate = formatter.format(source.getDate());
+		target.setFormattedName("Session-" + strDate);
 		target.setId(source.getId());
 		target.setStatus(source.getStatus());
 		List<Pricerow> mainList = new ArrayList<Pricerow>();

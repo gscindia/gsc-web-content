@@ -1,16 +1,5 @@
 $(document).ready(function() {
-
 	$('#student-school,#student-class').formSelect();
-
-	/*$('#example').DataTable({
-		autoWidth: false,
-		columnDefs: [
-			{
-				targets: ['_all'],
-				className: 'mdc-data-table__cell',
-			},
-		],
-	});*/
 });
 
 function enroll() {
@@ -63,10 +52,14 @@ function editStrudent(event) {
 	} else {
 		var response = callApi('/medha/student/edit', 'POST', formData);
 		if ($.isEmptyObject(response)) {
-			M.toast({ html: 'Something went wrong with server. Try later' });
+			M.toast({ html: "<span class='material-icons red-text'>bug_report</span>&nbsp;Something went wrong. &nbsp; <span class='material-icons blue-text'>call</span> &nbsp;Contact administrator" });
 
-		} else {
-			M.toast({ html: 'Task Complete ', completeCallback: function() { location.reload() } });
+		}else if(response.editStatus!='Done'){
+			
+			M.toast({ html: "<span class='material-icons red-text'>error</span>&nbsp; Could not update at this moment." });
+		} 
+		else {
+			M.toast({ html: "<span class='material-icons green-text'>done_all</span>&nbsp; Details Updated!"});
 		}
 	}
 }

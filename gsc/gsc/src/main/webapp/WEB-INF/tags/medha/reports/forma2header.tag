@@ -4,7 +4,7 @@
 </h5>
 <p><Strong>Code No. ${candidate[0].school.venue.code}</Strong></p>
 <p>
-	<strong>School : ${candidate[0].school.name}</strong>
+	<strong class="truncate">School : ${candidate[0].school.name}</strong>
 </p>
 <p style="visibility:${address}">
 <strong>Address : ${candidate[0].school.address}</strong>

@@ -6,6 +6,7 @@ import java.util.List;
 public class ExamDto {
 	int id;
 	String name;
+	String formattedName;
 	String date;
 	String status;
 	List<VenueDto> venue = new ArrayList<>();
@@ -45,6 +46,14 @@ public class ExamDto {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getFormattedName() {
+		return formattedName;
+	}
+
+	public void setFormattedName(String formattedName) {
+		this.formattedName = formattedName;
 	}
 
 	/**

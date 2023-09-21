@@ -9,6 +9,7 @@
 <html>
 <head>
 <common:script />
+<common:highchartsScripts></common:highchartsScripts>
 <script type="text/javascript" src="../../asset/js/exam.js"></script>
 <common:style />
 <meta charset="ISO-8859-1">

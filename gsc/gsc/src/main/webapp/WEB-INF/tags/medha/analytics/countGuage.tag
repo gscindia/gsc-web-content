@@ -2,7 +2,7 @@
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/medha"%>
 <%@ attribute name="year"%>
 <%@ attribute name="size"%>
-<common:highchartsScripts></common:highchartsScripts>
+
 <script type="text/javascript"
 	src="../../asset/js/charts/enrollmentGuage.js"></script>
 
