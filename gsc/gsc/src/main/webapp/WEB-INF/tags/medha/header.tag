@@ -9,7 +9,7 @@
 			<li><a href="<c:url value = "/medhasandhan/candidate"/>">Enrollment</a></li>
 			<li><a href="<c:url value = "/medhasandhan/exam"/>">Exams</a></li>
 			<li><a href="<c:url value = "/medhasandhan/school"/>">Schools</a></li>
-			<li><a href="<c:url value="/medhasandhan/mark-sheet" />">Marks</a></li>
+			<li><a class="dropdown-trigger" href="#!" data-target="marks-sheet-nav-child">Results<i class="material-icons right">arrow_drop_down</i></a></li>
 			<li><a href="<c:url value="/medhasandhan/analytics" />">Analytics</a></li>
 		</ul>
 	</div>
@@ -19,6 +19,11 @@
 	<li><a href="<c:url value = "/medhasandhan/candidate"/>">Enrollment</a></li>
 	<li><a href="<c:url value = "/medhasandhan/exam"/>">Exams</a></li>
 	<li><a href="<c:url value = "/medhasandhan/school"/>">Schools</a></li>
-	<li><a href="<c:url value="/medhasandhan/mark-sheet" />">Marks</a></li>
+	<li><a href="<c:url value="/medhasandhan/upload-result" />">Results</a></li>
 	<li><a href="<c:url value="/medhasandhan/analytics" />">Analytics</a></li>
+</ul>
+<ul id="marks-sheet-nav-child" class="dropdown-content">
+  <li><a href="<c:url value="/medhasandhan/upload-result" />">Upload Marks</a></li>
+  <li><a href="<c:url value="/medhasandhan/issue-mark-sheet" />">Issue Marks sheet</a></li>
+  
 </ul>

@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -143,10 +144,26 @@ public class MedhaPageController {
 		return "/medha/analytics";
 	}
 
-	@GetMapping("/mark-sheet")
-	public String showMarksheet(Model model, HttpSession session) {
+	@GetMapping("/upload-result")
+	public String uploadMarks(Model model, HttpSession session) {
 		session.removeAttribute("candidateList");
 		model.addAttribute("candidates");
-		return "/medha/marksheet";
+		return "/medha/uploadResult";
+	}
+	@GetMapping("/issue-mark-sheet")
+	public String showMarksheets(Model model) {
+		model.addAttribute("schools", schoolFacade.getAllSchool());
+		model.addAttribute("examList", examFacade.getAllExam());
+		return "/medha/issueMarkSheet";
+	}
+	@GetMapping("/view-ms/{schoolId}/{examId}")
+	public String printMarkSheet(Model model, @PathVariable int schoolId, @PathVariable int examId,
+			@RequestParam(defaultValue = "1") int page) {
+		FilterForm form = new FilterForm();
+		form.setSchool(schoolId);
+		form.setExam(examId);
+		List<CandidateDto> marksList = schoolFacade.getMarks(form);
+		model.addAttribute("candidate", marksList);
+		return "/medha/previews/markSheet";
 	}
 }

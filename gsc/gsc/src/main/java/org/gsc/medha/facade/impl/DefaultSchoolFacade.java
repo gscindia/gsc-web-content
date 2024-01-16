@@ -32,9 +32,10 @@ public class DefaultSchoolFacade implements SchoolFacade {
 	Populator<Candidate, CandidateDto> candidatePopulator;
 	@Resource(name = "filterPopulator")
 	Populator<FilterForm, Candidate> filterPopulator;
-	@Resource(name="admitCardPopulator")
+	@Resource(name = "admitCardPopulator")
 	Populator<Candidate, CandidateDto> admitCardPopulator;
-	
+	@Resource(name = "markSheetPopulator")
+	Populator<Candidate, CandidateDto> markSheetPopulator;
 
 	@Override
 	public SchoolDto add(SchoolForm form) {
@@ -106,7 +107,7 @@ public class DefaultSchoolFacade implements SchoolFacade {
 		return response;
 
 	}
-	
+
 	@Override
 	public List<CandidateDto> getAdmitCards(FilterForm filter) {
 
@@ -115,6 +116,15 @@ public class DefaultSchoolFacade implements SchoolFacade {
 		filterPopulator.populate(filter, candidate);
 		admitCardPopulator.populateAll(schoolService.getFormAByExam(candidate), candidatesDto);
 		return candidatesDto;
+	}
+
+	@Override
+	public List<CandidateDto> getMarks(FilterForm filter) {
+		List<CandidateDto> marksDto = new ArrayList<>();
+		Candidate candidate = new Candidate();
+		filterPopulator.populate(filter, candidate);
+		markSheetPopulator.populateAll(schoolService.getFormAByExam(candidate), marksDto);
+		return marksDto;
 	}
 
 }

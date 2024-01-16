@@ -123,4 +123,25 @@ public class DefaultExamService implements ExamService {
 
 	}
 
+	@Override
+	public String resolveGrade(int marks) {
+		String grade;
+		if (marks >= 90)
+			grade = "A++";
+		else if (marks >= 80)
+			grade = "A+";
+		else if (marks >= 70)
+			grade = "A";
+		else if (marks >= 60)
+			grade = "B+";
+		else if (marks >= 50)
+			grade = "B";
+		else if (marks >= 40)
+			grade = "C";
+		else
+			grade = "D";
+
+		return grade;
+
+	}
 }

@@ -30,4 +30,6 @@ public interface ExamService {
 
 	List<Candidate> getAllEnrolledCandidates(Exam exam);
 
+	String resolveGrade(int marks);
+
 }

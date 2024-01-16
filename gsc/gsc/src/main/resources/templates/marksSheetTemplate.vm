@@ -1,0 +1,10 @@
+#set($title = "Hello PDF")
+<html>
+<head>
+    <title>$title</title>
+</head>
+<body>
+    <h1>$title</h1>
+    <p>This is a sample PDF generated using Velocity in Spring Boot.</p>
+</body>
+</html>

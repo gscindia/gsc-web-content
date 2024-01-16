@@ -57,3 +57,6 @@ function validateTable() {
 	});
 	$.unblockUI();
 }
+function printMarksheet(){
+	window.open('view-ms/'+$('#ms-school').val()+'/'+$('#ms-exam-year').val(),'_blank');
+}

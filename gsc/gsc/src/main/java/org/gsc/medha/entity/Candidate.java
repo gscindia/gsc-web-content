@@ -33,6 +33,7 @@ public class Candidate {
 	Exam exam = new Exam();
 	String contact;
 	String notification;
+	@Column(name="marks")
 	Integer marks;
 
 	public Integer getMarks() {
