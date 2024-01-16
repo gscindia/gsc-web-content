@@ -22,4 +22,6 @@ public interface SchoolFacade {
 	SchoolDto add(SchoolForm form);
 
 	List<CandidateDto> getAdmitCards(FilterForm filter);
+
+	List<CandidateDto> getMarks(FilterForm filter);
 }

@@ -18,6 +18,7 @@ public class CandidateDto {
 	String maskedRollid;
 	String marks;
 	String editStatus;
+	String grade;
 	
 
 	public String getEditStatus() {
@@ -172,6 +173,14 @@ public class CandidateDto {
 
 	public void setMaskedRollid(String maskedRollid) {
 		this.maskedRollid = maskedRollid;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
 	
