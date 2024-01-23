@@ -1,5 +1,6 @@
 package org.gsc.medha.facade;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -28,6 +29,8 @@ public interface ExamFacade {
 	List<Candidate> readMarksFromFile(InputStream is) throws IOException;
 
 	Map<Integer, Integer> saveMarksheet(List<Candidate> cand);
+
+	ByteArrayOutputStream  preFillData(FilterForm form) throws IOException;
 
 
 

@@ -1,5 +1,7 @@
 package org.gsc.medha.web.page.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,11 +20,13 @@ import org.gsc.medha.facade.VenueFacade;
 import org.gsc.medha.page.form.FilterForm;
 import org.gsc.populator.Populator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -148,6 +152,8 @@ public class MedhaPageController {
 	public String uploadMarks(Model model, HttpSession session) {
 		session.removeAttribute("candidateList");
 		model.addAttribute("candidates");
+		model.addAttribute("schools", schoolFacade.getAllSchool());
+		model.addAttribute("examList", examFacade.getAllExam());
 		return "/medha/uploadResult";
 	}
 	@GetMapping("/issue-mark-sheet")
@@ -165,5 +171,20 @@ public class MedhaPageController {
 		List<CandidateDto> marksList = schoolFacade.getMarks(form);
 		model.addAttribute("candidate", marksList);
 		return "/medha/previews/markSheet";
+	}
+	@GetMapping("/pre-filled-template")
+	public ResponseEntity<byte[]> downloadPrefilledTemplate(@RequestParam("schoolId") int schoolId,@RequestParam("examId") int examId) throws IOException {
+		FilterForm form = new FilterForm();
+		form.setSchool(schoolId);
+		form.setExam(examId);
+		ByteArrayOutputStream outputStream = examFacade.preFillData(form);
+		HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.setContentDispositionFormData("attachment", "Prefilled-"+System.currentTimeMillis()+".xlsx");
+
+        // Convert byte array to ResponseEntity
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(outputStream.toByteArray());
 	}
 }

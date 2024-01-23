@@ -41,6 +41,51 @@
 						<a class="waves-effect amber btn right" id="btn-preview-marks"><i
 							class="material-icons left">preview</i>Preview</a>
 					</form>
+					
+					
+					<div class="row">
+					<h3 class="center grey-text">Or</h3>
+						<div class="col s12">
+
+						<form action="/medhasandhan/pre-filled-template" method="get">
+							<div class="row">
+								<div class="col s12 input-field">
+									<select id="ms-exam-year" name="examId">
+										<option value="" disabled selected>Choose Examination</option>
+										<c:forEach items="${examList}" varStatus="status" var="exam">
+											<option value="${exam.id }">${exam.formattedName }</option>
+										</c:forEach>
+									</select> <label>Examination<span class="red-text">*</span></label>
+								</div>
+
+
+							</div>
+							<div class="row">
+								<div class="col s12 input-field">
+									<select id="ms-school" name="schoolId">
+										<option value="" disabled selected>Choose your school</option>
+										<c:forEach items="${schools }" var="school">
+											<option value="${school.id }">${school.name }</option>
+										</c:forEach>
+									</select> <label>Select School<span class="red-text">*</span></label>
+								</div>
+
+
+								<button class="btn waves-effect amber btn right"
+									 type="submit" 
+									>
+									<i class="material-icons right ">print</i>Download Filled Template
+								</button>
+							</div>
+						</form>
+
+						</div>
+					</div>
+					
+					
+					
+					
+					
 				</div>
 				<div class="col s7">
 					<div class="row">
