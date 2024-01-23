@@ -1,5 +1,6 @@
 package org.gsc.medha.facade.impl;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -15,11 +16,13 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.dto.ExamDto;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.facade.ExamFacade;
+import org.gsc.medha.facade.SchoolFacade;
 import org.gsc.medha.page.form.CandidateForm;
 import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;
@@ -27,6 +30,7 @@ import org.gsc.medha.repository.CandidateRepository;
 import org.gsc.medha.service.CandidateService;
 import org.gsc.medha.service.ExamService;
 import org.gsc.populator.Populator;
+import org.gsc.utility.GscUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -52,6 +56,8 @@ public class DefaultExamFacade implements ExamFacade {
 	CandidateService candidateService;
 	@Autowired
 	CandidateRepository candidateRepository;
+	@Autowired
+	SchoolFacade schoolFacade;
 
 	@Override
 	public ExamDto createExam(ExamForm form) {
@@ -73,12 +79,12 @@ public class DefaultExamFacade implements ExamFacade {
 	@Override
 	public CandidateDto addCandidate(CandidateForm source) {
 		CandidateDto target = new CandidateDto();
-		if(examService.getActiveExam() !=null) {
+		if (examService.getActiveExam() != null) {
 			Candidate candidate = new Candidate();
 			candiRevPopulator.populate(source, candidate);
 			candidate = examService.registerCandidate(candidate);
 			candidatePopulator.populate(candidate, target);
-		}else {
+		} else {
 			target.setRoll("-1");
 		}
 		return target;
@@ -183,6 +189,30 @@ public class DefaultExamFacade implements ExamFacade {
 			candidateRepository.saveAll(tobeSaved);
 		}
 		return idMarksMap;
+	}
+
+	@Override
+	public ByteArrayOutputStream preFillData(FilterForm form) throws IOException {
+
+		Workbook workbook = new XSSFWorkbook();
+		Sheet sheet = workbook.createSheet("Sheet1");
+		Row headerRow = sheet.createRow(0);
+		headerRow.createCell(0).setCellValue("Roll");
+		headerRow.createCell(1).setCellValue("Class");
+		headerRow.createCell(2).setCellValue("Marks");
+		List<CandidateDto> candidateList = schoolFacade.filteFormA(form);
+		for (int row = 0; row < candidateList.size(); row++) {
+			Row dataRow = sheet.createRow(row+1);
+			dataRow.createCell(0).setCellValue(candidateList.get(row).getRoll());
+			dataRow.createCell(1).setCellValue(GscUtils.romanToInteger(candidateList.get(row).getCls()));
+			dataRow.createCell(2).setCellValue("");
+		}
+
+		// Convert workbook to byte array
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		workbook.write(outputStream);
+		workbook.close();
+		return outputStream;
 	}
 
 	public String formatNumbers(String str) {
