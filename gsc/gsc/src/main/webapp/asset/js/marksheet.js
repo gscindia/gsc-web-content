@@ -15,12 +15,13 @@ $(document).ready(function() {
 			var marksTable = $('#preview-marks-table');
 			marksDataTable = marksTable.DataTable({
 				ajax: { url: "/medha/exam/preview-marks", type: 'POST' },
-
+				"ordering": false,
 				columnDefs: [
 					{
 						targets: ['_all'],
 						className: 'mdc-data-table__cell'
 					},
+
 
 				],
 				initComplete: function(settings, json) { validateTable(); }
@@ -57,6 +58,6 @@ function validateTable() {
 	});
 	$.unblockUI();
 }
-function printMarksheet(){
-	window.open('view-ms/'+$('#ms-school').val()+'/'+$('#ms-exam-year').val(),'_blank');
+function printMarksheet() {
+	window.open('view-ms/' + $('#ms-school').val() + '/' + $('#ms-exam-year').val(), '_blank');
 }
