@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 	$('#btn-save-marks').click(function() {
 		response = callApi('/medha/exam/save-marks', 'GET', "");
-
+		M.toast({ html: '<p>Marks Uploaded!</p>'});
 	});
 });
 
