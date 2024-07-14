@@ -35,6 +35,7 @@ public class Candidate {
 	String notification;
 	@Column(name="marks")
 	Integer marks;
+	Integer attendance;
 
 	public Integer getMarks() {
 		return marks;
@@ -187,7 +188,17 @@ public class Candidate {
 		this.contact = contact;
 	}
 
-	
+	public Integer getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(Integer attendance) {
+		this.attendance = attendance;
+	}
+
+	public void updateAttendance() {
+		this.attendance = 1;
+	}
 
 	
 

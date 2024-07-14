@@ -50,18 +50,6 @@ public class GscSecurity {
 		return hexString.toString();
 	}
 
-	public String decodeQRCode(byte[] qrCodeImage) throws IOException, NotFoundException {
-		BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(qrCodeImage));
-
-		Map<DecodeHintType, Object> hints = new HashMap<>();
-		hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
-
-		BinaryBitmap binaryBitmap = new BinaryBitmap(
-				new HybridBinarizer(new BufferedImageLuminanceSource(bufferedImage)));
-		Result result = new MultiFormatReader().decode(binaryBitmap, hints);
-
-		return result.getText();
-	}
 
 	public String encrypt(String value) {
 		try {

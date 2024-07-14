@@ -1,6 +1,8 @@
 package org.gsc.medha.api.endpoint;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;
 import org.gsc.medha.service.ExamService;
 import org.gsc.populator.Populator;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -60,25 +64,28 @@ public class ExamController {
 	}
 
 	@PostMapping("/upload-attendence")
-
 	public JSONObject uploadAttendance(@RequestParam("file") MultipartFile file) {
 
 		try {
 			if (file.isEmpty()) {
 				throw new IllegalArgumentException("File is empty");
 			}
-
-			// Read the content of the MultipartFile as a JSON string
-			String jsonText = new String(file.getBytes());
-
-			// Parse the JSON string to a JSONObject
-			JSONObject jsonObject = new JSONObject(jsonText);
-			examService.updateAttendance(jsonObject);
-
-			return jsonObject;
+			String line;
+			BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
+			JSONArray dataArray = new JSONArray();
+			while ((line = reader.readLine()) != null) {
+				dataArray.put(line);
+			}
+			JSONObject req = new JSONObject();
+			req.put("data", dataArray);
+			JSONObject response = examService.updateAttendance(req);
+			
+			return response;
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new IllegalArgumentException("Error reading file");
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new IllegalArgumentException("Invalid JSON input");
 		}
 	}
