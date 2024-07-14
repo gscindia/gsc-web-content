@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib prefix="reports" tagdir="/WEB-INF/tags/medha/reports"%>
 <%@ attribute name="entry" type="org.gsc.medha.dto.CandidateDto"%>
 <script src="/asset/js/jquery-3.6.0-min.js"></script>
@@ -24,6 +25,6 @@
 		
 </div>
 <div class="col s3">
-		<img class='responsive-img' src="/qrcode/${entry.maskedRollid}"/>
+		<img class='responsive-img' src="<c:url value ='/qrcode?data=${fn:escapeXml(entry.maskedRollid)}'/>">
 </div>
 </div>

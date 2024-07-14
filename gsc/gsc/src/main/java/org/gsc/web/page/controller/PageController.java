@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,8 @@ public class PageController {
 		return "auth";
 	}
 	
-	@GetMapping(value = "/qrcode/{data}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<byte[]> generateQRCode(@PathVariable String data) {
+	@GetMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> generateQRCode(@Param("data") String data) {
         int width = 300;
         int height = 300;
 
