@@ -37,6 +37,7 @@ public class DefaultCandRevPopulator implements Populator<CandidateForm, Candida
 			target.setExam(examService.getActiveExam());
 			target.setGender(source.getGender());
 			target.setNotification("NOT_SENT");
+			target.setContact(source.getMobile());
 		}
 	}
 

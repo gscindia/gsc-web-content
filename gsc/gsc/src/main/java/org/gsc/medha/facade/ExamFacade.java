@@ -32,6 +32,8 @@ public interface ExamFacade {
 
 	ByteArrayOutputStream  preFillData(FilterForm form) throws IOException;
 
+	List<CandidateDto> addCandidates(List<CandidateForm> source);
 
+	List<CandidateForm> readBulkEnrollmentFile(InputStream is) throws IOException;
 
 }

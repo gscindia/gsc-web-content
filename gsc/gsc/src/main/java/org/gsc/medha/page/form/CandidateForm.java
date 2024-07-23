@@ -9,6 +9,7 @@ public class CandidateForm {
 	String status;
 	String gender;
 	String action;
+	String mobile;
 	
 	
 
@@ -110,6 +111,14 @@ public class CandidateForm {
 
 	public void setAction(String action) {
 		this.action = action;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	
 	

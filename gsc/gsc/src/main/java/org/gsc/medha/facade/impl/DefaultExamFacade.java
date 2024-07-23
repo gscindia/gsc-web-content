@@ -8,9 +8,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -91,6 +95,13 @@ public class DefaultExamFacade implements ExamFacade {
 	}
 
 	@Override
+	public List<CandidateDto> addCandidates(List<CandidateForm> sourceList) {
+		List<CandidateDto> result = new ArrayList<CandidateDto>();
+		result = sourceList.stream().map(item -> addCandidate(item)).toList();
+		return result;
+	}
+
+	@Override
 	public List<CandidateDto> filterFormB(FilterForm form) {
 		List<CandidateDto> candidates = new ArrayList<>();
 		Candidate candidate = new Candidate();
@@ -117,6 +128,56 @@ public class DefaultExamFacade implements ExamFacade {
 		if (exam != null)
 			examPopulator.populate(exam, dto);
 		return dto;
+	}
+
+	@Override
+	public List<CandidateForm> readBulkEnrollmentFile(InputStream is) throws IOException {
+		List<CandidateForm> finalData = new ArrayList<>();
+
+		try (InputStream inputStream = is) {
+			Workbook workbook = WorkbookFactory.create(inputStream);
+
+			for (int sheetIndex = 0; sheetIndex < workbook.getNumberOfSheets(); sheetIndex++) {
+				Sheet sheet = workbook.getSheetAt(sheetIndex);
+
+				Iterator<Row> rowIterator = sheet.iterator();
+				boolean firstRow = true;
+
+				while (rowIterator.hasNext()) {
+
+					if (firstRow) {
+						rowIterator.next();
+						firstRow = false;
+						continue;
+					}
+
+					Row row = rowIterator.next();
+					Iterator<Cell> cellIterator = row.cellIterator();
+					CandidateForm rowData = new CandidateForm();
+					if (cellIterator.hasNext()) {
+						String name = row.getCell(0).toString();
+						String gender = row.getCell(1).toString();
+						String cls = formatNumbers(row.getCell(2).toString());
+						String contactNumber = formatNumbers(row.getCell(3) == null ? "" : row.getCell(3).toString());
+						if (Objects.isNull(name) || Objects.isNull(gender) || Objects.isNull(cls)) {
+							rowData = null;
+						} else {
+							rowData.setName(name.toUpperCase());
+							rowData.setGender(gender.toUpperCase());
+							rowData.setCls(cls);
+							rowData.setMobile(contactNumber);
+						}
+
+					}
+					if (Objects.nonNull(rowData))
+						finalData.add(rowData);
+
+				}
+
+			}
+		}
+
+		return finalData;
 	}
 
 	@Override
@@ -202,7 +263,7 @@ public class DefaultExamFacade implements ExamFacade {
 		headerRow.createCell(2).setCellValue("Marks");
 		List<CandidateDto> candidateList = schoolFacade.filteFormA(form);
 		for (int row = 0; row < candidateList.size(); row++) {
-			Row dataRow = sheet.createRow(row+1);
+			Row dataRow = sheet.createRow(row + 1);
 			dataRow.createCell(0).setCellValue(candidateList.get(row).getRoll());
 			dataRow.createCell(1).setCellValue(GscUtils.romanToInteger(candidateList.get(row).getCls()));
 			dataRow.createCell(2).setCellValue("");
@@ -216,9 +277,15 @@ public class DefaultExamFacade implements ExamFacade {
 	}
 
 	public String formatNumbers(String str) {
-		double number = Double.parseDouble(str);
-		int intValue = (int) number; // Remove decimal places by converting to int
-		return String.valueOf(intValue);
+		if(StringUtils.isNoneEmpty(str)) {
+			double number = Double.parseDouble(str);
+			int intValue = (int) number; // Remove decimal places by converting to int
+			return String.valueOf(intValue);
+		}
+		else {
+			return null;
+		}
+		
 	}
 
 }
