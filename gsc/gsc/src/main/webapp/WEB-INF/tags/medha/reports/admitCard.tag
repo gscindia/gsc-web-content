@@ -24,6 +24,10 @@
 		
 </div>
 <div class="col s3">
-		<img class='responsive-img' src="/qrcode/${entry.maskedRollid}"/>
+		<c:url var="encodedUrl" value ='/qrcode'>
+			<c:param name="data" value="${entry.maskedRollid}" />
+		</c:url>
+		<img class='responsive-img' src="${encodedUrl }">
+
 </div>
 </div>

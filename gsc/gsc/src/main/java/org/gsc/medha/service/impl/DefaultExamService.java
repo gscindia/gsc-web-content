@@ -26,6 +26,8 @@ public class DefaultExamService implements ExamService {
 	VenueRepository venueRepository;
 	@Autowired
 	CandidateRepository candidateRepository;
+	@Autowired
+	GscSecurity gscSecurity;
 
 	@Override
 	public Exam save(Exam exam) {
@@ -92,29 +94,18 @@ public class DefaultExamService implements ExamService {
 		List<String> listOfHash = new ArrayList<>();
 		jsonarray.forEach(array -> listOfHash.add(array.toString()));
 		List<Candidate> candidates = candidateRepository.getAllStudent(getPostExam(), "ACTIVE");
-		int count = 0;
-		candidates.forEach(can -> {
-			try {
+		candidates = candidates.stream()
+				.filter(candidate -> listOfHash.contains(
+						gscSecurity.encrypt(String.valueOf(candidate.getId())))).toList();
+		candidates.forEach(Candidate::updateAttendance);
+		
+		candidateRepository.saveAll(candidates);
+		
+		JSONObject summary = new JSONObject();
+		summary.put("inbound", listOfHash.size());
+		summary.put("processed", candidates.size());
 
-				String hash = GscSecurity.wrap(String.valueOf(can.getId()));
-				if ("82a93b152b275d4c8de67c3d05c9b00e92477eeb024f117c7632cdb26fd874aa".equals(hash)) {
-					System.out.println(can.getId());
-				}
-
-				if (listOfHash.contains(hash)) {
-
-					// System.out.println(can.getId());
-				} else {
-					// System.out.println("ID:" + can.getId()+" Roll: "+can.getRoll()+"
-					// "+can.getSection()+" S Hash: "+hash);
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		});
-
-		return null;
+		return summary;
 	}
 
 	public List<Candidate> getAllEnrolledCandidates(Exam exam) {

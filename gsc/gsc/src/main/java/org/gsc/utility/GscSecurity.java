@@ -18,7 +18,22 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.util.Base64;
+
+@Component
 public class GscSecurity {
+	@Value("${encrypt.secret-key}")
+	private String secretKey;
+
+	@Value("${encrypt.iv}")
+	private String iv;
+
 	@Deprecated
 	public static String wrap(String message) throws Exception {
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -34,16 +49,36 @@ public class GscSecurity {
 
 		return hexString.toString();
 	}
-	public String decodeQRCode(byte[] qrCodeImage) throws IOException, NotFoundException {
-        BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(qrCodeImage));
 
-        Map<DecodeHintType, Object> hints = new HashMap<>();
-        hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
 
-        BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(bufferedImage)));
-        Result result = new MultiFormatReader().decode(binaryBitmap, hints);
+	public String encrypt(String value) {
+		try {
+			IvParameterSpec ivSpec = new IvParameterSpec(iv.getBytes());
+			SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), "AES");
 
-        return result.getText();
-    }
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+
+			byte[] encrypted = cipher.doFinal(value.getBytes());
+			return Base64.getEncoder().encodeToString(encrypted);
+		} catch (Exception ex) {
+			throw new RuntimeException("Error encrypting: " + ex.getMessage());
+		}
+	}
+
+	public String decrypt(String encrypted) {
+		try {
+			IvParameterSpec ivSpec = new IvParameterSpec(iv.getBytes());
+			SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), "AES");
+
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+
+			byte[] original = cipher.doFinal(Base64.getDecoder().decode(encrypted));
+			return new String(original);
+		} catch (Exception ex) {
+			throw new RuntimeException("Error decrypting: " + ex.getMessage());
+		}
+	}
 
 }
