@@ -2,14 +2,14 @@ package org.gsc.medha.populator;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.SchoolDto;
 import org.gsc.medha.dto.VenueDto;
 import org.gsc.medha.entity.School;
 import org.gsc.medha.entity.Venue;
 import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component("schoolWebPopulator")
 public class DefaultSchoolPopulator implements Populator<School, SchoolDto> {

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.dto.FormADataTableDto;
 import org.gsc.medha.dto.notification.TemplateMessage;
@@ -23,6 +21,8 @@ import org.gsc.service.NotificationService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component
 public class DefaultCandidateFacade implements CandidateFacade {

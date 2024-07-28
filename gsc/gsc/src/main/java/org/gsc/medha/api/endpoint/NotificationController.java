@@ -3,7 +3,6 @@ package org.gsc.medha.api.endpoint;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 
 import org.gsc.medha.dto.notification.TemplateMessage;
 import org.gsc.medha.facade.CandidateFacade;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/notify")

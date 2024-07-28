@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.ExamDto;
 import org.gsc.medha.dto.VenueDto;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.Venue;
 import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component("venuePopulator")
 public class DefaultVenuePopulator implements Populator<Venue,VenueDto> {

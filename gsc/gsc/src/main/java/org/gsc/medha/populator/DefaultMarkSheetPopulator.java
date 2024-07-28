@@ -2,12 +2,13 @@ package org.gsc.medha.populator;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.service.ExamService;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component("markSheetPopulator")
 public class DefaultMarkSheetPopulator extends DefaultCandidatePopulator {

@@ -5,8 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.notification.TemplateMessage;
 import org.gsc.medha.service.MedhaNotificationService;
 import org.gsc.service.NotificationService;
@@ -16,6 +14,8 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+
+import jakarta.annotation.Resource;
 
 @Component("medhaRegNotificationService")
 public class DefaultMedhaRegistrationNotificationService implements MedhaNotificationService {

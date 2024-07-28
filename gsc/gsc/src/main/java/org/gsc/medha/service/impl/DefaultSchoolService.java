@@ -8,8 +8,7 @@ import java.util.Optional;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+
 
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
@@ -20,6 +19,9 @@ import org.gsc.medha.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
 @Component
 public class DefaultSchoolService implements SchoolService {

@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
 
 import org.gsc.medha.dto.ExamDto;
 import org.gsc.medha.dto.PricerowDto;
@@ -12,6 +11,8 @@ import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.Pricerow;
 import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component("examPopulator")
 public class DefaultExamPopulator implements Populator<Exam, ExamDto> {

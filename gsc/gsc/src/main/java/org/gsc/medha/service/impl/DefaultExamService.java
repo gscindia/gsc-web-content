@@ -96,7 +96,7 @@ public class DefaultExamService implements ExamService {
 		List<Candidate> candidates = candidateRepository.getAllStudent(getPostExam(), "ACTIVE");
 		candidates = candidates.stream()
 				.filter(candidate -> listOfHash.contains(
-						gscSecurity.encrypt(String.valueOf(candidate.getId())))).toList();
+						gscSecurity.encrypt(String.valueOf(candidate.getId())))).collect(Collectors.toList());
 		candidates.forEach(Candidate::updateAttendance);
 		
 		candidateRepository.saveAll(candidates);

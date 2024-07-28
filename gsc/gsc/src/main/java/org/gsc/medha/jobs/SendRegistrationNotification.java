@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.notification.TemplateMessage;
 import org.gsc.medha.facade.CandidateFacade;
 import org.gsc.medha.service.ExamService;
@@ -18,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component
 public class SendRegistrationNotification {

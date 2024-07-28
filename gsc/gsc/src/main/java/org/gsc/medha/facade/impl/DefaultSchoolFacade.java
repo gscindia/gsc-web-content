@@ -3,8 +3,6 @@ package org.gsc.medha.facade.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.dto.FormAPageableDto;
 import org.gsc.medha.dto.SchoolDto;
@@ -18,6 +16,8 @@ import org.gsc.populator.Populator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+
+import jakarta.annotation.Resource;
 
 @Component
 public class DefaultSchoolFacade implements SchoolFacade {

@@ -3,8 +3,6 @@ package org.gsc.medha.facade.impl;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.SchoolGenderDataDto;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.School;
@@ -14,6 +12,8 @@ import org.gsc.medha.service.SchoolService;
 import org.gsc.populator.Populator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.Resource;
 
 @Component
 public class DefaultMedhaSandhanAnalyticsFacade implements MedhaSandhanAnalyticsFacade {

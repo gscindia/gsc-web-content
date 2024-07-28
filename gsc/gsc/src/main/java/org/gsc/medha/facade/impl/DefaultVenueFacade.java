@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.gsc.medha.dto.VenueDto;
 import org.gsc.medha.entity.Venue;
 import org.gsc.medha.facade.VenueFacade;
@@ -19,6 +17,8 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+
+import jakarta.annotation.Resource;
 
 @Component
 public class DefaultVenueFacade implements VenueFacade {

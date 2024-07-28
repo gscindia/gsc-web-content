@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PriceRowRepository extends CrudRepository<Pricerow, Integer> {
-	@Query("Select pr from Pricerow pr where pr.exam in ?1")
-	List<Pricerow> getPriceRows(Set<Exam> exam);
+	// @Query("Select pr from Pricerow pr where pr.exam in ?1")
+	// List<Pricerow> getPriceRows(Set<Exam> exam);
 
 }

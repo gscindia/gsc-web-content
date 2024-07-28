@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.dto.ExamDto;
@@ -31,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import jakarta.annotation.Resource;
 
 @Controller
 @RequestMapping("/medhasandhan")
