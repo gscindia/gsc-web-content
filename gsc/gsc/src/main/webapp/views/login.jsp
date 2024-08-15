@@ -1,0 +1,1 @@
+<h1>Static login page</h1>

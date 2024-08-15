@@ -1,29 +1,26 @@
 package org.gsc.medha.entity;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int pk;	
-	String id;
+public class User implements UserDetails{
+	@Id		
+	String username;
 	String name;
 	String password;
-	public int getPk() {
-		return pk;
+	String role;
+		
+	public String getUsername() {
+		return username;
 	}
-	public void setPk(int pk) {
-		this.pk = pk;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getName() {
 		return name;
@@ -37,7 +34,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = "ADMIN";
+	}
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+	}
 	
 	
 }

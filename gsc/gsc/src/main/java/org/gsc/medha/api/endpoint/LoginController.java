@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 	
-	@Autowired
-	private UserRepository userRepository; 
+	// @Autowired
+	// private UserRepository userRepository; 
 	
-	@PostMapping("/auth")
-	@ResponseBody
-	public UserDto login(@RequestBody LoginForm form) throws Exception {
-		UserDto userDto = new UserDto();
+	// @PostMapping("/do-login")
+	// @ResponseBody
+	// public UserDto login(@RequestBody LoginForm form) throws Exception {
+	// 	UserDto userDto = new UserDto();
 		
-		User user =  userRepository.authenticate(form.getId(), GscSecurity.wrap(form.getPassword()));
-		if(null!= user) {
-			userDto.setName(user.getName());
-			userDto.setAuthStatus("true");
-		}else {
-			userDto.setAuthStatus("false");
-		}
+	// 	User user =  userRepository.authenticate(form.getId(), GscSecurity.wrap(form.getPassword()));
+	// 	if(null!= user) {
+	// 		userDto.setName(user.getName());
+	// 		//userDto.setAuthStatus("true");
+	// 	}else {
+	// 		//userDto.setAuthStatus("false");
+	// 	}
 		
-		return userDto;
-	}
+	// 	return userDto;
+	// }
 }

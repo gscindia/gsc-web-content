@@ -11,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -19,10 +18,6 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 @Controller
 public class PageController {
-	@GetMapping("/page/static/login")
-	public String login() {
-		return "auth";
-	}
 
 	@GetMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
 	public ResponseEntity<byte[]> generateQRCode(@Param("data") String data) {

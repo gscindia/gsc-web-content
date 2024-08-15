@@ -51,7 +51,7 @@
 			</div>
 			<div class="row">
 				<div class="col s8">
-					<form id="loginform">
+					<form id="loginform" action="/security/do-login" method="GET">
 						<div class="row">
 							<div class="input-field col s12">
 								<i class="material-icons prefix">face</i> <input id="email"
@@ -67,7 +67,7 @@
 								<label for="password">Password</label>
 							</div>
 						</div>
-						<button class="btn waves-effect waves-light" id="auth-id"  type="button"
+						<button class="btn waves-effect waves-light" id="auth-id"  type="submit"
 							name="action">
 							Sign in <i class="material-icons right">fingerprint</i>
 						</button>
@@ -97,7 +97,7 @@
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				© 2022 Copyright Text <a class="grey-text text-lighten-4 right"
+				ï¿½ 2022 Copyright Text <a class="grey-text text-lighten-4 right"
 					href="#!">More Links</a>
 			</div>
 		</div>

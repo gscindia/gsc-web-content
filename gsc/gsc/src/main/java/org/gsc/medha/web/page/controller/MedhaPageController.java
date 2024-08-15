@@ -36,6 +36,7 @@ import jakarta.annotation.Resource;
 @Controller
 @RequestMapping("/medhasandhan")
 public class MedhaPageController {
+	private static final String BASE_PATH = "medha";
 	@Autowired
 	SchoolFacade schoolFacade;
 	@Autowired
@@ -49,7 +50,7 @@ public class MedhaPageController {
 
 	@GetMapping
 	public String showDashborad() {
-		return "/medha/dashboard";
+		return BASE_PATH + "/dashboard";
 	}
 
 	@GetMapping("/exam")
@@ -58,7 +59,7 @@ public class MedhaPageController {
 		model.addAttribute("schools", schoolFacade.getAllSchool());
 		model.addAttribute("autocompleteData", venueFacade.getAutoComplete());
 		model.addAttribute("examList", examFacade.getAllExam());
-		return "/medha/exam";
+		return BASE_PATH + "/exam";
 	}
 
 	@GetMapping("/candidate")
@@ -69,14 +70,14 @@ public class MedhaPageController {
 		}
 		model.addAttribute("schools", schoolFacade.getAllSchool().stream()
 				.filter(s -> s.getStatus().equalsIgnoreCase("active")).collect(Collectors.toList()));
-		return "/medha/student";
+		return BASE_PATH + "/student";
 	}
 
 	@GetMapping("/school")
 	public String testPage(Model model) {
 		model.addAttribute("schoolList", schoolFacade.getAllSchool());
 		model.addAttribute("venues", venueFacade.getAllActiveVenue());
-		return "/medha/school";
+		return BASE_PATH + "/school";
 	}
 
 	@GetMapping("/forma/{part}/{schoolId}/{examId}")
@@ -91,7 +92,7 @@ public class MedhaPageController {
 		model.addAttribute("candidate", candidateList);
 		model.addAttribute("pagedata", pageData);
 
-		return "/medha/previews/formAPart" + part;
+		return BASE_PATH + "/previews/formAPart" + part;
 	}
 
 	@GetMapping("/formb/{classId}/{examId}")
@@ -106,7 +107,7 @@ public class MedhaPageController {
 		model.addAttribute("candidate", candidateList);
 		model.addAttribute("pagedata", pageData);
 
-		return "/medha/previews/formB";
+		return BASE_PATH + "/previews/formB";
 	}
 
 	@GetMapping("/admit-cards/{classId}/{examId}")
@@ -118,7 +119,7 @@ public class MedhaPageController {
 		List<CandidateDto> candidateList = examFacade.getAdmitCards(form);
 		model.addAttribute("candidate", candidateList);
 
-		return "/medha/previews/admitCards";
+		return BASE_PATH + "/previews/admitCards";
 	}
 
 	@GetMapping("/admit-card/{code}")
@@ -126,7 +127,7 @@ public class MedhaPageController {
 		List<CandidateDto> list = new ArrayList<CandidateDto>();
 		list.add(candidateFacade.getAdmitCard(code));
 		model.addAttribute("candidate", list);
-		return "/medha/previews/admitCards";
+		return BASE_PATH + "/previews/admitCards";
 
 	}
 
@@ -139,14 +140,14 @@ public class MedhaPageController {
 		List<CandidateDto> candidateList = schoolFacade.getAdmitCards(form);
 		model.addAttribute("candidate", candidateList);
 
-		return "/medha/previews/admitCards";
+		return BASE_PATH + "/previews/admitCards";
 	}
 
 	@GetMapping("/analytics")
 	public String showAnalytics(Model model) {
 		model.addAttribute("schools", schoolFacade.getAllSchool());
 		model.addAttribute("examList", examFacade.getAllExam());
-		return "/medha/analytics";
+		return BASE_PATH + "/analytics";
 	}
 
 	@GetMapping("/upload-result")
@@ -155,14 +156,16 @@ public class MedhaPageController {
 		model.addAttribute("candidates");
 		model.addAttribute("schools", schoolFacade.getAllSchool());
 		model.addAttribute("examList", examFacade.getAllExam());
-		return "/medha/uploadResult";
+		return BASE_PATH + "/uploadResult";
 	}
+
 	@GetMapping("/issue-mark-sheet")
 	public String showMarksheets(Model model) {
 		model.addAttribute("schools", schoolFacade.getAllSchool());
 		model.addAttribute("examList", examFacade.getAllExam());
-		return "/medha/issueMarkSheet";
+		return BASE_PATH + "/issueMarkSheet";
 	}
+
 	@GetMapping("/view-ms/{schoolId}/{examId}")
 	public String printMarkSheet(Model model, @PathVariable int schoolId, @PathVariable int examId,
 			@RequestParam(defaultValue = "1") int page) {
@@ -171,21 +174,23 @@ public class MedhaPageController {
 		form.setExam(examId);
 		List<CandidateDto> marksList = schoolFacade.getMarks(form);
 		model.addAttribute("candidate", marksList);
-		return "/medha/previews/markSheet";
+		return BASE_PATH + "/previews/markSheet";
 	}
+
 	@GetMapping("/pre-filled-template")
-	public ResponseEntity<byte[]> downloadPrefilledTemplate(@RequestParam("schoolId") int schoolId,@RequestParam("examId") int examId) throws IOException {
+	public ResponseEntity<byte[]> downloadPrefilledTemplate(@RequestParam("schoolId") int schoolId,
+			@RequestParam("examId") int examId) throws IOException {
 		FilterForm form = new FilterForm();
 		form.setSchool(schoolId);
 		form.setExam(examId);
 		ByteArrayOutputStream outputStream = examFacade.preFillData(form);
 		HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        headers.setContentDispositionFormData("attachment", "Prefilled-"+System.currentTimeMillis()+".xlsx");
+		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+		headers.setContentDispositionFormData("attachment", "Prefilled-" + System.currentTimeMillis() + ".xlsx");
 
-        // Convert byte array to ResponseEntity
-        return ResponseEntity.ok()
-                .headers(headers)
-                .body(outputStream.toByteArray());
+		// Convert byte array to ResponseEntity
+		return ResponseEntity.ok()
+				.headers(headers)
+				.body(outputStream.toByteArray());
 	}
 }

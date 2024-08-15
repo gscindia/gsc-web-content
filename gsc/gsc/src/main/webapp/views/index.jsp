@@ -22,7 +22,7 @@
         <li><a href="sass.html">We the people</a></li>
         <li><a href="badges.html">Contact Us</a></li>
         <li><a href="collapsible.html">Donate</a></li>
-        <li><a href="/page/static/login">Go to office</a></li>
+        <li><a href="/login">Go to office</a></li>
       </ul>
     </div>
   </nav>
@@ -59,7 +59,7 @@
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				© 2022 Copyright Text <a class="grey-text text-lighten-4 right"
+				ï¿½ 2022 Copyright Text <a class="grey-text text-lighten-4 right"
 					href="#!">More Links</a>
 			</div>
 		</div>

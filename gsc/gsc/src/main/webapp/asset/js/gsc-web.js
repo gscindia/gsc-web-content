@@ -8,18 +8,18 @@ $(document).ready(function() {
 		$('.collection-item').removeClass('active');
 		$(event.currentTarget).addClass("active");
 	});
-	$('#auth-id').click(function() {
-		var data = {};
-		data['id'] = $('#loginform').find('#email').val();
-		data['password'] = $('#loginform').find('#password').val();
-		var resp = callApi("/auth", 'POST', JSON.stringify(data));
+	// $('#auth-id').click(function() {
+	// 	var data = {};
+	// 	data['id'] = $('#loginform').find('#email').val();
+	// 	data['password'] = $('#loginform').find('#password').val();
+	// 	var resp = callApi("/auth", 'POST', JSON.stringify(data));
 		
-		if (resp.authStatus === 'true') {
-			window.location.href = '/medhasandhan';
-		} else {
-			M.toast({ html: 'Incorrect Credential', completeCallback: function() { } });
-		}
-	});
+	// 	if (resp.authStatus === 'true') {
+	// 		window.location.href = '/medhasandhan';
+	// 	} else {
+	// 		M.toast({ html: 'Incorrect Credential', completeCallback: function() { } });
+	// 	}
+	// });
 });
 
 
