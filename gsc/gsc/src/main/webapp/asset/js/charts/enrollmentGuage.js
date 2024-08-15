@@ -32,7 +32,7 @@ function drawTotalEnrollmentChart(selector,count,height) {
 			tickPosition: 'inside',
 			tickColor: Highcharts.defaultOptions.chart.backgroundColor || '#FFFFFF',
 			tickLength: 20,
-			tickWidth: 3,
+			tickWidth: 2,
 			minorTickInterval: null,
 			labels: {
 				distance: 20,
@@ -48,11 +48,11 @@ function drawTotalEnrollmentChart(selector,count,height) {
 				thickness: 20
 			}, {
 				from: 500,
-				to: 799,
+				to: 900,
 				color: '#ffea00 ', // yellow
 				thickness: 20
 			}, {
-				from: 800,
+				from: 901,
 				to: 1200,
 				color: '#1b5e20 ', // green
 				thickness: 20
