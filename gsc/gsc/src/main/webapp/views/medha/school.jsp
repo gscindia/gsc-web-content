@@ -29,7 +29,7 @@ select.form-control.input-sm {
 			<div class="row">
 
 				<div class="col s4" id="left-pan">
-					<!-- Grey navigation panel -->
+					<div class="left-pan">
 					<ul class="collection with-header">
 						<li class="collection-header"><h3>Schools</h3></li>
 						<c:forEach items="${schoolList }" var="school" varStatus="status">
@@ -38,13 +38,11 @@ select.form-control.input-sm {
 										class="collection-icon"><i class="material-icons">navigate_next</i></span></a>
 								</div></li>
 						</c:forEach>
-
-
-
 					</ul>
-					<a class="btn-floating btn-large cyan pulse modal-trigger" href="#add-school-modal"><i class="material-icons">add</i></a>
-				</div>
+					</div>
+				<a class="btn-floating btn-large cyan pulse modal-trigger" href="#add-school-modal"><i class="material-icons">add</i></a>
 
+				</div>
 				<div class="col s8">
 					<common:studentListOfSchool></common:studentListOfSchool>
 				</div>

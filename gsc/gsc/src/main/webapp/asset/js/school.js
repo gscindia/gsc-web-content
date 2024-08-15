@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('select').formSelect();
 	studentDataTable = studentTable.DataTable({
 		ajax: { url: "/medha/school/forma/datatable/-1", type: 'POST' },
-		"pageLength" : 50,
+		"pageLength" : 10,
 		order: [[1, 'asc']],
 		columnDefs: [
 			{

@@ -23,7 +23,7 @@ select.form-control.input-sm {
 	<main>
 		<div class="container">
 			<div class="row valign-wrapper">
-				<div class="col l5 hide-on-med-and-down">
+				<div class="col l5 hide-on-med-and-down enrollment-banner">
 					<img class="responsive-img" src="../../asset/media/student-2.jpg">
 				</div>
 
@@ -32,7 +32,7 @@ select.form-control.input-sm {
 						<c:choose>
 							<c:when test="${not empty examName}">
 								<h4 class="header center">Application Form</h4>
-								<h6 class="center red-text bold">${examName}</h6>
+								<h6 class="center  darken-1 green-text bold">${examName}</h6>
 							</c:when>
 							<c:otherwise>
 								<blockquote>Enrollment is yet to start for upcoming	session. 
@@ -82,7 +82,7 @@ select.form-control.input-sm {
 										class="red-text">*</span></strong></label>
 							</div>
 							<div class="row">
-								<button class="btn waves-effect waves-light btn-large red"
+								<button class="btn waves-effect waves-light btn-large green darken-1"
 									type="button" name="action" onclick="enroll();">
 									Apply <i class="material-icons right">send</i>
 								</button>
