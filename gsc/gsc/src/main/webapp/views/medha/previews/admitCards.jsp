@@ -10,12 +10,19 @@
 <head>
 <link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
 <link href="${assestRoot}/font/icon.css" rel="stylesheet">
-<link rel="stylesheet" href="${assestRoot}/css/style.css" />
+<!-- <link rel="stylesheet" href="${assestRoot}/css/style.css" /> -->
 <style type="text/css">
 .bold{
 	font-weight: bold;
     font-family: sans-serif;
 }
+.header-image{
+  margin-top: 5px;
+ }
+ .qr-id{
+  font-size: x-small;
+
+ }
 @media print {  
 .print-small-admit {
     font-size: 10px;
