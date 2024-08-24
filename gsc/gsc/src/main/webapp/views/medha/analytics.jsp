@@ -51,6 +51,7 @@ select.form-control.input-sm {
 				</div>
 				<div class="col s6" id="class-gender-chart"></div>
 				<div class="col s6" id="enrollment-chart"></div>
+				<div class="col s12 m12 l12" id="revenue-analysis"></div>
 			</div>
 		</div>
 	</main>

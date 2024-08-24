@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.gsc.medha.data.ExamRevenueData;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.repository.CandidateRepository;
@@ -106,6 +107,10 @@ public class DefaultExamService implements ExamService {
 		summary.put("processed", candidates.size());
 
 		return summary;
+	}
+	@Override
+	public List<ExamRevenueData> getRevenueSummary(){
+		return examRepository.calculateExamRevenue();
 	}
 
 	public List<Candidate> getAllEnrolledCandidates(Exam exam) {

@@ -1,10 +1,13 @@
 package org.gsc.medha.facade.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.gsc.medha.data.ExamRevenueData;
+import org.gsc.medha.dto.RevenueAnalysisDto;
 import org.gsc.medha.dto.SchoolGenderDataDto;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.School;
@@ -21,6 +24,8 @@ public class DefaultMedhaSandhanAnalyticsFacade implements MedhaSandhanAnalytics
 	Populator<List<Map<String, String>>, SchoolGenderDataDto> populator;
 	@Resource(name="classGenderChartDataPopulator")
 	Populator<List<Map<String, String>>, SchoolGenderDataDto> classPopulator;
+	@Resource(name="revenuePopulator")
+	Populator<ExamRevenueData, RevenueAnalysisDto> revenuePopulator;
 	@Autowired
 	SchoolService schoolService;
 	@Autowired
@@ -47,6 +52,13 @@ public class DefaultMedhaSandhanAnalyticsFacade implements MedhaSandhanAnalytics
 	public int enrollmentCount(int examId) {
 		Exam exam = examService.getExamById(examId);
 		return examService.getAllEnrolledCandidates(exam).size();
+	}
+	@Override 
+	public List<RevenueAnalysisDto> revenueSummary(){
+		List<ExamRevenueData> results = examService.getRevenueSummary();
+		List<RevenueAnalysisDto> responseDtos = new ArrayList<>();
+		revenuePopulator.populateAll(results, responseDtos);
+		return responseDtos;
 	}
 
 }

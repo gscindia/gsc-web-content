@@ -16,7 +16,8 @@ $(document).ready(function() {
 		drawSgb($.isEmptyObject($('#analytics-year').val()) ? -1 : $('#analytics-year').val(), $('#analytics-school-sgc').val());
 		$.unblockUI();
 	});
-
+	drawRevenueChart(callApi('/reports/revenue', 'POST', '{}'));
+	console.log(callApi('/reports/revenue', 'POST', '{}'));
 });
 
 function redoCharts(y) {
@@ -91,3 +92,63 @@ function drawBar(selector, data, titleText, subtitle, xDesc, yTitle, bar1, bar2)
 	});
 }
 
+function drawRevenueChart(data){
+	Highcharts.chart('revenue-analysis', {
+
+		title: {
+			text: 'Revenue Growth',
+			align: 'left'
+		},
+	
+		subtitle: {
+			text: 'Class wise Year by Year',
+			align: 'left'
+		},
+	
+		yAxis: {
+			title: {
+				text: 'Revenue earned from Enrollment'
+			}
+		},
+	
+		xAxis: {
+			accessibility: {
+				//rangeDescription: 'Year: 2023 to 2022'
+			}
+		},
+	
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle'
+		},
+	
+		plotOptions: {
+			series: {
+				label: {
+					connectorAllowed: false
+				},
+				pointStart: 2023
+			}
+		},
+	
+		series: data,
+	
+		responsive: {
+			rules: [{
+				condition: {
+					maxWidth: 500
+				},
+				chartOptions: {
+					legend: {
+						layout: 'horizontal',
+						align: 'center',
+						verticalAlign: 'bottom'
+					}
+				}
+			}]
+		}
+	
+	});
+	
+}
