@@ -108,13 +108,16 @@ function drawRevenueChart(data){
 		yAxis: {
 			title: {
 				text: 'Revenue earned from Enrollment'
-			}
+			},
+			tickInterval: 500
 		},
 	
 		xAxis: {
 			accessibility: {
 				//rangeDescription: 'Year: 2023 to 2022'
-			}
+			},
+			tickInterval: 1
+			
 		},
 	
 		legend: {
@@ -128,6 +131,7 @@ function drawRevenueChart(data){
 				label: {
 					connectorAllowed: false
 				},
+				lineWidth: 3,
 				pointStart: 2023
 			}
 		},
