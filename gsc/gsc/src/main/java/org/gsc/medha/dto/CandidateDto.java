@@ -2,14 +2,12 @@ package org.gsc.medha.dto;
 
 import java.sql.Date;
 
-import org.gsc.medha.entity.School;
-
 public class CandidateDto {
 	String roll;
 	String rollId;
 	String name;
 	String cls;
-	School school;
+	SchoolDto school;
 	Date dob;
 	String status;
 	String gender;
@@ -19,7 +17,25 @@ public class CandidateDto {
 	String marks;
 	String editStatus;
 	String grade;
+	String contact;
+	Integer attendance;
 	
+
+	public Integer getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(Integer attendance) {
+		this.attendance = attendance;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
 
 	public String getEditStatus() {
 		return editStatus;
@@ -96,14 +112,14 @@ public class CandidateDto {
 	/**
 	 * @return the school
 	 */
-	public School getSchool() {
+	public SchoolDto getSchool() {
 		return school;
 	}
 
 	/**
 	 * @param school the school to set
 	 */
-	public void setSchool(School school) {
+	public void setSchool(SchoolDto school) {
 		this.school = school;
 	}
 
