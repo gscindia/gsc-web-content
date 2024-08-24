@@ -1,5 +1,6 @@
 var studentDataTable;
 $(document).ready(function() {
+	$('#edit-student-contact').characterCounter();
 	beforeAjaxBlockUI('<h4 class="">Hang on! Fetching data</h4>');
 	studentTable = $('#student-list');
 	$('select').formSelect();

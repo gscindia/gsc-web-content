@@ -2,6 +2,7 @@ package org.gsc.medha.populator;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.School;
 import org.gsc.medha.page.form.CandidateForm;
@@ -28,6 +29,9 @@ public class DefaultCandRevPopulator implements Populator<CandidateForm, Candida
 			target.setGender(source.getGender());
 			School school = schoolService.getSchoolById(Integer.parseInt(source.getSchool()));
 			target.setSchool(school);
+			if (StringUtils.isNotEmpty(source.getMobile()) && source.getMobile().length() == 10) {
+				target.setContact(source.getMobile());
+			}
 		} else {
 			target.setName(source.getName());
 			target.setSection(Integer.parseInt(source.getCls()));

@@ -49,7 +49,7 @@ function editStrudent(event) {
 	const obj = prepareFormData(document.getElementById('edit-student'));
 	var formData = JSON.stringify(obj);
 
-	if ($.isEmptyObject(obj.name) || $.isEmptyObject(obj.school) || $.isEmptyObject(obj.gender)) {
+	if ($.isEmptyObject(obj.name) || $.isEmptyObject(obj.school) || $.isEmptyObject(obj.gender) || ($('#edit-student-contact').val().length > 0 && $('#edit-student-contact').val().length < 10)) {
 		M.toast({ html: 'Please fill all details' });
 	} else {
 		var response = callApi('/medha/student/edit', 'POST', formData);
