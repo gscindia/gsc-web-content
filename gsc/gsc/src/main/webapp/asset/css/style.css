@@ -1,3 +1,4 @@
+@import url("variable.scss");
 body {
     display: flex;
     min-height: 100vh;
@@ -32,4 +33,11 @@ body {
  }
  .navbar-footer-theme{
 	 background-color: #000000;
+ }
+ .left-pan{
+    max-height: 800px;
+    overflow-y: scroll;
+ }
+ .enrollment-banner{
+  margin-top: 10px;
  }

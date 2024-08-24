@@ -1,1 +1,1 @@
-<p class="print-small print-small-admit left-align">*This is a system generated document &copy;Garalgacha Science Club - Official Website</p>
+<p class="print-small print-small-admit left-align">*System generated document &copy;Garalgacha Science Club</p>

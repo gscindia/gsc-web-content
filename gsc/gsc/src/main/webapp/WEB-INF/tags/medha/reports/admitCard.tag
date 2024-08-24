@@ -6,7 +6,7 @@
 <script src="/asset/js/qrcode.min.js"></script>
 
 <div class="row">
-<div class="col s10 offset-s2">
+<div class="col s10 offset-s2 header-image">
 	<img alt="" class="responsive-img" src="/asset/media/admit-header.png"/>	
 </div>
 </div>
@@ -23,11 +23,12 @@
 		<reports:Copyright></reports:Copyright>
 		
 </div>
-<div class="col s3">
+<div class="col s3 center-align">
 		<c:url var="encodedUrl" value ='/qrcode'>
 			<c:param name="data" value="${entry.maskedRollid}" />
 		</c:url>
 		<img class='responsive-img' src="${encodedUrl }">
-
+		<hr>
+		<span class='qr-id'>App#:&nbsp;${entry.exam.id}/${entry.rollId}</span>
 </div>
 </div>

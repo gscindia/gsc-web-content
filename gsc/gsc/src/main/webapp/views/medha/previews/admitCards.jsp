@@ -10,12 +10,22 @@
 <head>
 <link rel="stylesheet" href="${assestRoot}/css/materialize.min.css">
 <link href="${assestRoot}/font/icon.css" rel="stylesheet">
-<%-- <link rel="stylesheet" href="${assestRoot}/css/style.css" /> --%>
+<!-- <link rel="stylesheet" href="${assestRoot}/css/style.css" /> -->
 <style type="text/css">
 .bold{
 	font-weight: bold;
     font-family: sans-serif;
 }
+.header-image{
+  margin-top: 5px;
+ }
+ .qr-id{
+  font-size: x-small;
+
+ }
+ .border{
+	border: 2px dashed #282626;
+ }
 @media print {  
 .print-small-admit {
     font-size: 10px;
@@ -28,7 +38,7 @@
 	<main>
 		<div class="container">		
 		<c:forEach items="${candidate }" var="entry" varStatus="loop">
-		<div class="row" style="border: 2px solid #282626;">
+		<div class="row border">
 				<reports:admitCard entry="${entry}"></reports:admitCard>		
 		</div>
 		<c:if test="${loop.index %2 == 0}">
