@@ -82,6 +82,13 @@ select.form-control.input-sm {
 										class="red-text">*</span></strong></label>
 							</div>
 							<div class="row">
+								<input value="" id="student-contact" type="text" name="mobile" 
+									data-length="10" maxlength="10" pattern="^(\d{10})?$"
+									class="validate"> <label class="active"
+									for="student-contact"><strong>Mobile No.<span
+										class="red-text">(Optional)</span></strong></label>
+							</div>
+							<div class="row">
 								<button class="btn waves-effect waves-light btn-large green darken-1"
 									type="button" name="action" onclick="enroll();">
 									Apply <i class="material-icons right">send</i>

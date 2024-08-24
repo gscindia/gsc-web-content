@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$('#student-school,#student-class').formSelect();
+	$('#student-contact').characterCounter();
 });
 
 function enroll() {
@@ -13,12 +14,13 @@ function enroll() {
 		} else if(response.roll > 0) {
 			$('#student-name').focus();
 			$('#student-name').val('');
-			M.toast({ html: "<span class='material-icons green-text'>verified</span>&nbsp; Roll Number as realised " + response.roll, completeCallback: function() { } });
+			$('#student-contact').val('');
+			M.toast({ html: "<span class='material-icons green-text'>verified</span>&nbsp; Apllication Successful. Roll# " + response.roll, completeCallback: function() { } });
 		}else{
 			M.toast({ html: "<span class='material-icons red-text'>error</span>&nbsp;Enrollment is yet to start"});
 		}
 	} else {
-		M.toast({ html: 'Please fill all details' });
+		M.toast({ html: "<span class='material-icons yellow-text'>info_outline</span>&nbsp;Details are not valid" });
 	}
 
 }
@@ -27,7 +29,7 @@ function validateEnrollData() {
 
 	var json = prepareFormData(document.getElementById('enroll-form'));
 	try {
-		if ($.isEmptyObject(json.name) || $.isEmptyObject(json.school) || $.isEmptyObject(json.cls) || $.isEmptyObject(json.gender)) {
+		if ($.isEmptyObject(json.name) || $.isEmptyObject(json.school) || $.isEmptyObject(json.cls) || $.isEmptyObject(json.gender) || ($('#student-contact').val().length > 0 && $('#student-contact').val().length < 10)) {
 			isValid = false;
 		}
 	} catch (ex) {
