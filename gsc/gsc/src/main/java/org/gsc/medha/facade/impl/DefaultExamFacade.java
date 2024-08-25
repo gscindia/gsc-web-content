@@ -97,7 +97,7 @@ public class DefaultExamFacade implements ExamFacade {
 	@Override
 	public List<CandidateDto> addCandidates(List<CandidateForm> sourceList) {
 		List<CandidateDto> result = new ArrayList<CandidateDto>();
-		result = sourceList.stream().map(item -> addCandidate(item)).toList();
+		result = sourceList.stream().map(item -> addCandidate(item)).collect(Collectors.toList());
 		return result;
 	}
 

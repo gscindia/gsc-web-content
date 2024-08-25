@@ -56,6 +56,7 @@ public class StudentController {
 	public BulkRegistrationResponse enrollCandidate(@RequestParam("file") MultipartFile file,
 			@PathVariable String schoolId)
 			throws IOException {
+		try{		
 		List<CandidateForm> form = examFacade.readBulkEnrollmentFile(file.getInputStream());
 		BulkRegistrationResponse response = new BulkRegistrationResponse();
 		form.stream().filter(i -> Objects.nonNull(i)).forEach(candidate -> candidate.setSchool(schoolId));
@@ -63,6 +64,12 @@ public class StudentController {
 		response.setProcessed(dto.size() + "");
 		response.setResponse(dto);
 		return response;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			System.out.println(e.getStackTrace());
+			return new BulkRegistrationResponse();
+		}
 	}
 
 	@PostMapping("/edit")
