@@ -31,6 +31,12 @@ public class SchoolController {
 	SchoolService schoolService;
 
 	@ResponseBody
+	@PostMapping("/fetch")
+	public List<SchoolDto> getSchools(){
+		return schoolFacade.getAllSchool();
+	}
+
+	@ResponseBody
 	@PostMapping("/add")
 	public SchoolDto addSchool(@RequestBody SchoolForm form) {
 
