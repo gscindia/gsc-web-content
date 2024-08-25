@@ -158,7 +158,7 @@ public class DefaultExamFacade implements ExamFacade {
 						String name = row.getCell(0).toString();
 						String gender = row.getCell(1).toString();
 						String cls = formatNumbers(row.getCell(2).toString());
-						String contactNumber = formatNumbers(row.getCell(3) == null ? "" : row.getCell(3).toString());
+						String contactNumber = row.getCell(3) == null ? null : String.format("%.0f",row.getCell(3).getNumericCellValue());
 						if (Objects.isNull(name) || Objects.isNull(gender) || Objects.isNull(cls)) {
 							rowData = null;
 						} else {
@@ -279,7 +279,7 @@ public class DefaultExamFacade implements ExamFacade {
 	public String formatNumbers(String str) {
 		if(StringUtils.isNoneEmpty(str)) {
 			double number = Double.parseDouble(str);
-			int intValue = (int) number; // Remove decimal places by converting to int
+			int intValue = (int) number; 
 			return String.valueOf(intValue);
 		}
 		else {
