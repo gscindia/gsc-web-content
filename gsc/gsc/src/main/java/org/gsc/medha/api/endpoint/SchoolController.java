@@ -50,7 +50,7 @@ public class SchoolController {
 	}
 
 	@ResponseBody
-	@PostMapping("/forma/datatable/{schoolId}")
+	@PostMapping("/datatable/{schoolId}")
 	public FormADataTableDto renderDataTable(@PathVariable int schoolId) {
 		FilterForm form = new FilterForm();
 		form.setSchool(schoolId);

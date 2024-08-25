@@ -5,8 +5,8 @@ $(document).ready(function() {
 	studentTable = $('#student-list');
 	$('select').formSelect();
 	studentDataTable = studentTable.DataTable({
-		ajax: { url: "/medha/school/forma/datatable/-1", type: 'POST' },
-		"pageLength" : 10,
+		ajax: { url: "/medha/school/datatable/-1", type: 'POST' },
+		"pageLength" : 25,
 		order: [[1, 'asc']],
 		columnDefs: [
 			{
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 	$('.school-list').click(function() {
 		beforeAjaxBlockUI('<h4 class="">Hang on! Fetching data</h4>');
-		refreshStudentDataTable('/medha/school/forma/datatable/' + $(this).data('id'),$(this).data('name'));
+		refreshStudentDataTable('/medha/school/datatable/' + $(this).data('id'),$(this).data('name'));
 	});
 	
 });
@@ -31,7 +31,7 @@ function refreshStudentDataTable(url,schoolName) {
 	studentDataTable.destroy();
 	studentDataTable = studentTable.DataTable({
 		ajax: { url: url, type: 'POST' },
-		"pageLength" : 25,
+		"pageLength" : 10,
 		columnDefs: [
 			{
 				targets: ['_all'],
