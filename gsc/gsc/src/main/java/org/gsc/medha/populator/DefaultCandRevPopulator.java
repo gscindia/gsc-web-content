@@ -25,21 +25,21 @@ public class DefaultCandRevPopulator implements Populator<CandidateForm, Candida
 	@Override
 	public void populate(CandidateForm source, Candidate target) {
 		if (source.getAction() != null && source.getAction().equalsIgnoreCase("edit")) {
-			target.setName(source.getName());
-			target.setGender(source.getGender());
+			target.setName(source.getName().toUpperCase());
+			target.setGender(source.getGender().toUpperCase());
 			School school = schoolService.getSchoolById(Integer.parseInt(source.getSchool()));
 			target.setSchool(school);
 			if (StringUtils.isNotEmpty(source.getMobile()) && source.getMobile().length() == 10) {
 				target.setContact(source.getMobile());
 			}
 		} else {
-			target.setName(source.getName());
+			target.setName(source.getName().toUpperCase());
 			target.setSection(Integer.parseInt(source.getCls()));
 			target.setStatus(Status.ACTIVE.toString());
 			School school = schoolService.getSchoolById(Integer.parseInt(source.getSchool()));
 			target.setSchool(school);
 			target.setExam(examService.getActiveExam());
-			target.setGender(source.getGender());
+			target.setGender(source.getGender().toUpperCase());
 			target.setNotification("NOT_SENT");
 			if (StringUtils.isNotEmpty(source.getMobile()) && source.getMobile().length() == 10) {
 				target.setContact(source.getMobile());

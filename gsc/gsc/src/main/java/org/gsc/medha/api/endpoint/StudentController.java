@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.util.StringUtil;
 import org.gsc.medha.dto.BulkRegistrationResponse;
 import org.gsc.medha.dto.CandidateDto;
 import org.gsc.medha.facade.CandidateFacade;
@@ -39,13 +41,20 @@ public class StudentController {
 	@PostMapping("/add")
 	@ResponseBody
 	public CandidateDto enrollCandidate(@RequestBody CandidateForm form) {
-		CandidateDto dto = examFacade.addCandidate(form);
+		CandidateDto dto = new CandidateDto();
+		if (StringUtils.isNotEmpty(form.getName()) && StringUtils.isNotEmpty(form.getCls())
+				&& StringUtils.isNotEmpty(form.getGender())
+				&& StringUtils.isNotEmpty(form.getSchool())) {
+				
+					dto = examFacade.addCandidate(form);
+		}
 		return dto;
 	}
 
 	@PostMapping("/bulk-registration/{schoolId}")
 	@ResponseBody
-	public BulkRegistrationResponse enrollCandidate(@RequestParam("file") MultipartFile file, @PathVariable String schoolId)
+	public BulkRegistrationResponse enrollCandidate(@RequestParam("file") MultipartFile file,
+			@PathVariable String schoolId)
 			throws IOException {
 		List<CandidateForm> form = examFacade.readBulkEnrollmentFile(file.getInputStream());
 		BulkRegistrationResponse response = new BulkRegistrationResponse();
