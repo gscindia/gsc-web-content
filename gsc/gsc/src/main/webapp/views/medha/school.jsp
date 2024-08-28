@@ -29,7 +29,7 @@ select.form-control.input-sm {
 			<div class="row">
 
 				<div class="col s4" id="left-pan">
-					<div class="left-pan">
+					<!-- <div class="left-pan">
 					<ul class="collection with-header">
 						<li class="collection-header"><h3>Schools</h3></li>
 						<c:forEach items="${schoolList }" var="school" varStatus="status">
@@ -39,6 +39,16 @@ select.form-control.input-sm {
 								</div></li>
 						</c:forEach>
 					</ul>
+					</div> -->
+					<div class="row">
+						<div class="col s12 right input-field ">
+							<select id="school-list" name="school">
+								<option value="-1" disabled selected>Select School</option>
+								<c:forEach items="${schoolList}" varStatus="status" var="school">
+									<option value="${school.id }">${school.name }</option>
+								</c:forEach>
+							</select> <label>School List</label>
+						</div>
 					</div>
 				<a class="btn-floating btn-large cyan pulse modal-trigger" href="#add-school-modal"><i class="material-icons">add</i></a>
 

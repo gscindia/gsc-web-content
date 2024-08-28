@@ -7,7 +7,7 @@ $(document).ready(function() {
 	studentDataTable = studentTable.DataTable({
 		ajax: { url: "/medha/school/datatable/-1", type: 'POST' },
 		"pageLength" : 25,
-		order: [[1, 'asc']],
+		order: [[3, 'desc']],
 		columnDefs: [
 			{
 				targets: ['_all'],
@@ -19,15 +19,14 @@ $(document).ready(function() {
 
 	$('.dataTables_length').addClass('col s4');
 
-	$('.school-list').click(function() {
+	$('#school-list').change(function() {
 		beforeAjaxBlockUI('<h4 class="">Hang on! Fetching data</h4>');
-		refreshStudentDataTable('/medha/school/datatable/' + $(this).data('id'),$(this).data('name'));
+		refreshStudentDataTable('/medha/school/datatable/' + $('#school-list').val());
 	});
 	
 });
 
-function refreshStudentDataTable(url,schoolName) {
-	$('#selected-school').html(schoolName);
+function refreshStudentDataTable(url) {
 	studentDataTable.destroy();
 	studentDataTable = studentTable.DataTable({
 		ajax: { url: url, type: 'POST' },
@@ -38,6 +37,7 @@ function refreshStudentDataTable(url,schoolName) {
 				className: 'mdc-data-table__cell'
 			}
 		],
+		order: [[3, 'desc']],
 		initComplete: function(settings, json) { $('.tooltipped').tooltip(); $.unblockUI(); window.scrollTo(0, 0);}
 	});
 	$('.dataTables_length').addClass('col s4');
