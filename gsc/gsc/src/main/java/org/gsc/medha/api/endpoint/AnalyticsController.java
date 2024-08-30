@@ -5,8 +5,8 @@ import java.util.List;
 import org.gsc.medha.data.ExamRevenueData;
 import org.gsc.medha.dto.RevenueAnalysisDto;
 import org.gsc.medha.dto.SchoolGenderDataDto;
+import org.gsc.medha.dto.SchoolLeaderBoardDto;
 import org.gsc.medha.facade.MedhaSandhanAnalyticsFacade;
-import org.gsc.medha.repository.CandidateRepository;
 import org.gsc.medha.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -48,12 +49,27 @@ public class AnalyticsController {
 		return analytics.enrollmentCount(year);
 
 	}
+
 	@ResponseBody
 	@PostMapping("/revenue")
-	public List<RevenueAnalysisDto> postMethodName() {
-				
+	public List<RevenueAnalysisDto> postMethodName() {				
 		return analytics.revenueSummary();
 	}
+	
+	@ResponseBody
+	@PostMapping("/school-leaderboard")
+	public SchoolLeaderBoardDto postMethodName(@RequestParam(defaultValue = "-1") int year) {		
+		
+		return analytics.getSchoolLeaderboard(year);
+
+	}
+	@ResponseBody
+	@PostMapping("/shift-analysis")
+	public List<RevenueAnalysisDto> shiftAnalysis() {
+				
+		return analytics.historicalShiftAnalysis();
+	}
+	
 	
 
 }

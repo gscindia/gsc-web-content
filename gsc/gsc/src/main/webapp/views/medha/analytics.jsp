@@ -27,19 +27,21 @@ select.form-control.input-sm {
 		<div class="container">
 			<div class="row">
 				<div class="col s4 left-align input-field">
-					<select id="analytics-year" name="cls">
-						<option value="-1" disabled selected>Choose Year</option>
+					<select id="analytics-year" name="cls">						
+						<option value="0">Choose Year</option>
 						<c:forEach items="${examList}" varStatus="status" var="exam">
-							<option value="${exam.id }">${exam.name }</option>
+							<option value="${exam.id }" <c:if test="${exam.status eq 'ACTIVE'}">selected</c:if>>${exam.name }</option>
 						</c:forEach>
 					</select> <label>Examination</label>
 				</div>
-
-				<div class="col s12">
+			</div>
+			<div class="row">
+				<div class="col s12" id="school-statistics">
 					<div class="row">
+						<blockquote>Statistics of Schools</blockquote>
 						<div class="col s4 right input-field ">
 							<select id="analytics-school-sgc" name="school">
-								<option value="-1" disabled selected>Select School</option>
+								<option value="0" selected>Select School</option>
 								<c:forEach items="${schools}" varStatus="status" var="school">
 									<option value="${school.id }">${school.name }</option>
 								</c:forEach>
@@ -47,10 +49,22 @@ select.form-control.input-sm {
 						</div>
 					</div>
 					<div class="row" id="school-gender-chart"></div>
+					<div class="row">
+						<div id="school-leaderboard" class="col s12">
+							
+						</div>
+					</div>
 
 				</div>
+			</div>
+			<div class="row" id="exam-statistics">
+				<blockquote>Statistics of every Examination</blockquote>
 				<div class="col s6" id="class-gender-chart"></div>
-				<div class="col s6" id="enrollment-chart"></div>
+				<div class="col s6" id="enrollment-chart"></div>	
+				<div class="col s12 m12 l12" id="shift-analysis"></div>			
+			</div>
+			<div class="row">
+				<blockquote>Reveue Analysis</blockquote>
 				<div class="col s12 m12 l12" id="revenue-analysis"></div>
 			</div>
 		</div>

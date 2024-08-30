@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.gsc.medha.data.ExamRevenueData;
+import org.gsc.medha.data.ExamShiftAnalysisData;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.repository.CandidateRepository;
@@ -115,7 +116,7 @@ public class DefaultExamService implements ExamService {
 
 	public List<Candidate> getAllEnrolledCandidates(Exam exam) {
 
-		return null == exam ? candidateRepository.getAllStudent() : candidateRepository.getAllStudent(exam, "ACTIVE");
+		return null == exam ? candidateRepository.getAllStudent(getActiveExam()) : candidateRepository.getAllStudent(exam, "ACTIVE");
 
 	}
 
@@ -139,5 +140,10 @@ public class DefaultExamService implements ExamService {
 
 		return grade;
 
+	}
+
+	@Override
+	public List<ExamShiftAnalysisData> historicalShiftAnalysis() {
+		return examRepository.historicalShiftAnalysis();
 	}
 }

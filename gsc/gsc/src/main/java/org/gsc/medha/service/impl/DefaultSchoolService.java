@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.gsc.medha.data.SchoolLeaderBoard;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.School;
@@ -18,6 +19,7 @@ import org.gsc.medha.repository.SchoolRepository;
 import org.gsc.medha.service.ExamService;
 import org.gsc.medha.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
@@ -127,6 +129,17 @@ public class DefaultSchoolService implements SchoolService {
 		}
 
 		return statistics;
+	}
+
+	@Override
+	public List<SchoolLeaderBoard> getSchoolLeaderboardByYear(int examId){
+		
+		return schoolRepo.getSchoolLeaderboardByYear(examId,PageRequest.of(0, 10));
+	}
+
+	@Override
+	public List<SchoolLeaderBoard> getSchoolLeaderboard(){
+		return schoolRepo.getSchoolLeaderboard(PageRequest.of(0, 10));
 	}
 
 }

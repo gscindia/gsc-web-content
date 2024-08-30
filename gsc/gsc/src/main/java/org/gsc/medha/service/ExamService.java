@@ -3,6 +3,7 @@ package org.gsc.medha.service;
 import java.util.List;
 
 import org.gsc.medha.data.ExamRevenueData;
+import org.gsc.medha.data.ExamShiftAnalysisData;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.json.JSONObject;
@@ -34,5 +35,7 @@ public interface ExamService {
 	String resolveGrade(int marks);
 
 	List<ExamRevenueData> getRevenueSummary();
+
+	List<ExamShiftAnalysisData> historicalShiftAnalysis();
 
 }

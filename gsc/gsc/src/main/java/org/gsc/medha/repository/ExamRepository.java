@@ -3,6 +3,7 @@ package org.gsc.medha.repository;
 import java.util.List;
 
 import org.gsc.medha.data.ExamRevenueData;
+import org.gsc.medha.data.ExamShiftAnalysisData;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.springframework.data.jpa.repository.Query;
@@ -29,5 +30,10 @@ public interface ExamRepository extends CrudRepository<Exam, Integer> {
            "GROUP BY e.id, e.name, c.section " +
            "ORDER BY e.id, c.section")
     List<ExamRevenueData> calculateExamRevenue();
+
+    @Query("SELECT new org.gsc.medha.data.ExamShiftAnalysisData(e.name , SUM(CASE WHEN c.section BETWEEN 2 AND 4 THEN 1 ELSE 0 END), "+
+	        "SUM(CASE WHEN c.section BETWEEN 5 AND 10 THEN 1 ELSE 0 END)) "+
+            "from Candidate c join Exam e on c.exam=e.id where c.status='ACTIVE' group by exam")
+            List<ExamShiftAnalysisData> historicalShiftAnalysis();
 	
 }
