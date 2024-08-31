@@ -116,7 +116,8 @@ public class DefaultExamService implements ExamService {
 
 	public List<Candidate> getAllEnrolledCandidates(Exam exam) {
 
-		return null == exam ? candidateRepository.getAllStudent(getActiveExam()) : candidateRepository.getAllStudent(exam, "ACTIVE");
+		return null == exam ? candidateRepository.getAllStudent() 
+							: candidateRepository.getAllStudent(exam, "ACTIVE");
 
 	}
 

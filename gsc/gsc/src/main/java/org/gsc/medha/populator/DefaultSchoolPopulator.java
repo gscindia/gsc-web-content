@@ -26,6 +26,7 @@ public class DefaultSchoolPopulator implements Populator<School, SchoolDto> {
 		target.setPoc(source.getPoc());
 		target.setVenue(venue);
 		target.setStatus(source.getStatus());
+		target.setAddress(source.getAddress());
 	}
 
 	@Override

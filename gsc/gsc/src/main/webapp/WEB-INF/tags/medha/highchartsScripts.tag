@@ -7,5 +7,7 @@
 <script type="text/javascript"
 	src="../../asset/js/highcharts/export-data.js"></script>
 <script type="text/javascript"
-	src="../../asset/js/highcharts/accessibility.js"></script>
+	src="../../asset/js/highcharts/accessibility.js"></script>	
+<script type="text/javascript"
+	src="../../asset/js/highcharts/series-label.js"></script>
 	

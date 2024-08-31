@@ -27,7 +27,7 @@ function drawTotalEnrollmentChart(selector,count,height) {
 		// the value axis
 		yAxis: {
 			min: 0,
-			max: 1400,
+			max: 1500,
 			tickPixelInterval: 72,
 			tickPosition: 'inside',
 			tickColor: Highcharts.defaultOptions.chart.backgroundColor || '#FFFFFF',
@@ -48,17 +48,17 @@ function drawTotalEnrollmentChart(selector,count,height) {
 				thickness: 20
 			}, {
 				from: 500,
-				to: 900,
+				to: 999,
 				color: '#ffea00 ', // yellow
 				thickness: 20
 			}, {
-				from: 901,
-				to: 1200,
+				from: 1000,
+				to: 1350,
 				color: '#1b5e20 ', // green
 				thickness: 20
 			}, {
-				from: 1201,
-				to: 2000,
+				from: 1351,
+				to: 1500,
 				color: '#d50000 ', // red
 				thickness: 20
 			}]

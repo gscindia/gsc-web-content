@@ -2,9 +2,16 @@ const subtitle = 'Source: Medha Sandhan Examination - Garalgacha Science Club - 
 $(document).ready(function() {
 	beforeAjaxBlockUI('<h4>Preparing Analysis...</h4>');
 	$('select').formSelect();
-	drawSgb($('#analytics-year').val(), -1);
-	drawCgb($('#analytics-year').val());
-	drawTotalEnrollmentChart('enrollment-chart', callApi('/reports/enrollment?year='+$('#analytics-year').val(), 'POST', '{}'),'90%');
+	$('.fixed-action-btn').floatingActionButton();
+	let year = $('#analytics-year').val();
+	drawSgb(year, -1);
+	drawCgb(year);
+	if(0 != year){
+		drawTotalEnrollmentChart('enrollment-chart', callApi('/reports/enrollment?year='+year, 'POST', '{}'),'90%');
+	}else{
+		$('#enrollment-chart')
+		.html('<blockquote class="">Total Enrollment Statistics</blockquote><h4>Select a year for visualization. Total enrollment so far '+callApi('/reports/enrollment?year=' + year, 'POST', '{}')+' </h4>');
+	}
 	$.unblockUI();
 	$('#analytics-year').on('change', function() {
 		beforeAjaxBlockUI('<h4>Preparing Analysis...</h4>');
@@ -17,7 +24,7 @@ $(document).ready(function() {
 		drawSgb($.isEmptyObject($('#analytics-year').val()) ? 0 : $('#analytics-year').val(), $('#analytics-school-sgc').val());
 		$.unblockUI();
 	});
-	drawSchoolLeaderBoard(callApi('/reports/school-leaderboard?year=', 'POST', '{}'));
+	drawSchoolLeaderBoard(callApi('/reports/school-leaderboard?year='+$('#analytics-year').val(), 'POST', '{}'));
 	drawRevenueChart(callApi('/reports/revenue', 'POST', '{}'));
 	drawShiftAnalysis(callApi('/reports/shift-analysis', 'POST', '{}'));
 
@@ -27,7 +34,13 @@ function redoCharts(y) {
 	drawSgb(y, $('#analytics-school-sgc').val());
 	drawCgb(y);
 	drawSchoolLeaderBoard(callApi('/reports/school-leaderboard?year=' + y, 'POST', '{}'));
-	drawTotalEnrollmentChart('enrollment-chart', callApi('/reports/enrollment?year=' + y, 'POST', '{}'),'90%');
+	let data = callApi('/reports/enrollment?year=' + y, 'POST', '{}');
+	if(y != 0){
+		drawTotalEnrollmentChart('enrollment-chart', data,'90%');
+	}else{
+		$('#enrollment-chart')
+		.html('<blockquote class="">Total Enrollment Statistics</blockquote><h4>Select a year for visualization. Total enrollment so far '+callApi('/reports/enrollment?year=' + year, 'POST', '{}')+' </h4>');
+	}
 }
 function drawSgb(y, z) {
 	var response = callApi('/reports/sgc?year=' + y + '&schoolId=' + z, 'POST', '{}');	
@@ -42,7 +55,6 @@ function drawCgb(y) {
 		'Class', 'Head Count', 'MALE', 'FEMALE');
 }
 function drawCgbStackedChart(selector, data, titleText, subtitle, xDesc, yTitle, bar1, bar2){
-	//console.log(data);
 	Highcharts.chart(selector, {
 		chart: {
 			type: 'column'
@@ -71,23 +83,24 @@ function drawCgbStackedChart(selector, data, titleText, subtitle, xDesc, yTitle,
 		},
 		plotOptions: {
 			column: {
+				borderWidth: 2,
+				groupPadding: 0,
 				stacking: 'percent',
 				dataLabels: {
 					enabled: true,
-					format: '{point.y}'
+					align:'center',
+					format: '{point.y}<br/>{point.percentage:.0f}%'
 				}
 			}
 		},
 		series: [{
-			name: 'Male',
+			name: 'MALE',
 			data: data.male
 		}, {
-			name: 'Female',
+			name: 'FEMALE',
 			data: data.female
 		}]
 	});
-	
-
 }
 function drawBar(selector, data, titleText, subtitle, xDesc, yTitle, bar1, bar2) {
 	
@@ -145,7 +158,6 @@ function drawBar(selector, data, titleText, subtitle, xDesc, yTitle, bar1, bar2)
 }
 
 function drawRevenueChart(data){
-	console.log(data);
 	Highcharts.chart('revenue-analysis', {
 
 		title: {
@@ -207,7 +219,6 @@ function drawRevenueChart(data){
 		}
 	
 	});
-	
 }
 
 function drawSchoolLeaderBoard(data){
@@ -260,7 +271,6 @@ function drawSchoolLeaderBoard(data){
 	});
 }	
 function drawShiftAnalysis(data){
-
 	Highcharts.chart('shift-analysis', {
 
 		title: {
@@ -282,7 +292,7 @@ function drawShiftAnalysis(data){
 	
 		xAxis: {
 			accessibility: {
-				//rangeDescription: 'Year: 2023 to 2022'
+				rangeDescription: 'Year: 2023 to 2022'
 			},
 			tickInterval: 1
 			
@@ -323,3 +333,6 @@ function drawShiftAnalysis(data){
 	
 	});
 }
+
+
+

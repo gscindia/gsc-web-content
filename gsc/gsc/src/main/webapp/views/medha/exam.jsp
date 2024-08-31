@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="exam" tagdir="/WEB-INF/tags/medha/exam"%>
@@ -12,13 +12,12 @@
 <common:highchartsScripts></common:highchartsScripts>
 <script type="text/javascript" src="../../asset/js/exam.js"></script>
 <common:style />
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <script>
 	autocomplete = ${autocompleteData};
 </script>
 
 <c:set var="imageUrl" value="../../asset/media" scope="request" />
-<meta charset="ISO-8859-1">
 <title>Exam Centre</title>
 
 
