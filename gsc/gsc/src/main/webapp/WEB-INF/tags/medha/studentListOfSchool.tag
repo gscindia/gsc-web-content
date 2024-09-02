@@ -1,5 +1,5 @@
 <table id="student-list"
-	class="mdl-data-table collection striped">
+	class="mdl-data-table responsive-table collection striped">
 	<thead>
 		<tr>
 			<th>Roll</th>
