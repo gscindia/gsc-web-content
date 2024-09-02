@@ -40,12 +40,12 @@ function validateEnrollData() {
 
 function popModal(studentId) {
 	$('#edit-student-modal').modal('open');
+	$('#edit-student').trigger('reset');
 	$('#roll-id').val(studentId);
 
 }
 
-function editStrudent(event) {
-
+function editStrudent(event) {	
 	const obj = prepareFormData(document.getElementById('edit-student'));
 	var formData = JSON.stringify(obj);
 
