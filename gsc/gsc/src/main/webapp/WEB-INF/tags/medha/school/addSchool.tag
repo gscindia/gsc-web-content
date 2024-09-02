@@ -10,14 +10,14 @@
 				<div class="row">
 					<div class="input-field col s6">
 						<input placeholder="Enter School Name" name="name" id="school-name" type="text"
-							class="validate"> <label for="first_name"><strong>Name</strong></label>
+							class="validate"> <label for="school-name"><strong>Name</strong></label>
 					</div>
 
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
 						<input placeholder="School Address" name="address" id="school-address" type="text"
-							class="validate"> <label for="first_name"><strong>Address</strong></label>
+							class="validate"> <label for="school-address"><strong>Address</strong></label>
 					</div>
 
 				</div>
