@@ -12,19 +12,19 @@
 				<div class="row">
 					<div class="input-field col s6">
 						<input placeholder="Enter Name" name="name" id="edit-student-name" type="text"
-							class="validate"> <label for="edit-student-name"><strong>Student Name</strong></label>
+							class="validate"> <label for="edit-student-name" class="bold">Student Name</label>
 					</div>
 				</div>
 				<div class="row">	
 					<div class="input-field col s5">							
 								<span>
 									<label> <input name="gender" value="M" type="radio"
-										class="with-gap" /> <span><strong>Male</strong> </span>
+										class="with-gap" /> <span class="bold">Male </span>
 									</label>
 								</span>
 								<span>
 									<label> <input name="gender" value="F" type="radio"
-										class="with-gap" /> <span><strong>Female</strong></span>
+										class="with-gap" /> <span class="bold">Female</span>
 									</label>
 								</span>	
 					</div>							
@@ -32,7 +32,7 @@
 				<div class="row">
 					<div class="input-field col s5">
 						<select id="student-school" name="school">
-										<option value="" disabled selected><strong>Choose your school</strong></option>
+										<option value="" disabled selected class="bold">Choose your school</option>
 										<c:forEach items="${schools }" var="school">
 											<option value="${school.id }">${school.name }</option>
 										</c:forEach>

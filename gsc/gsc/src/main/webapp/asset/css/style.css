@@ -1,43 +1,54 @@
 @import url("variable.scss");
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
 
-  main {
-    flex: 1 0 auto;
-  }
- .collection .collection-item.active {
-    background-color: rgb(64, 0, 0);
-    color: blanchedalmond;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
-.collection-icon{
+
+main {
+  flex: 1 0 auto;
+}
+
+.collection .collection-item.active {
+  background-color: rgb(64, 0, 0);
+  color: blanchedalmond;
+}
+
+.collection-icon {
   color: rgb(255, 0, 0);
-  }
-  
- .dataTables_wrapper {
+}
+
+.dataTables_wrapper {
   margin: 0.5rem 0 1rem 0;
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-  }
-  .mdl-data-table th,.collection-item.school-list,.bold{
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+}
+
+.mdl-data-table th,
+.collection-item.school-list,
+.bold {
   font-weight: bold;
-  }
-  a.valign-btn{
-	  margin: 1.52rem 0 0.912rem 0;
-  }
- .dropdown-content li>a, .dropdown-content li>span
- {
-	 color:#f44336;
- }
- .navbar-footer-theme{
-	 background-color: #000000;
- }
- .left-pan{
-    max-height: 800px;
-    overflow-y: scroll;
- }
- .enrollment-banner{
+}
+
+a.valign-btn {
+  margin: 1.52rem 0 0.912rem 0;
+}
+
+.dropdown-content li>a,
+.dropdown-content li>span {
+  color: #f44336;
+}
+
+.navbar-footer-theme {
+  background-color: #000000;
+}
+
+.left-pan {
+  max-height: 800px;
+  overflow-y: scroll;
+}
+
+.enrollment-banner {
   margin-top: 10px;
- }
+}

@@ -6,6 +6,7 @@
 			<th>Name</th>
 			<th>Class</th>
 			<th>Year</th>
+			<th>Marks</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -35,7 +35,7 @@ public class DefaultFormADatatablePopulator implements Populator<Candidate, Stri
 			else {
 				str[3]="";
 			}
-			str[4] = s.getStatus();
+			str[4] = null == s.getMarks() ? "" : String.valueOf(s.getMarks());
 			target.add(str);
 
 		});
