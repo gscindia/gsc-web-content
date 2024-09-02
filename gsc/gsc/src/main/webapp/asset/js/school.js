@@ -17,7 +17,7 @@ $(document).ready(function() {
 		initComplete: function(settings, json) { $('.tooltipped').tooltip();$.unblockUI(); }
 	});
 
-	$('.dataTables_length').addClass('col s4');
+	$('.dataTables_length').addClass('col s2');
 
 	$('#school-list').change(function() {
 		beforeAjaxBlockUI('<h4 class="">Hang on! Fetching data</h4>');
@@ -40,7 +40,7 @@ function refreshStudentDataTable(url) {
 		order: [[3, 'desc']],
 		initComplete: function(settings, json) { $('.tooltipped').tooltip(); $.unblockUI(); window.scrollTo(0, 0);}
 	});
-	$('.dataTables_length').addClass('col s4');
+	$('.dataTables_length').addClass('col s2');
 }
 function addSchool() {
 

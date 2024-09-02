@@ -45,11 +45,11 @@ select.form-control.input-sm {
 							</select> <label>Filter by School</label>
 						</div>
 					</div>					
-
-				<div class="col s12">
-					<common:studentListOfSchool></common:studentListOfSchool>
+				<div class="row">
+					<div class="col s12">
+						<common:studentListOfSchool></common:studentListOfSchool>
+					</div>
 				</div>
-
 			</div>
 			<school:addSchool venues="${venues }"></school:addSchool>
 			<student:editStudent schools='${schoolList }'></student:editStudent>
