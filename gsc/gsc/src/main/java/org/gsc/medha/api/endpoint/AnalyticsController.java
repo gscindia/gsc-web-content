@@ -52,8 +52,14 @@ public class AnalyticsController {
 
 	@ResponseBody
 	@PostMapping("/revenue")
-	public List<RevenueAnalysisDto> postMethodName() {				
-		return analytics.revenueSummary();
+	public List<RevenueAnalysisDto> revenueByClass() {				
+		return analytics.revenueTrendByClass();
+	}
+
+	@ResponseBody
+	@PostMapping("/revenue/trend")
+	public List<RevenueAnalysisDto> revenueTrendByYear() {				
+		return analytics.revenueTrend();
 	}
 	
 	@ResponseBody

@@ -25,7 +25,8 @@ $(document).ready(function() {
 		$.unblockUI();
 	});
 	drawSchoolLeaderBoard(callApi('/reports/school-leaderboard?year='+$('#analytics-year').val(), 'POST', '{}'));
-	drawRevenueChart(callApi('/reports/revenue', 'POST', '{}'));
+	drawRevenueChart('revenue-analysis','Revenue Trend of Classes',1000,callApi('/reports/revenue', 'POST', '{}'));
+	drawRevenueChart('total-revenue-analysis','Revenue Trend of Medha Sandhan',2000,callApi('/reports/revenue/trend', 'POST', '{}'));
 	drawShiftAnalysis(callApi('/reports/shift-analysis', 'POST', '{}'));
 
 });
@@ -157,11 +158,11 @@ function drawBar(selector, data, titleText, subtitle, xDesc, yTitle, bar1, bar2)
 	});
 }
 
-function drawRevenueChart(data){
-	Highcharts.chart('revenue-analysis', {
+function drawRevenueChart(selector,title,ytickInterval,data){
+	Highcharts.chart(selector, {
 
 		title: {
-			text: 'Revenue Growth',
+			text: title,
 			align: 'left'
 		},
 	
@@ -174,7 +175,7 @@ function drawRevenueChart(data){
 			title: {
 				text: 'Revenue earned from Enrollment'
 			},
-			tickInterval: 500
+			tickInterval: ytickInterval
 		},
 	
 		xAxis: {

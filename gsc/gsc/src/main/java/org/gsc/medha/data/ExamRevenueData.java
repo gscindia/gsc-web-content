@@ -8,7 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class ExamRevenueData {
     private int examId;
-    private String examName;
     private int classNum;
     private Long revenue;
 }

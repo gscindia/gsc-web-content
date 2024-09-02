@@ -64,8 +64,9 @@ select.form-control.input-sm {
 				<div class="col s12 m12 l12" id="shift-analysis"></div>			
 			</div>
 			<div class="row">
-				<h3>Reveue Analysis</h3>
+				<h3>Revenue Trend Analysis</h3>
 				<div class="col s12 m12 l12" id="revenue-analysis"></div>
+				<div class="col s12 m12 l12" id="total-revenue-analysis"></div>
 			</div>
 		</div>
 	</main>

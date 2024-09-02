@@ -34,6 +34,8 @@ public interface ExamService {
 
 	String resolveGrade(int marks);
 
+	List<ExamRevenueData> getRevenueSummaryByClass();
+
 	List<ExamRevenueData> getRevenueSummary();
 
 	List<ExamShiftAnalysisData> historicalShiftAnalysis();

@@ -110,8 +110,25 @@ public class DefaultExamService implements ExamService {
 		return summary;
 	}
 	@Override
+	public List<ExamRevenueData> getRevenueSummaryByClass(){
+		return examRepository.getExamRevenueTrend();
+	}
+	@Override
 	public List<ExamRevenueData> getRevenueSummary(){
-		return examRepository.calculateExamRevenue();
+		List<ExamRevenueData> result = new ArrayList<>();
+		List<ExamRevenueData> trend = getRevenueSummaryByClass();
+		List<Long> totalRevenuesByYear = trend.stream()
+                .collect(Collectors.groupingBy(ExamRevenueData::getExamId,
+                        Collectors.summingLong(ExamRevenueData::getRevenue)))
+                .values()
+                .stream()
+                .toList();
+		totalRevenuesByYear.forEach(revenue ->{
+			ExamRevenueData obj = new ExamRevenueData(0, 0, revenue);
+			result.add(obj);
+		});
+
+		return result;
 	}
 
 	public List<Candidate> getAllEnrolledCandidates(Exam exam) {

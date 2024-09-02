@@ -32,6 +32,8 @@ public class DefaultMedhaSandhanAnalyticsFacade implements MedhaSandhanAnalytics
 	Populator<List<Map<String, String>>, SchoolGenderDataDto> classPopulator;
 	@Resource(name = "revenuePopulator")
 	Populator<ExamRevenueData, RevenueAnalysisDto> revenuePopulator;
+	@Resource(name = "totalRevenueTrendPopulator")
+	Populator<ExamRevenueData, RevenueAnalysisDto> totalRevenueTrendPopulator;
 	@Resource(name="examShiftPopulator")
 	Populator<ExamShiftAnalysisData, RevenueAnalysisDto> examShifPopulator;
 	@Autowired
@@ -65,10 +67,18 @@ public class DefaultMedhaSandhanAnalyticsFacade implements MedhaSandhanAnalytics
 	}
 
 	@Override
-	public List<RevenueAnalysisDto> revenueSummary() {
-		List<ExamRevenueData> results = examService.getRevenueSummary();
+	public List<RevenueAnalysisDto> revenueTrendByClass() {
+		List<ExamRevenueData> results = examService.getRevenueSummaryByClass();
 		List<RevenueAnalysisDto> responseDtos = new ArrayList<>();
 		revenuePopulator.populateAll(results, responseDtos);
+		return responseDtos;
+	}
+
+	@Override
+	public List<RevenueAnalysisDto> revenueTrend() {
+		List<ExamRevenueData> results = examService.getRevenueSummary();
+		List<RevenueAnalysisDto> responseDtos = new ArrayList<>();
+		totalRevenueTrendPopulator.populateAll(results, responseDtos);
 		return responseDtos;
 	}
 

@@ -30,14 +30,28 @@ public class DefaultExamRevenuePopulator implements Populator<ExamRevenueData, R
                 .map(ExamRevenueData::getRevenue)
                 .collect(Collectors.toList());           
             resultMap.put(classNum, revenues);
-        }
+        }       
+        // List<Long> totalRevenueList = source.stream()
+        //         .filter(exam -> exam.getClassNum() == 0)
+        //         .map(ExamRevenueData::getRevenue)
+        //         .collect(Collectors.toList());
+        //         resultMap.put(0, totalRevenueList);
 
         resultMap.forEach((classNum, revenues) -> {            
             RevenueAnalysisDto objecDto = new RevenueAnalysisDto();
-            objecDto.setName(GscUtils.integerToRoman(classNum));
-            objecDto.setData(revenues);
+            if(classNum!=0){
+                objecDto.setName(GscUtils.integerToRoman(classNum));
+                objecDto.setData(revenues);
+            }else{
+                // objecDto.setName("Total Revenue");
+                // objecDto.setData(totalRevenueList);
+            }
+            
             target.add(objecDto);
         });
+
+        
+        
     }
 
 }

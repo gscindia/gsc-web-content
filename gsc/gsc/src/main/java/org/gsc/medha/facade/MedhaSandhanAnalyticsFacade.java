@@ -2,7 +2,6 @@ package org.gsc.medha.facade;
 
 import java.util.List;
 
-import org.gsc.medha.data.ExamRevenueData;
 import org.gsc.medha.dto.RevenueAnalysisDto;
 import org.gsc.medha.dto.SchoolGenderDataDto;
 import org.gsc.medha.dto.SchoolLeaderBoardDto;
@@ -15,7 +14,9 @@ public interface MedhaSandhanAnalyticsFacade {
 
 	int enrollmentCount(int examId);
 
-	List<RevenueAnalysisDto> revenueSummary();
+	List<RevenueAnalysisDto> revenueTrendByClass();
+
+	List<RevenueAnalysisDto> revenueTrend();
 
 	SchoolLeaderBoardDto getSchoolLeaderboard(int examId);
 
