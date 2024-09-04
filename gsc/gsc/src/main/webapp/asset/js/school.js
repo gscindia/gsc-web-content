@@ -39,7 +39,7 @@ function refreshStudentDataTable(url) {
 		order: getDataTableSort(),
 		initComplete: function(settings, json) { $('.tooltipped').tooltip(); $.unblockUI(); window.scrollTo(0, 0);}
 	});
-	$('.dataTables_length').addClass('col s2 bold blue');
+	$('.dataTables_length').addClass('col s2');
 }
 function addSchool() {
 	const obj = prepareFormData(document.getElementById('add-school'));
