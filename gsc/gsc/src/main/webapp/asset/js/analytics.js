@@ -40,7 +40,7 @@ function redoCharts(y) {
 		drawTotalEnrollmentChart('enrollment-chart', data,'90%');
 	}else{
 		$('#enrollment-chart')
-		.html('<blockquote class="">Total Enrollment Statistics</blockquote><h4>Select a year for visualization. Total enrollment so far '+callApi('/reports/enrollment?year=' + year, 'POST', '{}')+' </h4>');
+		.html('<blockquote class="">Total Enrollment Statistics</blockquote><h4>Select a year for visualization. Total enrollment so far '+callApi('/reports/enrollment?year=' + y, 'POST', '{}')+' </h4>');
 	}
 }
 function drawSgb(y, z) {
