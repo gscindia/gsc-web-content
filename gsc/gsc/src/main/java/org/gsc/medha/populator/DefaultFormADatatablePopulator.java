@@ -28,14 +28,15 @@ public class DefaultFormADatatablePopulator implements Populator<Candidate, Stri
 					+ "&nbsp;<i class='tooltipped material-icons tiny right' data-tooltip='Delete Student Record' data-position='right' data-id='" + s.getId()
 					+ "' onClick='removeStudent(" + s.getId() + ");'>remove_circle</i>";
 			str[2] = GscUtils.integerToRoman(s.getSection());
+			str[3] = s.getSchool().getName();
 			if (s.getExam().getDate() != null) {
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-				str[3] = formatter.format(s.getExam().getDate());
+				str[4] = formatter.format(s.getExam().getDate());
 			}
 			else {
-				str[3]="";
+				str[4]="";
 			}
-			str[4] = null == s.getMarks() ? "" : String.valueOf(s.getMarks());
+			str[5] = null == s.getMarks() ? "" : String.valueOf(s.getMarks());
 			target.add(str);
 
 		});

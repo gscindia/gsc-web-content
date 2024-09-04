@@ -5,6 +5,7 @@
 			<th>Roll</th>
 			<th>Name</th>
 			<th>Class</th>
+			<th>School Name</th>
 			<th>Year</th>
 			<th>Marks</th>
 		</tr>

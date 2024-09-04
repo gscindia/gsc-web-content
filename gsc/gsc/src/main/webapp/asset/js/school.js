@@ -3,11 +3,11 @@ $(document).ready(function() {
 	$('#edit-student-contact').characterCounter();
 	beforeAjaxBlockUI('<h4 class="">Hang on! Fetching data</h4>');
 	studentTable = $('#student-list');
-	$('select').formSelect();
+	$('select').formSelect();	
 	studentDataTable = studentTable.DataTable({
 		ajax: { url: "/medha/school/datatable/-1", type: 'POST' },
 		"pageLength" : 25,
-		order: [[3, 'desc']],
+		order: getDataTableSort(),
 		columnDefs: [
 			{
 				targets: ['_all'],
@@ -15,10 +15,9 @@ $(document).ready(function() {
 			}
 		],
 		initComplete: function(settings, json) { $('.tooltipped').tooltip();$.unblockUI(); }
-	});
-
+	});	
 	$('.dataTables_length').addClass('col s2');
-
+	
 	$('#school-list').change(function() {
 		beforeAjaxBlockUI('<h4 class="">Hang on! Fetching data</h4>');
 		refreshStudentDataTable('/medha/school/datatable/' + $('#school-list').val());
@@ -30,20 +29,19 @@ function refreshStudentDataTable(url) {
 	studentDataTable.destroy();
 	studentDataTable = studentTable.DataTable({
 		ajax: { url: url, type: 'POST' },
-		"pageLength" : 10,
+		"pageLength" : 25,
 		columnDefs: [
 			{
 				targets: ['_all'],
 				className: 'mdc-data-table__cell'
 			}
 		],
-		order: [[3, 'desc']],
+		order: getDataTableSort(),
 		initComplete: function(settings, json) { $('.tooltipped').tooltip(); $.unblockUI(); window.scrollTo(0, 0);}
 	});
-	$('.dataTables_length').addClass('col s2');
+	$('.dataTables_length').addClass('col s2 bold blue');
 }
 function addSchool() {
-
 	const obj = prepareFormData(document.getElementById('add-school'));
 	var formData = JSON.stringify(obj);
 	if (!$.isEmptyObject(obj.name) && !$.isEmptyObject(obj.venue)) {
@@ -59,4 +57,6 @@ function addSchool() {
 	}
 }
 
-
+function getDataTableSort(){
+	return [[2, 'asc'],[4, 'desc']];
+}
