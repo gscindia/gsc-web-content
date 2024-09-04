@@ -30,6 +30,7 @@ import org.gsc.medha.facade.SchoolFacade;
 import org.gsc.medha.page.form.CandidateForm;
 import org.gsc.medha.page.form.ExamForm;
 import org.gsc.medha.page.form.FilterForm;
+import org.gsc.medha.prop.Status;
 import org.gsc.medha.repository.CandidateRepository;
 import org.gsc.medha.service.CandidateService;
 import org.gsc.medha.service.ExamService;
@@ -208,7 +209,7 @@ public class DefaultExamFacade implements ExamFacade {
 						int cls = Integer.parseInt(formatNumbers(row.getCell(1).toString()));
 						int marks = Integer.parseInt(formatNumbers(row.getCell(2).toString()));
 						Candidate studentDetails = candidateService.getStudent(roll, cls, examService.getPostExam(),
-								"ACTIVE");
+								Status.ACTIVE.name());
 						if (studentDetails == null) {
 							rowData.setName("STUDENT NOT FOUND");
 

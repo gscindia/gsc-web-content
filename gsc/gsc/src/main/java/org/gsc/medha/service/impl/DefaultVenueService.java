@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.gsc.medha.entity.Venue;
+import org.gsc.medha.prop.Status;
 import org.gsc.medha.repository.VenueRepository;
 import org.gsc.medha.service.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class DefaultVenueService implements VenueService {
 
 	@Override
 	public List<Venue> getAllActiveVenue() {
-		return this.getAllVenue().stream().filter(v -> v.getStatus().equalsIgnoreCase("active"))
+		return this.getAllVenue().stream().filter(v -> v.getStatus().equalsIgnoreCase(Status.ACTIVE.name()))
 				.collect(Collectors.toList());
 
 	}

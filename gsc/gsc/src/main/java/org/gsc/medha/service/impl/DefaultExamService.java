@@ -8,6 +8,7 @@ import org.gsc.medha.data.ExamRevenueData;
 import org.gsc.medha.data.ExamShiftAnalysisData;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
+import org.gsc.medha.prop.Status;
 import org.gsc.medha.repository.CandidateRepository;
 import org.gsc.medha.repository.ExamRepository;
 import org.gsc.medha.repository.VenueRepository;
@@ -95,7 +96,7 @@ public class DefaultExamService implements ExamService {
 
 		List<String> listOfHash = new ArrayList<>();
 		jsonarray.forEach(array -> listOfHash.add(array.toString()));
-		List<Candidate> candidates = candidateRepository.getAllStudent(getPostExam(), "ACTIVE");
+		List<Candidate> candidates = candidateRepository.getAllStudent(getPostExam(), Status.ACTIVE.name());
 		candidates = candidates.stream()
 				.filter(candidate -> listOfHash.contains(
 						gscSecurity.encrypt(String.valueOf(candidate.getId())))).toList();
@@ -134,7 +135,7 @@ public class DefaultExamService implements ExamService {
 	public List<Candidate> getAllEnrolledCandidates(Exam exam) {
 
 		return null == exam ? candidateRepository.getAllStudent() 
-							: candidateRepository.getAllStudent(exam, "ACTIVE");
+							: candidateRepository.getAllStudent(exam, Status.ACTIVE.name());
 
 	}
 

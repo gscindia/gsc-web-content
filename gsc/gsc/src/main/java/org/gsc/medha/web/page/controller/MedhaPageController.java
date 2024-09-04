@@ -18,6 +18,7 @@ import org.gsc.medha.facade.ExamFacade;
 import org.gsc.medha.facade.SchoolFacade;
 import org.gsc.medha.facade.VenueFacade;
 import org.gsc.medha.page.form.FilterForm;
+import org.gsc.medha.prop.Status;
 import org.gsc.populator.Populator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -67,7 +68,7 @@ public class MedhaPageController {
 			model.addAttribute("examName", dto.getName());
 		}
 		model.addAttribute("schools", schoolFacade.getAllSchool().stream()
-				.filter(s -> s.getStatus().equalsIgnoreCase("active")).collect(Collectors.toList()));
+				.filter(s -> s.getStatus().equalsIgnoreCase(Status.ACTIVE.name())).collect(Collectors.toList()));
 		return "/medha/student";
 	}
 

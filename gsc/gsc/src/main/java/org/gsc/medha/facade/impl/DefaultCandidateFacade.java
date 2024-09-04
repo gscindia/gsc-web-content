@@ -71,7 +71,7 @@ public class DefaultCandidateFacade implements CandidateFacade {
 		Candidate filter = new Candidate();
 		filterPopulator.populate(form, filter);
 		if (filter.getSchool() != null) {
-			formADataTablePopulator.populateAll(candidateService.getAllStudent(filter.getSchool(), "ACTIVE"), dto);
+			formADataTablePopulator.populateAll(candidateService.getAllStudent(filter.getSchool(), Status.ACTIVE.name()), dto);
 		} else {
 			formADataTablePopulator.populateAll(candidateService.getAllStudent(), dto);
 		}

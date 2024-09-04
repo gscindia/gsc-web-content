@@ -15,6 +15,7 @@ import org.gsc.medha.data.SchoolLeaderBoard;
 import org.gsc.medha.entity.Candidate;
 import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.School;
+import org.gsc.medha.prop.Status;
 import org.gsc.medha.repository.SchoolRepository;
 import org.gsc.medha.service.ExamService;
 import org.gsc.medha.service.SchoolService;
@@ -35,7 +36,7 @@ public class DefaultSchoolService implements SchoolService {
 
 	@Override
 	public School add(School school) {
-		school.setStatus("ACTIVE");
+		school.setStatus(Status.ACTIVE.name());
 		return schoolRepo.save(school);
 	}
 
