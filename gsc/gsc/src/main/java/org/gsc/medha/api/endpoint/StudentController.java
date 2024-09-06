@@ -12,6 +12,8 @@ import org.gsc.medha.facade.CandidateFacade;
 import org.gsc.medha.facade.ExamFacade;
 import org.gsc.medha.page.form.CandidateForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +38,11 @@ public class StudentController {
 
 		return candidateFacade.getAll();
 
+	}
+	@PostMapping("/get/{code}")
+	@ResponseBody
+	public ResponseEntity<CandidateDto> getStudentDetails(@PathVariable Integer code){
+		return new ResponseEntity<CandidateDto>(candidateFacade.getCandidate(code), HttpStatus.FOUND);
 	}
 
 	@PostMapping("/add")

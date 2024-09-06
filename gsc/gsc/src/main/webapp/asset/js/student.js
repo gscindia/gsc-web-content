@@ -39,9 +39,29 @@ function validateEnrollData() {
 }
 
 function popModal(studentId) {
-	$('#edit-student-modal').modal('open');
 	$('#edit-student').trigger('reset');
+	let response = getStudentDetails(studentId);
+	$('#edit-student-name').val(response.name);
+	$('#edit-student-school').val(response.school.id);
+	$('#edit-student-contact').val(response.contact);
+	$('#edit-student-school').formSelect();
 	$('#roll-id').val(studentId);
+	if(response.gender == 'M'){
+		$('#Male').prop('checked',true);
+	}else{
+		$('#Female').prop('checked',true);
+	}
+
+	$('#edit-student-modal').modal('open');	
+	
+	$('#edit-student-name').focus();
+
+}
+function getStudentDetails(applicationNumber){
+	var response = callApi('/medha/student/get/'+applicationNumber, 'POST', null);
+	console.log(response.responseJSON);
+
+	return response.responseJSON;
 
 }
 
