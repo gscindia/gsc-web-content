@@ -36,7 +36,7 @@ select.form-control.input-sm {
 				</div>
 			</div>	
 			<div class="row" id="exam-statistics">
-				<h3>Statistics of every Examination</h3>
+				<h3 class="red-text">Statistics of every Examination</h3>
 				<div class="col s6" id="class-gender-chart"></div>
 				<div class="col s6" id="enrollment-chart"></div>	
 				<div class="col s12 m12 l12" id="shift-analysis"></div>			
@@ -44,7 +44,7 @@ select.form-control.input-sm {
 			<div class="row">
 				<div class="col s12" id="school-statistics">
 					<div class="row">
-						<h3>Statistics of Schools</h3>
+						<h3 class="red-text">Statistics of Schools</h3>
 						<div class="col s4 right input-field ">
 							<select id="analytics-school-sgc" name="school">
 								<option value="0" selected>Select School</option>
@@ -64,7 +64,7 @@ select.form-control.input-sm {
 				</div>
 			</div>
 			<div class="row">
-				<h3>Revenue Trend Analysis</h3>
+				<h3 class="red-text">Revenue Trend Analysis</h3>
 				<div class="col s12 m12 l12" id="revenue-analysis"></div>
 				<div class="col s12 m12 l12" id="total-revenue-analysis"></div>
 			</div>
