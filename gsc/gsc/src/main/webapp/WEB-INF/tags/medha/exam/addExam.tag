@@ -8,7 +8,7 @@
 									<div class="input-field col s12">
 										<i class="material-icons prefix tiny">quiz</i> <input
 											id="exam-name" name="name" type="text" class="validate"
-											data-length="30"> <label for="icon_prefix">Exam
+											data-length="30"> <label for="exam-name">Exam
 											Name</label>
 									</div>
 									<div class="input-field col s12">

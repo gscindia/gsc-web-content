@@ -40,7 +40,7 @@
 						</ul>
 					</div>
 					<div id="exam" class="row">
-						<div class="col s8">
+						<div class="col s10">
 							<exam:listExam examList="${examList}" />
 						</div>
 						<div class="col s12">

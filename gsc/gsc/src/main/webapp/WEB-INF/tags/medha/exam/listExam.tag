@@ -11,7 +11,22 @@
 			</div>
 			<div class="collapsible-body">
 				<span class="bold">Date of Examination </span><span class=" bold blue-text">${exam.date }</span>&nbsp;&nbsp;
-				<span class="bold">Status is </span><span class="green-text bold">${exam.status}</span>
+				<span class="bold">Status: </span>
+				<c:choose>
+					<c:when test="${exam.status eq 'ACTIVE'}">
+						<span class=" green-text bold">In progress</span>
+						<i class="material-icons green-text tiny">call_received</i>
+					</c:when>
+					<c:when test="${exam.status eq 'POST'}">
+						<span class="orange-text bold">Evalution in progress</span>
+						<i class="material-icons green-text tiny">hourglass_empty</i>
+					</c:when>
+					<c:otherwise>
+						<span class=" red-text bold">Concluded</span>
+						<i class="material-icons tiny">offline_pin</i>
+					</c:otherwise>
+				</c:choose>
+				
 				<c:if test="${exam.status eq 'POST'}">
 				<hr>
 				<form action="/medha/exam/upload-attendence" method="post" id='upload-attendance-form' enctype="multipart/form-data">
