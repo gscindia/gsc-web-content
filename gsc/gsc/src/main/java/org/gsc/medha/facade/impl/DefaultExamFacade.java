@@ -207,7 +207,7 @@ public class DefaultExamFacade implements ExamFacade {
 					if (cellIterator.hasNext()) {
 						int roll = Integer.parseInt(formatNumbers(row.getCell(0).toString()));
 						int cls = Integer.parseInt(formatNumbers(row.getCell(1).toString()));
-						int marks = Integer.parseInt(formatNumbers(row.getCell(2).toString()));
+						int marks = row.getCell(2) != null ? Integer.parseInt(formatNumbers(row.getCell(2).toString())) : null;
 						Candidate studentDetails = candidateService.getStudent(roll, cls, examService.getPostExam(),
 								Status.ACTIVE.name());
 						if (studentDetails == null) {
@@ -216,6 +216,7 @@ public class DefaultExamFacade implements ExamFacade {
 						} else {
 							rowData.setName(studentDetails.getName().toUpperCase());
 							rowData.setId(studentDetails.getId());
+							rowData.setSchool(studentDetails.getSchool());
 						}
 
 						rowData.setRoll(roll);

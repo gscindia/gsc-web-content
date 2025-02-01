@@ -105,6 +105,7 @@ public class ExamController {
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Error reading file");
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new Exception("Error Processing Data");
 
 		}

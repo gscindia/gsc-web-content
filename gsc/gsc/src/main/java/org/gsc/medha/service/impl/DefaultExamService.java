@@ -155,7 +155,7 @@ public class DefaultExamService implements ExamService {
 		else if (marks >= 40)
 			grade = "C";
 		else
-			grade = "D";
+			grade = "-";
 
 		return grade;
 
