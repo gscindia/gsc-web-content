@@ -25,20 +25,24 @@
 </style>
 <meta charset="ISO-8859-1">
 <title>Print Preview</title>
+<style>
+.fixed-height{
+height:400px;
+}
+</style>
 </head>
 <body>
 
 	<main>
 		<div class="container">
 			<c:forEach items="${candidate }" var="entry" varStatus="loop">
-				<div class="row" style="border: 2px solid #282626;">
+			<!-- <div class="row"></div><div class="row"></div><div class="row"></div> -->
+				<div class="row fixed-height" style="border: 2px solid #282626;">
 					<reports:viewMarkSheet entry="${entry}"></reports:viewMarkSheet>
 				</div>
-				<c:if test="${(loop.index+1) %2 == 0}">
-					<hr>
-					<div class="row"></div>
-					<div class="row"></div>
-				</c:if>
+				<c:if test="${loop.index %2 == 0}">
+			<div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div><div class="row"><hr></div><div class="row"></div><div class="row"></div><div class="row"></div><div class="row"></div>
+		</c:if>
 			</c:forEach>
 		</div>
 	</main>

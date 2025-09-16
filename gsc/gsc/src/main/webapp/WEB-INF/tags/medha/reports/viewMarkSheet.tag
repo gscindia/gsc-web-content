@@ -19,13 +19,13 @@
 		appeared in the Medha Sandhan Pariksha held on <span class="bold">${entry.exam.date }</span>
 		at <span class="bold">${entry.school.venue.name }</span> has secured <span
 			class="bold">${entry.marks }</span> marks.<br><br>
-			
-	  	<span>Date: 10 January, 2024</span><span class="right"> Convener, ASCPS</span>
+		</br>	
+	  	<span>Date: 10 February, 2024</span><span class="right"> Convener, ASCPS</span>
 
 		<%--  <reports:Copyright></reports:Copyright>   --%>
 
 	</div>
 	 <div class="col s2" style="border: 2px solid #282626;">
-		<h2 class="center bold"> ${entry.grade }</h2>
+		<h3 class="center bold"> ${entry.grade }</h3>
 	</div> 
 </div>

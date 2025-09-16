@@ -19,7 +19,7 @@
 		<p class="bold">Venue: ${entry.school.venue.name }</p>
 		<p class="bold">Date of Examination: ${entry.exam.date } at ${entry.schedule }</p>
 		<hr>
-		<span>For Class II to IV &#x20B9;50 and Class V to X &#x20B9;60 has been paid</span>
+		<span>For Class II to IV &#x20B9;${entry.exam.pricees[0].mrp } and Class V to X &#x20B9;${entry.exam.pricees[1].mrp } has been paid</span>
 		<reports:Copyright></reports:Copyright>
 		
 </div>
