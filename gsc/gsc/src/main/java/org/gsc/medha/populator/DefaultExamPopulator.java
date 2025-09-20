@@ -12,6 +12,7 @@ import org.gsc.medha.entity.Exam;
 import org.gsc.medha.entity.Pricerow;
 import org.gsc.populator.Populator;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 @Component("examPopulator")
 public class DefaultExamPopulator implements Populator<Exam, ExamDto> {
@@ -32,6 +33,7 @@ public class DefaultExamPopulator implements Populator<Exam, ExamDto> {
 		List<Pricerow> mainList = new ArrayList<Pricerow>();
 		List<PricerowDto> priceDto = new ArrayList<PricerowDto>();
 		mainList.addAll(source.getPriceRows());
+		
 		priceRowPopulator.populateAll(mainList, priceDto);
 		target.setPricees(priceDto);
 	}
